@@ -19,4 +19,11 @@ class UserDecorator < ApplicationDecorator
     # отображать первую часть email
     email.split('@')[0].capitalize
   end
+
+  def gravatar(size: 100, css_class: '')
+    # Генерируем адрес изображения с размером по умолчанию "30 piks." + классы bootstrap
+    # префикс "h" означает использования хэлпера RoR
+    h.image_tag "https://www.gravatar.com/avatar/#{gravatar_hash}.jpg?s=#{size}",
+                class: "rounded #{css_class}", alt: name_or_email
+  end
 end

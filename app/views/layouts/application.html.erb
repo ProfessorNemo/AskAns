@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="utf-8">
-    <title>AskAns</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <meta charset="utf-8">
+      <title><%= full_title(yield(:page_title)) %></title>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      </head>
+
+      <body>
+
+        <div class="header">
+          <div class="container">
+            <div
+              class="header-logo">
+              <%# Ссылка на главную страницу сайта (root_path) %>
+              <h1 class="header-title"><%= link_to "Хорошие вопросы", root_path %></h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="container">
+            <%# Вместо волшебной конструкции yield рельсы подставят то, что срендерит %>
+            <%# шаблон для нужной нам страницы, например, users/show %>
+            <%= yield %>
+
+              <main class="container mt-3"> <% flash.each do |k, v| %>
+                <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
+              <% end %>
+
+            </main>
+          </div>
+        </div>
+
+      </body>
+    </html>
   </head>
-
-  <body>
-    <%= yield %>
-  </body>
 </html>

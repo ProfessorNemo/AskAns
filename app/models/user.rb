@@ -26,6 +26,12 @@ class User < ApplicationRecord
   # Перед сохранением пароля в базу его надо зашифровать. Для этого используем коллбэк:
   before_save :encrypt_password
 
+  # before_save - функция обратного вызова, которая выполняется каждый раз перед тем,
+  # как запись сохраняется в БД, когда email изменился с прошлого сохранения
+  before_save :set_gravatar_hash, if: :email_changed?
+
+  scope :sorted, -> { order(created_at: :desc) }
+
   def encrypt_password
     return if password.blank?
 
@@ -78,5 +84,21 @@ class User < ApplicationRecord
 
     # Иначе, возвращаем nil
     nil
+  end
+
+  private
+
+  # функция обратного вызова
+  def set_gravatar_hash
+    return if email.blank?
+
+    # Генерируем хэш на основе email-юзера, удаляем пробелы сначала и конца и преобразуем
+    # его к нижнему регистру - это требования граватара. Потом на основе этого делаем хэш.
+    hash = Digest::MD5.hexdigest email.strip.downcase
+
+    # присвоить сохраняемой в данный момент записи (для которой выполнен callback) gravatar_hash
+    # и установить его в значение hash. Перед тем, как юзера сохранить (user.save), к нему
+    # пристыкуется еще значение "self.gravatar_hash = hash"
+    self.gravatar_hash = hash
   end
 end

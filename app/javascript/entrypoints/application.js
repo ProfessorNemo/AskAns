@@ -8,6 +8,13 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import '@popperjs/core'
+
+import './custom.js'
+
+// для отображения выпадающей формы
+// import 'bootstrap/js/dist/collapse'
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

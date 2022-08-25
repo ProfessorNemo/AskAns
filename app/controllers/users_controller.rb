@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# (c) goodprogrammer.ru
-#
 # Контроллер, управляющий пользователями. Должен уметь:
 #
 #   1. Показывать страницу пользователя
@@ -9,21 +7,46 @@
 #   3. Позволять пользователю редактировать свою страницу
 #
 class UsersController < ApplicationController
-  # Методы контроллера называются экшны (дествия, actions).
-  #
-  # Это действие будет показывать страницу заданного пользователя пока это
-  # заглушка, чтобы показать как контроллер передает данные в шаблон.
-  def show
-    # Создали две instance variables — они будут доступны во вьюхе.
-    @time = Time.zone.now
-    @hello = 'Пока, лунатикам!'
+  before_action :set_user!, only: %i[show edit]
+
+  # Это действие отзывается, когда пользователь заходит по адресу /users
+  def index
+    @users = User.sorted
+    @users = @users.decorate
   end
 
-  # По умолчанию после завершения метода 'show' рельсы отображают шаблон
-  # show.html.erb из папки app/views/users/
-  #
-  # Рельсы ищут шаблон для отрисовки по такому пути:
-  # app/views/{название_контроллера}/{название_экшена}.html.erb
-  #
-  # Это поведение по умолчанию можно изменять. Об этом позже.
+  def new; end
+
+  def edit; end
+
+  # Это действие отзывается, когда пользователь заходит по адресу /users/:id,
+  # например /users/1.
+  def show
+    @user = @user.decorate
+    # Болванка вопросов для пользователя
+    @questions = [
+      Question.create(text: 'Как дела?', user_id: '5'),
+      Question.create(
+        text: 'В чем смысл жизни?', user_id: '6'
+      )
+    ]
+
+    # Болванка для нового вопроса
+    @new_question = Question.new
+  end
+
+  private
+
+  def set_user!
+    @user = User.find params[:id]
+  end
+
+  def user_params
+    params.require(:user)
+          .permit(:email, :name, :username, :password, :password_confirmation, :old_password)
+  end
+
+  def question_params
+    params.require(:question).permit(:text)
+  end
 end

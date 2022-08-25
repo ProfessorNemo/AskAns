@@ -10,6 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ * Подключаем reset.css
+ *= require reset
+ *
+ * Подключаем общие стили для всех страниц
+ *= require text
+ *= require grid
+ *= require button
+ *= require form
+ *
+ * Подключаем стили, специфичные для конкретных view-файлов
+ *= require layout
+ *= require users
+ *= require questions
+ *= require bootstrap
+ *
+ * Подключаем сам файл application.css. Если бы ниже были правила css стилей,
+ * они тоже попали бы в конечный стилевой файл.
  *= require_self
  */

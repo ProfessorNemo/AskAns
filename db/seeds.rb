@@ -8,17 +8,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-p = 'Oceanborn20121703red!'
+# p = 'Oceanborn20121703red!'
 
-user = User.create email: 'nemo@gmail.com',
-                   name: 'Nemo',
-                   username: 'Captain_Nemo',
-                   password: p,
-                   password_confirmation: p
+# user = User.create email: 'nemo@gmail.com',
+#                    name: 'Nemo',
+#                    username: 'Captain_Nemo',
+#                    password: p,
+#                    password_confirmation: p
 
-# сгенерировать 5 вопросов вновь созданного пользователя "user"
-5.times do
-  body = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true, random_sentences_to_add: 4)
-  question = user.questions.build text: body
-  question.save
+# # сгенерировать 5 вопросов вновь созданного пользователя "user"
+# 5.times do
+#   body = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true, random_sentences_to_add: 4)
+#   question = user.questions.build text: body
+#   question.save
+# end
+
+# Нашли всех юзеров и после того как хэш пересчитали, юзеров сохранили
+# "u.send(:set_gravatar_hash)" - вызов закрытого (под "private") метода
+User.find_each do |u|
+  u.send(:set_gravatar_hash)
+  u.save
 end
