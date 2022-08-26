@@ -7,7 +7,8 @@ module Username
   included do
     validates :username, presence: true, length: { in: 1..40 },
                          uniqueness: { case_sensitive: false },
-                         format: { with: /\A[0-9a-zA-Z\-_]+\z/, message: 'Please enter valid username' }
+                         format: { with: /\A[0-9a-zA-Z\-_]+\z/,
+                                   message: 'Please enter valid username' }
 
     validate :check_nik
 

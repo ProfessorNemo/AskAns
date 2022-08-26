@@ -1,0 +1,42 @@
+<% provide :page_title, 'Регистрация' %>
+
+<div class="container content-wrapper buffer-both">
+  <h1 class="title-medium">Войти на сайт</h1>
+
+  <div class="column-1-2">
+    <div
+      class="form">
+      <%# Никакой модели у нас нет, нам просто нужно форму
+              отправлять на нужный маршрут sessions_path %>
+      <%= form_with url: sessions_path do |f| %>
+
+        <div class="form-field">
+          <%= f.label :email, 'Логин (email)', class: 'form-label' %>
+          <%= f.email_field :email, value: params[:email], placeholder: 'E-mail', class: 'form-text-field' %>
+        </div>
+
+        <div class="form-field">
+          <%= f.label :password, 'Пароль', class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-text-field' %>
+        </div>
+
+        <%# галочка check_box%>
+        <%# Если remember_me установлен в значение "1", то надо юзера запомнить %>
+        <div class="row mb-3">
+          <div class="offset-sm-2 col-sm-10">
+            <div class="form-check">
+              <%= f.check_box :remember_me, class: 'form-check-input', value: '1' %>
+              <%# <%= f.label :remember_me, 'Remember me for 30 days', class: 'form-check-label' %>
+              <%= f.label 'Запомнить меня', class: 'form-check-label' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-action">
+          <%= f.submit "Войти", class: 'button button-dark button-small' %>
+        </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

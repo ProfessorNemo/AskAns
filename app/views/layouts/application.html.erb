@@ -2,42 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title><%= full_title(yield(:page_title)) %></title>
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
+    <title><%= full_title(yield(:page_title)) %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-      </head>
-
-      <body>
-
-        <div class="header">
-          <div class="container">
-            <div
-              class="header-logo">
-              <%# Ссылка на главную страницу сайта (root_path) %>
-              <h1 class="header-title"><%= link_to "Хорошие вопросы", root_path %></h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="content">
-          <div class="container">
-            <%# Вместо волшебной конструкции yield рельсы подставят то, что срендерит %>
-            <%# шаблон для нужной нам страницы, например, users/show %>
-            <%= yield %>
-
-              <main class="container mt-3"> <% flash.each do |k, v| %>
-                <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
-              <% end %>
-
-            </main>
-          </div>
-        </div>
-
-      </body>
-    </html>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-</html>
+
+  <body>
+    <div class="header">
+  <div class="container">
+    <div class="header-logo">
+      <h1 class="header-title"><%= link_to "Хорошие вопросы", root_path %></h1>
+    </div>
+
+    <%# Выводим в хэдере информацию для логина/авторизации/регистрации %>
+    <div class="header-nav">
+      <%# Если есть текущий юзер (значит он залогинен) %>
+      <% if user_signed_in? %>
+        <%# Даем ссылки на его профиль и на логаут %>
+        <%= link_to "@#{current_user.username}", user_path(current_user) %> |
+        <%= link_to 'Выйти', log_out_path %>
+      <% else %>
+        <%# Если нету — ссылки на регистрацию и логин %>
+        <%= link_to 'Зарегистрироваться', sign_up_path,
+          class: 'button button-light button-small' %>
+        <%= link_to 'Войти', log_in_path,
+          class: 'button button-light button-small' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+    <div class="content">
+      <div class="container">
+        <%# Вместо волшебной конструкции yield рельсы подставят то, что срендерит %>
+        <%# шаблон для нужной нам страницы, например, users/show %>
+
+          <main class="container mt-3"> <% flash.each do |k, v| %>
+            <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
+          <% end %>
+          <%= yield %>
+        </main>
+
+      </main>
+    </div>
+  </body>
+</html></div></body></html></head></html>

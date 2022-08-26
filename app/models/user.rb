@@ -1,90 +1,33 @@
 # frozen_string_literal: true
 
-require 'openssl'
-
 class User < ApplicationRecord
   include Username
+  include Rememberable
 
-  ITERATIONS = 20_000
-  DIGEST = OpenSSL::Digest.new('SHA256')
-
-  # виртуальный аттрибут, не будет сохраняться в базу данных
-  attr_accessor :password
+  # виртуальный аттрибут в БД попадать не будет, чтоб существовал
+  # на объекте user метод old_password
+  attr_accessor :old_password
 
   has_many :questions, dependent: :destroy
 
-  #  без обращения к DNS-почтовым серверам для проверки существования доменного
+  has_secure_password validations: false
+
+  validate :password_presence
+  validate :password_complexity
+  # Эту валидацию запускать только при обновлении записи и если указан новый пароль
+  validate :correct_old_password, on: :update, if: -> { password.present? }
+  validates :password, confirmation: true, allow_blank: true,
+                       length: { minimum: 8, maximum: 70 }
+
+  # без обращения к DNS-почтовым серверам для проверки существования доменного
   # проверяем корректность вводимых емэйлов
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
-
-  # валидация будет проходить только при создании нового юзера
-  validates :password, presence: true, on: :create
-
-  # и поле подтверждения пароля
-  validates :password, confirmation: true
-
-  # Перед сохранением пароля в базу его надо зашифровать. Для этого используем коллбэк:
-  before_save :encrypt_password
 
   # before_save - функция обратного вызова, которая выполняется каждый раз перед тем,
   # как запись сохраняется в БД, когда email изменился с прошлого сохранения
   before_save :set_gravatar_hash, if: :email_changed?
 
   scope :sorted, -> { order(created_at: :desc) }
-
-  def encrypt_password
-    return if password.blank?
-
-    # Создаем т.н. «соль» — случайная строка, усложняющая задачу хакерам по
-    # взлому пароля, даже если у них окажется наша БД.
-    # У каждого юзера своя «соль», это значит, что если подобрать перебором пароль
-    # одного юзера, нельзя разгадать, по какому принципу
-    # зашифрованы пароли остальных пользователей
-    self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
-
-    # Создаем хэш пароля — длинная уникальная строка, из которой невозможно
-    # восстановить исходный пароль. Однако, если правильный пароль у нас есть,
-    # мы легко можем получить такую же строку и сравнить её с той, что в базе.
-    self.password_hash = User.hash_to_string(
-      OpenSSL::PKCS5.pbkdf2_hmac(
-        password, password_salt, ITERATIONS, DIGEST.length, DIGEST
-      )
-    )
-
-    # Оба поля попадут в базу при сохранении (save).
-  end
-
-  # Служебный метод, преобразующий бинарную строку в шестнадцатиричный формат,
-  # для удобства хранения.
-  def self.hash_to_string(password_hash)
-    password_hash.unpack1('H*')
-  end
-
-  # Основной метод для аутентификации юзера (логина). Проверяет email и пароль,
-  # если пользователь с такой комбинацией есть в базе возвращает этого
-  # пользователя. Если нету — возвращает nil.
-  def self.authenticate(email, password)
-    # Сперва находим кандидата по email
-    user = find_by(email: email)
-
-    # Если пользователь не найден, возвращаем nil
-    return nil if user.blank?
-
-    # Формируем хэш пароля из того, что передали в метод
-    hashed_password = User.hash_to_string(
-      OpenSSL::PKCS5.pbkdf2_hmac(
-        password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST
-      )
-    )
-
-    # Обратите внимание: сравнивается password_hash, а оригинальный пароль так
-    # никогда и не сохраняется нигде. Если пароли совпали, возвращаем
-    # пользователя.
-    return user if user.password_hash == hashed_password
-
-    # Иначе, возвращаем nil
-    nil
-  end
 
   private
 
@@ -100,5 +43,37 @@ class User < ApplicationRecord
     # и установить его в значение hash. Перед тем, как юзера сохранить (user.save), к нему
     # пристыкуется еще значение "self.gravatar_hash = hash"
     self.gravatar_hash = hash
+  end
+
+  # сгенерировать хэш на основе строки
+  def digest(string)
+    cost = if ActiveModel::SecurePassword
+              .min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def correct_old_password
+    # Если дайджесты совпали
+    return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
+
+    errors.add :old_password, 'is incorrect'
+  end
+
+  def password_complexity
+    # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
+    return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
+
+    errors.add :password,
+               'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase,' \
+               '1 lowercase,1 digit and 1 special character'
+  end
+
+  def password_presence
+    # Добавить для пароля сообщение, что он пустой
+    errors.add(:password, :blank) if password_digest.blank?
   end
 end

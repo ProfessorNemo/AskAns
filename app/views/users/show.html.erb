@@ -10,6 +10,10 @@
     <%= @user.name %>
   </h1>
 
+  <div class="buffer-both">
+    <%= link_to 'Редактировать профиль', edit_user_path(@user) %>
+  </div>
+
   <section class="user-image-div">
     <%= @user.gravatar %>
   </section>
@@ -45,8 +49,7 @@
         <%= form_for @new_question do |f| %>
         <%# С помощью объекта для создания полей формы, связанной с моделью %>
         <%# @new_question Мы создаем инпуты с нужными полями для формы, %>
-        <%# значения будут подставлены rails автоматически. %>
-          <%= f.hidden_field :user_id %> <div class="form-field"><%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
+        <%# значения будут подставлены rails автоматически. %><%= f.hidden_field :user_id %> <div class="form-field"><%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
           <%= f.text_area :text, class: 'form-textarea' %>
         </div>
 

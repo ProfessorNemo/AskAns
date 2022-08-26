@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import '@popperjs/core'
+import 'bootstrap/js/dist/dropdown'
 
 import './custom.js'
 
