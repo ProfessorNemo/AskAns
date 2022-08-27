@@ -83,7 +83,6 @@ class UsersController < ApplicationController
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
     @questions = @user.questions.order(created_at: :desc)
-    @questions = @questions.decorate
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
     # создаем болванку вопроса, вызывая метод build у результата вызова метода
     # @user.questions.
@@ -103,10 +102,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
                                  :name, :username, :old_password)
-  end
-
-  def question_params
-    params.require(:question).permit(:text)
   end
 
   # Если загруженный из базы юзер и текущий залогиненный не совпадают — посылаем

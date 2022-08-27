@@ -4,37 +4,38 @@
 <%# страницы пользователя, которая будет показана по адресу /users/1 %>
 
 <%# Блок с информацией о пользователей %>
-  <div class="user-header text-center"> <h1
-    class="title-medium">
-    <%# Выводим имя пользователя %>
-    <%= @user.name %>
-  </h1>
+  <div class="user-header text-center">
+    <h1
+      class="title-medium">
+      <%# Выводим имя пользователя %>
+      <%= @user.name %>
+    </h1>
 
-  <div class="buffer-both">
-    <%= link_to 'Редактировать профиль', edit_user_path(@user) %>
-  </div>
+    <div class="buffer-both">
+      <%= link_to 'Редактировать профиль', edit_user_path(@user) %>
+    </div>
 
-  <section class="user-image-div">
-    <%= @user.gravatar %>
-  </section>
+    <section class="user-image-div">
+      <%= @user.gravatar %>
+    </section>
 
-  <h2
-    class="title-small buffer-both">
-    <%# Выводим никнейм пользователя с символом «@» перед ним. %>
-    <%= @user.username %>
-    <% if @user.questions.present? %>
-      <div class="title-small buffer-both">
-        <%= questions_count_helper(@user.questions.count) %>
-      </div>
-    <% end %>
-  </h2>
+    <h2
+      class="title-small buffer-both">
+      <%# Выводим никнейм пользователя с символом «@» перед ним. %>
+      <%= @user.username %>
+      <% if @user.questions.present? %>
+        <div class="title-small buffer-both">
+          <%= questions_count_helper(@user.questions.count) %>
+        </div>
+      <% end %>
+    </h2>
 
 
-  <div
-    class="user-ask-button container text-center">
-    <%# Используем встроенный в rails хелпер link_to %>
-    <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
-  </div>
+    <div
+      class="user-ask-button container text-center">
+      <%# Используем встроенный в rails хелпер link_to %>
+      <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
+    </div>
 </div>
 
 
@@ -68,9 +69,11 @@
       <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
       <%# также, как мы делали циклы в ruby %>
         <% @questions.each do |question| %>
-        <%# Мы рисуем здесь для кажого вопроса в списке вопросов фрагмент %>
-        <%# (паршал), передавая в него текущий вопрос. Это очень похоже на %>
-      <%# вызов метода в ruby %>
-    <%= render partial: 'questions/question', object: question.decorate %>
-  <% end %>
-</div></div>
+            <%# Мы рисуем здесь для кажого вопроса в списке вопросов фрагмент %>
+            <%# (паршал), передавая в него текущий вопрос. Это очень похоже на %>
+            <%# вызов метода в ruby %>
+            <%= render partial: 'questions/question', object: question.decorate %>
+        <% end %>
+    </div>
+  </div>
+</div>
