@@ -4,15 +4,25 @@
 
 <div class="question">
   <div class="question-content">
+
+    <section class="card-header">
+      <%# Выводим имя пользователя %>
+      <%= question.user.username %>
+    </section>
+
+    <section class="card-header">
+      <%= question.user.gravatar size: 50 %>
+    </section>
+
     <%# Текст вопроса %>
     <div class="question-text text-lead">
-      <%= question.text %>
+      <%= sanitize question.text %>
     </div>
 
     <%# Текст ответа, если он есть %>
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
-        <%= question.answer %>
+        <%= truncate strip_tags(question.answer), length: 100, omission: '...(continued)' %>
       </div>
     <% end %>
 

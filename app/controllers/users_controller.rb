@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   # пользователь в систему не вошел
   before_action :require_no_authentication, only: %i[new create]
   # пользователь в систему уже вошел
-  before_action :require_authentication, only: %i[show edit update]
-  before_action :set_user!, only: %i[show edit update]
+  before_action :require_authentication, only: %i[show edit update destroy]
+  before_action :set_user!, only: %i[show edit update destroy]
 
   # Проверяем имеет ли юзер доступ к экшену, делаем это для всех действий, кроме
   # :index, :new, :create, :show — к этим действиям есть доступ у всех, даже у
@@ -82,11 +82,21 @@ class UsersController < ApplicationController
     # Достаем вопросы пользователя с помощью метода questions, который мы
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
-    @questions = @user.questions.order(created_at: :desc)
+    @questions = @user.questions.includes(:user).order(created_at: :desc)
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
     # создаем болванку вопроса, вызывая метод build у результата вызова метода
     # @user.questions.
     @new_question = @user.questions.build
+  end
+
+  def destroy
+    sign_out
+    if @user.destroy
+      flash[:success] = 'Профиль удален!'
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
@@ -101,7 +111,7 @@ class UsersController < ApplicationController
   # :avatar_url. Другие ключи будут отброшены.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :name, :username, :old_password)
+                                 :name, :username, :old_password, :background_color)
   end
 
   # Если загруженный из базы юзер и текущий залогиненный не совпадают — посылаем

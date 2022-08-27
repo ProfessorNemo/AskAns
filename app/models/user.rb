@@ -4,6 +4,9 @@ class User < ApplicationRecord
   include Username
   include Rememberable
 
+  HEX_BACKGROUND_COLOR_REGEX = /\A#([\da-f]{3}){1,2}\z/
+  DEFAULT_BACKGROUND_COLOR = '#005a55'
+
   # виртуальный аттрибут в БД попадать не будет, чтоб существовал
   # на объекте user метод old_password
   attr_accessor :old_password
@@ -23,11 +26,18 @@ class User < ApplicationRecord
   # проверяем корректность вводимых емэйлов
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
+  validates :background_color, format: {with: HEX_BACKGROUND_COLOR_REGEX}, on: :update
+
   # before_save - функция обратного вызова, которая выполняется каждый раз перед тем,
   # как запись сохраняется в БД, когда email изменился с прошлого сохранения
   before_save :set_gravatar_hash, if: :email_changed?
 
   scope :sorted, -> { order(created_at: :desc) }
+
+
+  def bg_color
+    background_color || DEFAULT_BACKGROUND_COLOR
+  end
 
   private
 

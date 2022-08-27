@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_25_233640) do
+ActiveRecord::Schema.define(version: 2022_08_27_143613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2022_08_25_233640) do
     t.string "remember_token_digest"
     t.string "password_digest"
     t.string "gravatar_hash"
+    t.string "background_color"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

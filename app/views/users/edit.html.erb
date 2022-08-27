@@ -25,6 +25,11 @@
         <%= f.text_field :name, class: 'form-text-field' %>
       </div>
 
+      <div class="form-field">
+        <%= f.label 'Цвет фона профиля', class: 'form-label' %>
+        <%= f.color_field :background_color, value: @user.bg_color %>
+      </div>
+
       <div class="buffer-top-large buffer-bottom">
         Если не хотите менять пароль — оставьте эти поля пустыми!
       </div>
@@ -47,6 +52,8 @@
     <% end %>
     <%= f.submit (@user.new_record? ? "Зарегистрироваться!" : "Сохранить"),
     class: 'button button-dark button-small' %>
+    <%= link_to "Удалить профиль", @user, method: :delete,
+         class: 'button button-red button-small', data: {confirm: "Вы уверены?"}%>
   <% end %>
 
   <%# Подробнее про помощники для создания форм: %>
