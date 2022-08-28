@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
   before_action :set_question!, only: %i[edit update destroy show]
 
@@ -14,10 +16,13 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new question_params
 
+    @question.author = (current_user.presence)
+
     if @question.save
       flash[:success] = 'Вопрос задан!'
       redirect_to user_path(@question.user)
     else
+      # потому что "new" - шаблона нет
       render :edit
     end
   end

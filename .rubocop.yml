@@ -21,6 +21,12 @@ Metrics/ParameterLists:
 Metrics/AbcSize:
   Max: 200
 
+CyclomaticComplexity:
+  Enabled: false
+
+PerceivedComplexity:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
 

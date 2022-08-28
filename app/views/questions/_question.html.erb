@@ -4,14 +4,19 @@
 
 <div class="question">
   <div class="question-content">
+     <div class="text-small">
+      <% author = question.author %>
+      <%= author ? (link_to "@#{author.username}", author) : 'Неизвестный' %>
+    </div>
 
     <section class="card-header">
-      <%# Выводим имя пользователя %>
-      <%= question.user.username %>
-    </section>
-
-    <section class="card-header">
-      <%= question.user.gravatar size: 50 %>
+       <% if author&.gravatar_hash.present? %>
+          <%= image_tag "https://www.gravatar.com/avatar/#{author&.gravatar_hash}.jpg?s=#{50}",
+                    class: 'user-image', alt: '[Фото]' %>
+       <% else %>
+           <%= image_tag 'avatar.jpg', size: '50',
+                    class: 'user-image', alt: '[Фото]' %>
+       <% end %>
     </section>
 
     <%# Текст вопроса %>

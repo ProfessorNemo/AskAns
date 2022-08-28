@@ -12,6 +12,9 @@ class User < ApplicationRecord
   attr_accessor :old_password
 
   has_many :questions, dependent: :destroy
+  has_many :asked_questions, class_name: 'Question',
+                             foreign_key: :author_id, dependent: :nullify,
+                             inverse_of: :activities
 
   has_secure_password validations: false
 
@@ -26,14 +29,13 @@ class User < ApplicationRecord
   # проверяем корректность вводимых емэйлов
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
-  validates :background_color, format: {with: HEX_BACKGROUND_COLOR_REGEX}, on: :update
+  validates :background_color, format: { with: HEX_BACKGROUND_COLOR_REGEX }, on: :update
 
   # before_save - функция обратного вызова, которая выполняется каждый раз перед тем,
   # как запись сохраняется в БД, когда email изменился с прошлого сохранения
   before_save :set_gravatar_hash, if: :email_changed?
 
   scope :sorted, -> { order(created_at: :desc) }
-
 
   def bg_color
     background_color || DEFAULT_BACKGROUND_COLOR
@@ -70,7 +72,7 @@ class User < ApplicationRecord
     # Если дайджесты совпали
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
 
-    errors.add :old_password, 'is incorrect'
+    errors.add :old_password, 'Старый пароль не верный!'
   end
 
   def password_complexity
@@ -78,8 +80,8 @@ class User < ApplicationRecord
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 
     errors.add :password,
-               'complexity requirement not met. Length should be 8-70 characters and include: 1 uppercase,' \
-               '1 lowercase,1 digit and 1 special character'
+               'Требование сложности не выполнено. Длина должна быть от 8 до 70 символов и включать: 1 верхний регистр,' \
+               '1 строчная буква, 1 цифра и 1 специальный символ'
   end
 
   def password_presence

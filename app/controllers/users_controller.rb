@@ -79,14 +79,23 @@ class UsersController < ApplicationController
   # у нас будет лежать пользовать с нужным id равным params[:id].
   def show
     @user = @user.decorate
+    
     # Достаем вопросы пользователя с помощью метода questions, который мы
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
     @questions = @user.questions.includes(:user).order(created_at: :desc)
+
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
     # создаем болванку вопроса, вызывая метод build у результата вызова метода
     # @user.questions.
     @new_question = @user.questions.build
+
+    # Количество вопросов
+    @questions_count = @questions.count
+    # Количество вопросов с ответами
+    @answers_count = @questions.where.not(answer: nil).count
+    # Количество вопросов без ответа
+    @unanswered_count = @questions_count - @answers_count
   end
 
   def destroy
