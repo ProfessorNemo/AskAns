@@ -9,6 +9,6 @@ class QuestionDecorator < ApplicationDecorator
   # "self" перед created_at не говорим, потому что метод вызывается
   # относительно конкретного образца класса
   def formatted_created_at
-    created_at.strftime('%Y-%m-%d %H:%M:%S')
+    l created_at, format: :long
   end
 end

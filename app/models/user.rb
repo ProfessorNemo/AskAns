@@ -12,9 +12,6 @@ class User < ApplicationRecord
   attr_accessor :old_password
 
   has_many :questions, dependent: :destroy
-  has_many :asked_questions, class_name: 'Question',
-                             foreign_key: :author_id, dependent: :nullify,
-                             inverse_of: :activities
 
   has_secure_password validations: false
 
@@ -35,7 +32,12 @@ class User < ApplicationRecord
   # как запись сохраняется в БД, когда email изменился с прошлого сохранения
   before_save :set_gravatar_hash, if: :email_changed?
 
-  scope :sorted, -> { order(created_at: :desc) }
+  # сортировка юзеров по дате создания
+  scope :sorted, -> { order(id: :desc) }
+  # найти юзеров, у которых нет ни одного вопроса на странице
+  scope :without_questions, -> { left_joins(:questions).where(questions: { id: nil }) }
+  # (передаем в лямбду параметр "name") и получим массив юзеров с данным параметром
+  scope :by_name, ->(name) { where(name: name) }
 
   def bg_color
     background_color || DEFAULT_BACKGROUND_COLOR
@@ -72,16 +74,14 @@ class User < ApplicationRecord
     # Если дайджесты совпали
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
 
-    errors.add :old_password, 'Старый пароль не верный!'
+    errors.add(:old_password, :correct_error)
   end
 
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 
-    errors.add :password,
-               'Требование сложности не выполнено. Длина должна быть от 8 до 70 символов и включать: 1 верхний регистр,' \
-               '1 строчная буква, 1 цифра и 1 специальный символ'
+    errors.add(:password, :common_error)
   end
 
   def password_presence

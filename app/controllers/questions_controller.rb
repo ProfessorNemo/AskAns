@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
     @question.author = (current_user.presence)
 
     if @question.save
-      flash[:success] = 'Вопрос задан!'
+      flash[:success] = t('.success')
       redirect_to user_path(@question.user)
     else
       # потому что "new" - шаблона нет
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   # @question у нас будет лежать вопрос с нужным id равным params[:id].
   def update
     if @question.update(question_params)
-      flash[:success] = 'Вопрос сохранен!'
+      flash[:success] = t('.success')
       redirect_to user_path(@question.user)
     else
       render :edit
@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     # Отправляем пользователя на страницу адресата вопроса с сообщением
-    flash[:success] = 'Вопрос удален!'
+    flash[:success] = t('.success')
     redirect_to user_path(user)
   end
 

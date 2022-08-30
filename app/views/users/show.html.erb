@@ -12,34 +12,47 @@
     </h1>
 
     <div class="buffer-both">
-      <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user  %>
+      <%= link_to t('global.button.edit'), edit_user_path(@user) if current_user == @user  %>
     </div>
 
     <div class="user-image-div">
-      <%= @user.gravatar %>
+       <% unless @user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
+          <%= @user.gravatar %>
+       <% else %>
+          <%= image_tag 'sofia.jpg', height: '100', width: '120',
+                    class: 'menu_icon', alt: '[Foto]' %>
+       <% end %>
     </div>
 
     <div class="user-details">
 
       <div class="user-ask-button container text-center">
         <%# Используем встроенный в rails хелпер link_to %>
-        <%= link_to "Спроси меня", user_path(@user), class: 'button button-light',
+        <%= link_to t('global.button.ask'), user_path(@user), class: 'button button-light',
                     id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
       </div>
 
       <div class="user-statistics container text-center">
 
         <div class="column-1-3">
-          <p><%= inclination(@questions_count, "вопрос", "вопроса", "вопросов") %></p>
+          <%= inclination(@questions_count,
+               t('.form.question'), t('.form.of_question'), t('.form.questions')) %>
         </div>
 
         <div class="column-1-3">
-          <p><%= inclination(@answers_count, "ответ", "ответа", "ответов") %></p>
+          <%= inclination(@answers_count,
+             t('.form.answer'), t('.form.of_answer'), t('.form.answers')) %>
         </div>
 
         <div class="column-1-3">
-          <p><%= inclination(@unanswered_count, "вопрос", "вопроса", "вопросов") %>
-          без ответа</p>
+        <% if I18n.locale.to_s == 'en' %>
+          <%= inclination(@unanswered_count,
+              "unanswered question", "unanswered questions", "unanswered questions") %>
+        <% else %>
+          <%= inclination(@unanswered_count,
+              "вопрос", "вопроса", "вопросов") %>
+              без ответа
+        <% end %>
         </div>
 
       </div>
@@ -60,12 +73,12 @@
         <%# значения будут подставлены rails автоматически. %>
           <%= f.hidden_field :user_id %>
            <div class="form-field">
-              <%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
+              <%= f.label t('.form.your_question', username: @user.username), class: 'form-label' %>
               <%= f.text_area :text, class: 'form-textarea' %>
           </div>
 
           <div class="form-action">
-              <%= submit_tag 'Задать вопрос', class: 'button button-small button-dark' %>
+              <%= submit_tag t('.form.ask_question'), class: 'button button-small button-dark' %>
           </div>
       <% end %>
     </div>
@@ -78,12 +91,18 @@
     <div class="questions-list">
       <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
       <%# также, как мы делали циклы в ruby %>
-        <% @questions.each do |question| %>
+
+        <%# данная навигация показывается в том случае, если количество страниц больше 1 %>
+        <%= pagination @pagy %>
+
+        <% @questions.includes([:author]).each do |question| %>
              <%# Мы рисуем здесь для кажого вопроса в списке вопросов фрагмент %>
              <%# (паршал), передавая в него текущий вопрос. Это очень похоже на %>
              <%# вызов метода в ruby %>
              <%= render partial: 'questions/question', object: question.decorate %>
         <% end %>
+
+      <%= pagination @pagy %>
     </div>
   </div>
 </div>

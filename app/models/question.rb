@@ -11,4 +11,9 @@ class Question < ApplicationRecord
              optional: true
 
   validates :text, presence: true, length: { minimum: 1, maximum: 255 }
+
+  # те вопросы, у которых поле "answer" не содержит nil
+  scope :answered, -> { where.not(answer: nil) }
+  # те вопросы, у которых поле "answer" содержит nil (не отвеченные)
+  scope :unanswered, -> { where(answer: nil) }
 end

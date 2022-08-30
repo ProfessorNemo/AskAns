@@ -1,8 +1,8 @@
 <%# Страница редактирования вопроса %>
-<% provide :page_title, 'Редактирование' %>
+<% provide :page_title, t('.title') %>
 
 <div class="container content-wrapper buffer-both">
-  <h1 class="title-medium">Вопрос</h1>
+  <h1 class="title-medium"><%= t('.theme') %></h1>
 
   <div class="column-1-2">
     <%# Подключаем паршиал app/views/questions/_form.html.erb %>

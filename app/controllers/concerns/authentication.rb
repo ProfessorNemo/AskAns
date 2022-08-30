@@ -42,7 +42,7 @@ module Authentication
     def require_authentication
       return if user_signed_in?
 
-      flash[:warning] = 'Вы не вошли в аккаунт!'
+      flash[:warning] = t 'global.flash.not_signed_in'
       redirect_to root_path
     end
 
@@ -51,7 +51,7 @@ module Authentication
     def require_no_authentication
       return unless user_signed_in?
 
-      flash[:warning] = 'Вы уже вошли в систему!'
+      flash[:warning] = t 'global.flash.already_signed_in'
       redirect_to root_path
     end
 

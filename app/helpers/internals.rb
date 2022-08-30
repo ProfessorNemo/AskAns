@@ -3,9 +3,9 @@
 Box.internals do |internal|
   # вот сюда (в internal) передаем сам модуль "Box" и для модуля мы
   # задаем аттрибуты
-  internal.one = 'ресурс'
+  internal.one = 'nan'
 
-  internal.several = 'ресурса'
+  internal.several = 'nan'
 
-  internal.many = 'ресурсов'
+  internal.many = 'nan'
 end

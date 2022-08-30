@@ -1,0 +1,69 @@
+<header class="header-nav">
+		<div class="container">
+			<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+				<ul class="nav col-12 col-lg-auto mb-2 mb-md-1">
+					<li class="dropdown">
+						<%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-white',
+											data: {"bs-toggle": 'dropdown'} do %>
+								<%= tag.span '', class: "famfamfam-flag-#{language_bar}" %>
+							<%= t I18n.locale %>
+						<% end %>
+
+				<ul class="dropdown-menu">
+
+					<li>
+						<hr class="dropdown-divider">
+					</li>
+
+					<% I18n.available_locales.each do |locale| %>
+						<li>
+							<% if I18n.locale == locale %>
+								<%# <%= image_tag 'country-4x3/ru.svg', width: 34, alt: 'RU', class: "menu_icon" %>
+								<%= tag.span t(locale), class: 'dropdown-item' %>
+							<% else %>
+								<%# <%= image_tag 'country-4x3/england.svg', width: 34, alt: 'EN', class: "menu_icon"%>
+								<%= link_to t(locale), url_for(params_plus(locale: locale)),
+										class: 'dropdown-item' %>
+							<% end %>
+
+					<li>
+						<hr class="dropdown-divider">
+					</li>
+
+						</li>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
+	<nav></div>
+</header>
+
+<div class="header">
+	<div class="container">
+
+		<div class="header-logo">
+			<h1 class="header-title">
+				<%= link_to t('menu.home'), root_path %>
+			</h1>
+		</div>
+
+	<%# Выводим в хэдере информацию для логина/авторизации/регистрации %>
+		<div class="header-nav">
+
+			<%# Если есть текущий юзер (значит он залогинен) %>
+			<% if user_signed_in? %>
+				<%# Даем ссылки на его профиль и на логаут %>
+				<%= link_to "@#{current_user.username}", user_path(current_user) %>
+				|
+				<%= link_to t('menu.sign_out'), log_out_path %>
+			<% else %>
+				<%# Если нету — ссылки на регистрацию и логин %>
+			<%= link_to t('menu.sign_up'), sign_up_path,
+					class: 'button button-light button-small' %>
+				<%= link_to t('menu.sign_in'), log_in_path,
+					class: 'button button-light button-small' %>
+			<% end %>
+
+		</div>
+	</div>
+</div>

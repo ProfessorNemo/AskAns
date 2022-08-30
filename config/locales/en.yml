@@ -1,33 +1,119 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  en: English
+  ru: Russian
+  activerecord:
+    errors:
+      messages:
+        common_error: complexity requirement not met. Length should be 8-70 characters and include - 1 uppercase, 1 lowercase, 1 digit and 1 special character.
+        username_error: should not be %{username}!
+        correct_error: is incorrect
+        username_message: unresolved!
+    attributes:
+      question:
+        text: Text
+        answer: Answer
+      user:
+        created_at: Created at
+        email: Email
+        name: Name
+        old_password: Old password
+        password: Password
+        password_confirmation: Password confirmation
+        updated_at: Updated at
+        username: Username
+    models:
+      question: Question
+      user: User
+  global:
+    button:
+      delete: Delete profile
+      edit: Edit profile
+      register: Register
+      ask: Ask me
+      save: Save
+    dialog:
+      you_sure: Are you sure?
+    flash:
+      already_signed_in: You are already signed in!
+      not_signed_in: You are not signed in!
+      danger: You can't come here!
+    text:
+      omission: "... (continued)"
+  menu:
+    home: Good questions
+    sign_up: Sign up
+    sign_out: Sign out
+    sign_in: Sign in
+  sessions:
+    create:
+      invalid_creds: Incorrect email and/or password!
+      success: Welcome back, %{name}!
+    destroy:
+      success: See you later!
+    new:
+      form:
+        message: Sign in
+        email: Email
+        password: Password
+        remember_me: Remember me
+        submit: Sign in
+        title: Sign In
+  users:
+    destroy:
+      success: User deleted!
+    update:
+      success: User updated!
+    create:
+      success: Welcome to the app, %{name}!
+    edit:
+      form:
+        title: Edit profile
+        username: Username
+        name: Name
+        background_color: Background color
+        password: Password
+        password_confirmation: Password confirmation
+        old_password: Old password
+        message: If you don't want to change your password, leave these fields blank!
+    global:
+      forms:
+        register: Register
+        save: Save
+    new:
+      form:
+        title: New user
+        message: Join us!
+        username: Username
+        name: Name
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+    show:
+      form:
+        ask_question: Ask a Question
+        your_question: Your question for %{username}
+        question: question
+        of_question: question
+        questions: questions
+        answer: answer
+        of_answer: answer
+        answers: answers
+    index:
+      form:
+        title: Our users
+  questions:
+    create:
+      success: Question created!
+    destroy:
+      success: Question deleted!
+    update:
+      success: Question updated!
+    edit:
+      title: Question editing
+      theme: Question
+  form:
+    question: Question
+    answer: Answer
+    return: return
+  question:
+    unknown: Unknown

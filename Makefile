@@ -1,0 +1,2 @@
+lint-ruby:
+	rubocop -A

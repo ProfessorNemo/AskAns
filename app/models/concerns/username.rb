@@ -8,7 +8,7 @@ module Username
     validates :username, presence: true, length: { in: 1..40 },
                          uniqueness: { case_sensitive: false },
                          format: { with: /\A[0-9a-zA-Z\-_]+\z/,
-                                   message: 'Please enter valid username' }
+                                   message: :username_message }
 
     validate :check_nik
 
@@ -17,7 +17,8 @@ module Username
     private
 
     def check_nik
-      errors.add :base, "This user is #{username}" if NIK.any?(username)
+      errors.add(:username, :username_error, username: username) if NIK.any?(username)
+      # errors.add :base, "This user is #{username}" if NIK.any?(username)
     end
 
     def register

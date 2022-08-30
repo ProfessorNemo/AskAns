@@ -1,0 +1,119 @@
+ru:
+  en: Английский
+  ru: Русский
+  activerecord:
+    errors:
+      messages:
+        common_error: недостаточно сложный. Длина должна быть от 8 до 70 символов и включать 1 прописную, 1 строчную, 1 цифру и 1 специальный символ.
+        username_error: этого пользователя есть %{username}!
+        correct_error: не верный
+        username_message: неразрешённый!
+    attributes:
+      question:
+        text: Текст
+        answer: Ответ
+      user:
+        created_at: Создан
+        email: Email
+        name: Имя
+        old_password: Старый пароль
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        updated_at: Обновлён
+        username: Никнейм
+    models:
+      question: Вопрос
+      user: Пользователь
+  global:
+    button:
+      delete: Удалить профиль
+      edit: Редактировать профиль
+      register: Регистрация
+      ask: Спроси меня
+      save: Сохранить
+    dialog:
+      you_sure: Вы уверены?
+    flash:
+      already_signed_in: Вы уже вошли в систему!
+      not_signed_in: Вы не вошли в систему!
+      danger: Вам сюда нельзя!
+    text:
+      omission: "... (далее)"
+  menu:
+    home: Хорошие вопросы
+    sign_up: Зарегистрироваться
+    sign_out: Выйти
+    sign_in: Войти
+  sessions:
+    create:
+      invalid_creds: Неверный email и/или пароль!
+      success: С возвращением, %{name}!
+    destroy:
+      success: До новых встреч!
+    new:
+      form:
+        message: Войти на сайт
+        email: Email
+        password: Пароль
+        remember_me: Запомнить меня
+        submit: Войти
+        title: Войти
+  users:
+    destroy:
+      success: Пользователь удалён!
+    update:
+      success: Пользователь обновлён!
+    create:
+      success: Добро пожаловать, %{name}!
+    edit:
+      form:
+        title: Редактирование профиля
+        username: Никнейм
+        name: Имя
+        background_color: Цвет фона
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        old_password: Старый пароль
+        message: Если вы не хотите менять пароль, оставьте эти поля пустыми!
+    global:
+      forms:
+        register: Зарегистрироваться
+        save: Сохранить
+    new:
+      form:
+        title: Новый пользователь
+        message: Присоединяйтесь к нам!
+        username: Никнейм
+        name: Имя
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+    show:
+      form:
+        ask_question: Задать вопрос
+        your_question: Ваш вопрос для %{username}
+        question: вопрос
+        of_question: вопроса
+        questions: вопросов
+        answer: ответ
+        of_answer: ответа
+        answers: ответов
+    index:
+      form:
+        title: Наши пользователи
+  questions:
+    create:
+      success: Вопрос создан!
+    destroy:
+      success: Вопрос удалён!
+    update:
+      success: Вопрос обновлён!
+    edit:
+      title: Редактирование вопроса
+      theme: Вопрос
+    form:
+      question: Вопрос
+      answer: Ответ
+      return: Вернуться
+    question:
+      unknown: Неизвестный

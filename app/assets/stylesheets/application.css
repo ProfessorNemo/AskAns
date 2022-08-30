@@ -14,18 +14,18 @@
  *= require reset
  *
  * Подключаем общие стили для всех страниц
+ *= require bootstrap
  *= require text
  *= require grid
  *= require button
  *= require form
+ *= require errors
  *
  * Подключаем стили, специфичные для конкретных view-файлов
  *= require layout
  *= require users
  *= require questions
- *= require bootstrap
+ *= require famfamfam-flags
  *
- * Подключаем сам файл application.css. Если бы ниже были правила css стилей,
- * они тоже попали бы в конечный стилевой файл.
- *= require_self
- */
+* * Подключаем сам файл application.css. Если бы ниже были правила css стилей,
+* они тоже попали бы в конечный стилевой файл. *=require_self */

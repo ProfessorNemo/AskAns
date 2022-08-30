@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
     <meta charset="utf-8">
     <title><%= full_title(yield(:page_title)) %></title>
@@ -13,43 +13,22 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="header">
-  <div class="container">
-    <div class="header-logo">
-      <h1 class="header-title"><%= link_to "Хорошие вопросы", root_path %></h1>
-    </div>
+  <body data-lang="<%= I18n.locale %>">
 
-    <%# Выводим в хэдере информацию для логина/авторизации/регистрации %>
-    <div class="header-nav">
-      <%# Если есть текущий юзер (значит он залогинен) %>
-      <% if user_signed_in? %>
-        <%# Даем ссылки на его профиль и на логаут %>
-        <%= link_to "@#{current_user.username}", user_path(current_user) %> |
-        <%= link_to 'Выйти', log_out_path %>
-      <% else %>
-        <%# Если нету — ссылки на регистрацию и логин %>
-        <%= link_to 'Зарегистрироваться', sign_up_path,
-          class: 'button button-light button-small' %>
-        <%= link_to 'Войти', log_in_path,
-          class: 'button button-light button-small' %>
-      <% end %>
-    </div>
-  </div>
-</div>
+    <%= render 'shared/menu' %>
 
     <div class="content">
       <div class="container">
         <%# Вместо волшебной конструкции yield рельсы подставят то, что срендерит %>
         <%# шаблон для нужной нам страницы, например, users/show %>
 
-          <main class="container mt-3"> <% flash.each do |k, v| %>
+        <main class="container mt-3"> <% flash.each do |k, v| %>
             <%= tag.div v, class: "alert alert-#{k}", role: 'alert' %>
           <% end %>
           <%= yield %>
         </main>
 
-      </main>
+      </div>
     </div>
   </body>
-</html></div></body></html></head></html>
+</html>

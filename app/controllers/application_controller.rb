@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   include ErrorHandling
   include Authentication
   include OtherChecks
+  include Internationalization
+  include Pagy::Backend
 
   # Prevent CSRF attacks by raising an exception.
   #

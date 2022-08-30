@@ -1,61 +1,61 @@
-<% provide :page_title, 'Редактирование профиля' %>
+<% provide :page_title, t('.form.title') %>
 
 <%# Страница редактирования пользователя %>
 <div class="container content-wrapper buffer-both">
-  <h1 class="title-medium">Редактировать профиль</h1>
+<h1 class="title-medium"><%= t('.form.title') %></h1>
 
   <div class="column-1-2">
     <%# С помощью специального хелпера form_for мы делаем тег <form ...> %>
     <%# с нужными аттрибутами, после этого в переменной f будет специальный %>
     <%# объект (form builder object), вызывая методы которого мы можем %>
     <%# создавать теги для нужных нам полей формы. %>
-      <%= form_for(@user) do |f| %>
+      <%= form_for @user do |f| %>
       <%# Вывод ошибок валидации пользователя, если есть. Ошибки содержатся %>
       <%# в поле errors модели (в нашем случае @users). %>
       <%= render 'shared/errors', object: @user %>
       <%# С помощью методов label и text_field у объекта f мы создаем теги %>
       <%# <label ... > и <input type="text" ... > с нужными атрибуами %>
-        <div class="form-field"> <%= f.label 'Никнейм', class: 'form-label' %>
+        <div class="form-field"> <%= f.label t('.form.username'), class: 'form-label' %>
         <%= f.text_field :username, class: 'form-text-field' %>
       </div>
 
       <%# Поступаем аналогично для других полей %>
       <div class="form-field">
-        <%= f.label 'Имя', class: 'form-label' %>
+        <%= f.label t('.form.name'), class: 'form-label' %>
         <%= f.text_field :name, class: 'form-text-field' %>
       </div>
 
       <div class="form-field">
-        <%= f.label 'Цвет фона профиля', class: 'form-label' %>
+        <%= f.label t('.form.background_color'), class: 'form-label' %>
         <%= f.color_field :background_color, value: @user.bg_color %>
       </div>
 
-      <div class="buffer-top-large buffer-bottom">
-        Если не хотите менять пароль — оставьте эти поля пустыми!
-      </div>
+      <div class="buffer-top-large buffer-bottom"><%= t('.form.message') %></div>
 
       <div class="form-field">
-        <%= f.label 'Пароль', class: 'form-label' %>
+        <%= f.label t('.form.password'), class: 'form-label' %>
         <%= f.password_field :password, class: 'form-text-field' %>
       </div>
 
       <div class="form-field">
-        <%= f.label 'Пароль еще раз', class: 'form-label' %>
+        <%= f.label t('.form.password_confirmation'), class: 'form-label' %>
         <%= f.password_field :password_confirmation, class: 'form-text-field' %>
       </div>
 
       <% unless @user.new_record? %>
       <div class="form-field">
-        <%= f.label 'Старый пароль', class: 'form-label'%>
+        <%= f.label t('.form.old_password'), class: 'form-label'%>
         <%= f.password_field :old_password, class: 'form-text-field' %>
       </div>
     <% end %>
-    <%= f.submit (@user.new_record? ? "Зарегистрироваться!" : "Сохранить"),
-    class: 'button button-dark button-small' %>
-    <%= link_to "Удалить профиль", @user, method: :delete,
-         class: 'button button-red button-small', data: {confirm: "Вы уверены?"}%>
+  <% t_key = (@user.new_record? ? "register" : "save") %>
+  <%= f.submit t(t_key, scope: 'users.global.forms'), class: 'button button-dark button-small' %>
+    <%= link_to t('global.button.delete'), @user, method: :delete,
+         class: 'button button-red button-small', data: {confirm: t('global.dialog.you_sure')}%>
   <% end %>
 
   <%# Подробнее про помощники для создания форм: %>
   <%# http://guides.rubyonrails.org/form_helpers.html %>
 </div></div>
+
+

@@ -10,7 +10,7 @@ module OtherChecks
     # нарушении доступа. Мы будем использовать этот метод, когда надо запретить
     # пользователю что-то.
     def reject_user
-      flash[:danger] = 'Вам сюда нельзя!'
+      flash[:danger] = t('.danger')
       redirect_back(fallback_location: root_path)
     end
   end

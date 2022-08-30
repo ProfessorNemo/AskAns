@@ -21,7 +21,12 @@ class UsersController < ApplicationController
   # Это действие отзывается, когда пользователь заходит по адресу /users
   def index
     @users = User.sorted
+
     @users = @users.decorate
+
+    # Найти юзеров, зарегистрированных больше года назад, у которых на
+    # странице ни одного вопроса
+    User.where('created_at < ?', 1.year.ago).without_questions
   end
 
   def new
@@ -38,7 +43,7 @@ class UsersController < ApplicationController
       # пользователь создан.
       # признак для юзера, что он в систему вошел
       sign_in @user
-      flash[:success] = "Пользователь #{current_user.name_or_email} успешно зарегестрирован!"
+      flash[:success] = t('.success', name: current_user.name_or_email)
       redirect_to root_path
     else
       # Если не удалось по какой-то причине сохранить пользователя, то рисуем
@@ -62,7 +67,7 @@ class UsersController < ApplicationController
     # пользователя с помощью метода user_params, и пытаемся обновить @user с
     # этими значениями.
     if @user.update user_params
-      flash[:success] = 'Ваш профиль был успешно обновлен!'
+      flash[:success] = t '.success'
       redirect_to user_path(@user)
     else
       # Если не получилось, как и в create рисуем страницу редактирования
@@ -79,11 +84,12 @@ class UsersController < ApplicationController
   # у нас будет лежать пользовать с нужным id равным params[:id].
   def show
     @user = @user.decorate
-    
+
     # Достаем вопросы пользователя с помощью метода questions, который мы
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
-    @questions = @user.questions.includes(:user).order(created_at: :desc)
+
+    @pagy, @questions = pagy @user.questions.order(created_at: :desc)
 
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
     # создаем болванку вопроса, вызывая метод build у результата вызова метода
@@ -93,15 +99,15 @@ class UsersController < ApplicationController
     # Количество вопросов
     @questions_count = @questions.count
     # Количество вопросов с ответами
-    @answers_count = @questions.where.not(answer: nil).count
+    @answers_count = @questions.answered.count
     # Количество вопросов без ответа
-    @unanswered_count = @questions_count - @answers_count
+    @unanswered_count = @questions.unanswered.count
   end
 
   def destroy
     sign_out
     if @user.destroy
-      flash[:success] = 'Профиль удален!'
+      flash[:success] = t '.success'
       redirect_to root_path
     else
       render :edit

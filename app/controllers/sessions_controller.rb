@@ -18,14 +18,14 @@ class SessionsController < ApplicationController
       # flash[:warning] = 'Неверный адрес электронной почты и/или пароль!'
       # redirect_to session_path
       # или
-      flash.now[:warning] = 'Неверный адрес электронной почты и/или пароль!'
+      flash.now[:warning] = t '.invalid_creds'
       render :new
     end
   end
 
   def destroy
     sign_out
-    flash[:success] = 'До скорого!'
+    flash[:success] = t '.success'
     redirect_to root_path
   end
 
@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
     sign_in user
     # запомнить пользователя, если он того хочет
     remember(user) if params[:remember_me] == '1'
-    flash[:success] = "С возвращением, #{current_user.name_or_email}!"
+    flash[:success] = t('.success', name: current_user.name_or_email)
     redirect_to root_path
   end
 end

@@ -6,16 +6,19 @@
   <div class="question-content">
      <div class="text-small">
       <% author = question.author %>
-      <%= author ? (link_to "@#{author.username}", author) : 'Неизвестный' %>
+      <%= author ? (link_to "@#{author.username}", author) : t('.unknown') %>
     </div>
 
     <section class="card-header">
-       <% if author&.gravatar_hash.present? %>
+       <% if !author&.gravatar_hash.blank? && author.username != 'darling' %>
           <%= image_tag "https://www.gravatar.com/avatar/#{author&.gravatar_hash}.jpg?s=#{50}",
-                    class: 'user-image', alt: '[Фото]' %>
+                    class: 'user-image', alt: '[Foto]' %>
+       <% elsif author&.gravatar_hash.present? && author.username == 'darling' %>
+          <%= image_tag 'sofia.jpg', height: '50', width: '70',
+                    class: 'user-image', alt: '[Foto]' %>
        <% else %>
-           <%= image_tag 'avatar.jpg', size: '50',
-                    class: 'user-image', alt: '[Фото]' %>
+          <%= image_tag 'avatar.jpg', size: '50',
+                    class: 'user-image', alt: '[Foto]' %>
        <% end %>
     </section>
 
@@ -27,13 +30,13 @@
     <%# Текст ответа, если он есть %>
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
-        <%= truncate strip_tags(question.answer), length: 100, omission: '...(continued)' %>
+        <%= truncate strip_tags(question.answer), length: 100, omission: t('global.text.omission') %>
       </div>
     <% end %>
 
     <%# Дата создания вопроса (отформатированная) %>
     <div class="question-date">
-      <%= l(question.created_at, format: :short) %>
+      <%= question.formatted_created_at %>
     </div>
   </div>
 
@@ -43,11 +46,10 @@
     <%# Определяем какая будет иконка, если у вопроса нет ответа, то иконка %>
     <%# овтета на письмо, иначе — карандашик %>
     <% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
-
     <div class="question-actions">
       <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
       <%= link_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, data: {confirm: 'Точно удалить вопрос?'} %>
+                  method: :delete, data: {confirm: t('global.dialog.you_sure')} %>
     </div>
   <% end %>
 </div>

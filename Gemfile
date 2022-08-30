@@ -27,13 +27,31 @@ gem 'jquery-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'foreman', '~> 0.87.2'
+
 # для проверки корректности введенного email
 gem 'valid_email2', '~> 4.0'
+
 # декораторы
 gem 'draper', '~> 4.0'
 
+# гем для разделения контента по страницам
+gem 'pagy', '~> 5.10'
+
+# Чтобы искать неоптимальные запросы и их устранять используется решение «bullet»
+gem 'bullet', '~> 7'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
+
+gem 'rails-i18n', '~> 7.0.3'
+
+# Иконки флагов стран
+gem 'flag-css-rails'
+gem 'flag-icons-rails'
+gem 'svg-flags-rails', '>= 1.0.0-beta' # ISO country flags https://github.com/steakknife/svg-flags/rails
+# основной гем с иконками флагов
+gem 'famfamfam_flags_rails'
 
 group :development, :test do
   gem 'byebug'
@@ -53,6 +71,9 @@ group :development do
   gem 'rubocop-rails', '~> 2.14', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # чтобы подгружать переменные в environment
+  gem 'dotenv', '~> 2.7'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
