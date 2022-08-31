@@ -2,27 +2,28 @@
 
 module Username
   extend ActiveSupport::Concern
-  NIK = %w[Evil evil god God].freeze
+  NIK = %w[evil god].map(&:downcase).freeze
 
   included do
     validates :username, presence: true, length: { in: 1..40 },
-                         uniqueness: { case_sensitive: false },
                          format: { with: /\A[0-9a-zA-Z\-_]+\z/,
                                    message: :username_message }
 
-    validate :check_nik
-
-    before_save :register
+    validate :check_nik, if: :should_validate
 
     private
 
     def check_nik
-      errors.add(:username, :username_error, username: username) if NIK.any?(username)
+      errors.add(:username, :username_error, username: username) if NIK.any?(register)
       # errors.add :base, "This user is #{username}" if NIK.any?(username)
     end
 
     def register
-      username.downcase!
+      username.downcase
+    end
+
+    def should_validate
+      new_record? || present?
     end
   end
 end

@@ -5,7 +5,7 @@ ru:
     errors:
       messages:
         common_error: недостаточно сложный. Длина должна быть от 8 до 70 символов и включать 1 прописную, 1 строчную, 1 цифру и 1 специальный символ.
-        username_error: этого пользователя есть %{username}!
+        username_error: этого пользователя %{username}!!!
         correct_error: не верный
         username_message: неразрешённый!
     attributes:

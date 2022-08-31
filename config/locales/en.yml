@@ -5,7 +5,7 @@ en:
     errors:
       messages:
         common_error: complexity requirement not met. Length should be 8-70 characters and include - 1 uppercase, 1 lowercase, 1 digit and 1 special character.
-        username_error: should not be %{username}!
+        username_error: should not be %{username}!!!
         correct_error: is incorrect
         username_message: unresolved!
     attributes:
