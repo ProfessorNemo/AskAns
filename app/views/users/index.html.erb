@@ -8,35 +8,36 @@
 
   <%# Этот код выводит каждого пользователя в цикле %>
   <% @users.each do |user| %>
-      <div class="users-list-item">
-        <div class="user-image-div user-image-div-small">
-          <%# Пользуемся аж тремя хелперами %>
-          <%# link_to — генерирует ссылку %>
-          <%# image_tag — генерирует картинку %>
-          <%# user_avatar — достает из пользователя ссылку на картинку или подставляет дефолтную %>
-          <%# Хелпер user_path(user) возвращает относительный путь %>
-          <%# страницы пользователя, например /users/1 %>
+    <div class="users-list-item">
+      <div class="user-image-div user-image-div-small">
+        <%# Пользуемся аж тремя хелперами %>
+        <%# link_to — генерирует ссылку %>
+        <%# image_tag — генерирует картинку %>
+        <%# user_avatar — достает из пользователя ссылку на картинку или подставляет дефолтную %>
+        <%# Хелпер user_path(user) возвращает относительный путь %>
+        <%# страницы пользователя, например /users/1 %>
 
-             <% unless user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
-                 <%= link_to user.gravatar(css_class: 'user-image'), user_path(user) %>
-             <% else %>
-                 <%= link_to image_tag('sofia.jpg', height: '100', width: '120',
+        <% unless user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
+        <%= link_to user.gravatar(css_class: 'user-image'), user_path(user) %>
+      <% else %>
+        <%= link_to image_tag('sofia.jpg', height: '100', width: '120',
                      class: 'menu_icon', alt: '[Foto]'), user_path(user) %>
-             <% end %>
+      <% end %>
 
-        </div>
-      </div>
-  <% end %>
+    </div>
+  </div>
+<% end %>
 
+<%# Каждый тег собой будет представлять badge. И когда юзер на  этот тег нажимает,
+  будут выбираться те вопросы, которые этому тегу принадлежат %>
 <% if @hashtags.any? %>
   <div class="buffer-both">
     <h2 class="title-medium">Метки</h2>
-      <% @hashtags.each do |hashtag| %>
-        <%= link_to "#{hashtag.text}", hashtag_path(hashtag.text) %>
+    <% @hashtags.each do |hashtag| %>
+      <%= link_to hashtag_path(hashtag.text),
+          class: 'badge rounded-pill bg-light text-dark d-inline-block px-2 pt-1 pb-2 me-1' do %>
+          <small><%= "#{hashtag.text}" %></small>
       <% end %>
+    <% end %>
   </div>
-  <% end %>
-</div>
-
-
-
+<% end %></div>
