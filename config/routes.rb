@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :hashtags, only: :show, param: :text
+
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
     resources :sessions, only: %i[new create destroy]
 

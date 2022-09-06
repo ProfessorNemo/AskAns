@@ -26,7 +26,12 @@ class UsersController < ApplicationController
 
     # Найти юзеров, зарегистрированных больше года назад, у которых на
     # странице ни одного вопроса
-    User.where('created_at < ?', 1.year.ago).without_questions
+    # User.where('created_at < ?', 1.year.ago).without_questions
+
+    @hashtags = Hashtag.with_questions
+
+    # render(@tags) выполнит сериализацию и превратит коллекцию тегов в json
+    # render json: TagBlueprint.render(@hashtag)
   end
 
   def new
@@ -89,7 +94,7 @@ class UsersController < ApplicationController
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
 
-    @pagy, @questions = pagy @user.questions.order(created_at: :desc)
+    @pagy, @questions = pagy @user.questions.includes(:author).sorted
 
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
     # создаем болванку вопроса, вызывая метод build у результата вызова метода

@@ -10,10 +10,33 @@ class Question < ApplicationRecord
              class_name: 'User',
              optional: true
 
+  has_many :question_hashtags, dependent: :destroy
+  has_many :hashtags, through: :question_hashtags
+
   validates :text, presence: true, length: { minimum: 1, maximum: 255 }
+
+  after_save_commit :create_hashtags
 
   # те вопросы, у которых поле "answer" не содержит nil
   scope :answered, -> { where.not(answer: nil) }
   # те вопросы, у которых поле "answer" содержит nil (не отвеченные)
   scope :unanswered, -> { where(answer: nil) }
+
+  scope :sorted, -> { order(created_at: :desc) }
+
+  private
+
+  def parse_hashtags(string)
+    string.to_s.split.map(&:downcase)
+          .map { |str| "##{str}" }.sample(3)
+          .map { |i| i.scan(Hashtag::REGEX) }
+          .flatten
+  end
+
+  def create_hashtags
+    self.hashtags =
+      parse_hashtags(text.to_s).uniq.map do |hashtag|
+        Hashtag.create_or_find_by(text: hashtag)
+      end
+  end
 end

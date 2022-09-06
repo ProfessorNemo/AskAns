@@ -4,6 +4,7 @@
 
 <div class="question">
   <div class="question-content">
+
      <div class="text-small">
       <% author = question.author %>
       <%= author ? (link_to "@#{author.username}", author) : t('.unknown') %>
@@ -34,9 +35,15 @@
       </div>
     <% end %>
 
+    <div class="question-text text-lead">
+      <% question.hashtags.each do |hashtag| %>
+        <%= link_to "#{hashtag.text}", hashtag_path(hashtag.text), class: 'hashtag' %>
+      <% end %>
+    </div>
+
     <%# Дата создания вопроса (отформатированная) %>
     <div class="question-date">
-      <%= question.formatted_created_at %>
+      <%= question.decorate.formatted_created_at %>
     </div>
   </div>
 

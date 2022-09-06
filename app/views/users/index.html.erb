@@ -27,6 +27,16 @@
         </div>
       </div>
   <% end %>
+
+<% if @hashtags.any? %>
+  <div class="buffer-both">
+    <h2 class="title-medium">Метки</h2>
+      <% @hashtags.each do |hashtag| %>
+        <%= link_to "#{hashtag.text}", hashtag_path(hashtag.text) %>
+      <% end %>
+  </div>
+  <% end %>
 </div>
+
 
 

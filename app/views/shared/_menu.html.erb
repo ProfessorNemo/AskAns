@@ -1,41 +1,41 @@
 <header class="header-nav">
-		<div class="container">
-			<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-				<ul class="nav col-12 col-lg-auto mb-2 mb-md-1">
-					<li class="dropdown">
-						<%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-white',
-											data: {"bs-toggle": 'dropdown'} do %>
-								<%= tag.span '', class: "famfamfam-flag-#{language_bar}" %>
-							<%= t I18n.locale %>
-						<% end %>
-
-				<ul class="dropdown-menu">
-
-					<li>
-						<hr class="dropdown-divider">
-					</li>
-
-					<% I18n.available_locales.each do |locale| %>
-						<li>
-							<% if I18n.locale == locale %>
-								<%# <%= image_tag 'country-4x3/ru.svg', width: 34, alt: 'RU', class: "menu_icon" %>
-								<%= tag.span t(locale), class: 'dropdown-item' %>
-							<% else %>
-								<%# <%= image_tag 'country-4x3/england.svg', width: 34, alt: 'EN', class: "menu_icon"%>
-								<%= link_to t(locale), url_for(params_plus(locale: locale)),
-										class: 'dropdown-item' %>
-							<% end %>
-
-					<li>
-						<hr class="dropdown-divider">
-					</li>
-
-						</li>
+	<div class="container">
+		<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+			<ul class="nav col-12 col-lg-auto mb-2 mb-md-1">
+				<li class="dropdown">
+					<%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-white',
+										data: {"bs-toggle": 'dropdown'} do %>
+							<%= tag.span '', class: "famfamfam-flag-#{language_bar}" %>
+						<%= t I18n.locale %>
 					<% end %>
-				</ul>
-			</li>
-		</ul>
-	<nav></div>
+
+			    <ul class="dropdown-menu">
+
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+
+						<% I18n.available_locales.each do |locale| %>
+							<li>
+								<% if I18n.locale == locale %>
+									<%# <%= image_tag 'country-4x3/ru.svg', width: 34, alt: 'RU', class: "menu_icon" %>
+									<%= tag.span t(locale), class: 'dropdown-item' %>
+								<% else %>
+									<%# <%= image_tag 'country-4x3/england.svg', width: 34, alt: 'EN', class: "menu_icon"%>
+									<%= link_to t(locale), url_for(params_plus(locale: locale)),
+											class: 'dropdown-item' %>
+								<% end %>
+
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+					    </li>
+				    <% end %>
+			    </ul>
+		    </li>
+		  </ul>
+	  </nav>
+	</div>
 </header>
 
 <div class="header">

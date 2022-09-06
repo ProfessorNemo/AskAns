@@ -27,7 +27,6 @@
     <div class="user-details">
 
       <div class="user-ask-button container text-center">
-        <%# Используем встроенный в rails хелпер link_to %>
         <%= link_to t('global.button.ask'), user_path(@user), class: 'button button-light',
                     id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
       </div>
@@ -95,11 +94,11 @@
         <%# данная навигация показывается в том случае, если количество страниц больше 1 %>
         <%= pagination @pagy %>
 
-        <% @questions.includes([:author]).each do |question| %>
+        <% @questions.includes([:question_hashtags, :hashtags]).each do |question| %>
              <%# Мы рисуем здесь для кажого вопроса в списке вопросов фрагмент %>
              <%# (паршал), передавая в него текущий вопрос. Это очень похоже на %>
              <%# вызов метода в ruby %>
-             <%= render partial: 'questions/question', object: question.decorate %>
+             <%= render partial: 'questions/question', object: question %>
         <% end %>
 
       <%= pagination @pagy %>

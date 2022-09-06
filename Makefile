@@ -28,6 +28,7 @@ migrate:
 
 rubocop:
 	rubocop -A
+
 web:
 	ruby bin/rails server -p 3000
 
