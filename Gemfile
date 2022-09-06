@@ -46,6 +46,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'rails-i18n', '~> 7.0.3'
 
+# в json. Сериализатор работает быстрее, чем 'jbuilder', '~> 2.11'
+gem 'blueprinter'
+
 # Иконки флагов стран
 gem 'flag-css-rails'
 gem 'flag-icons-rails'

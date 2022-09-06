@@ -5,7 +5,14 @@ class QuestionsController < ApplicationController
 
   # Проверяем имеет ли юзер доступ к экшену для всей дествий, кроме задавания
   # вопроса, это действие может вызвать даже неавторизованный пользователь.
-  before_action :authorize_user, except: [:create]
+  before_action :authorize_user, except: %i[create index]
+
+  def index
+    @hashtags = Hashtag.where(id: params[:hashtag_ids]) if params[:hashtag_ids]
+    @pagy, @questions = pagy Question.includes(%i[author question_hashtags])
+                                     .all_by_hashtags(@hashtags)
+    @questions = @questions.decorate
+  end
 
   # GET /questions/1/edit
   def edit; end
@@ -85,7 +92,7 @@ class QuestionsController < ApplicationController
     # он может менять ответы на вопрос, ему доступно также поле :answer.
     if current_user.present? &&
        params[:question][:user_id].to_i == current_user.id
-      params.require(:question).permit(:user_id, :text, :answer)
+      params.require(:question).permit(:user_id, :text, :answer, hashtag_ids: [])
     else
       params.require(:question).permit(:user_id, :text)
     end

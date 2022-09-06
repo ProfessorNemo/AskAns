@@ -28,16 +28,22 @@
   </div>
 <% end %>
 
-<%# Каждый тег собой будет представлять badge. И когда юзер на  этот тег нажимает,
-  будут выбираться те вопросы, которые этому тегу принадлежат %>
-<% if @hashtags.any? %>
-  <div class="buffer-both">
-    <h2 class="title-medium">Метки</h2>
-    <% @hashtags.each do |hashtag| %>
-      <%= link_to hashtag_path(hashtag.text),
-          class: 'badge rounded-pill bg-light text-dark d-inline-block px-2 pt-1 pb-2 me-1' do %>
-          <small><%= "#{hashtag.text}" %></small>
-      <% end %>
-    <% end %>
-  </div>
-<% end %></div>
+<section class="form-action">
+
+    <%# отправляем форму на страницу "questions_path" - get-запрос%>
+    <%= form_with url: questions_path , method: :get do |f| %>
+      <div class="form-field">
+        <%# {selected: params[:hashtag_ids]} - т.е. когда форма будет отправлена и страница перерисуется,
+                        в этой форме выбирутся все те теги, которые выбраны для построения этого поиска.
+                        required: true - чтоб эту форму нельзя было отправить пустой %>
+        <%# ajax — асинхронный запрос отправляться сюда "/api/hashtags" и чтобы отсюда вытаскивать только те хэштеги,
+                        которые подходят под критерии пользователя, т.е. исходя из того, что юзер напечатает %>
+      <%= f.collection_select :hashtag_ids, (@hashtags || []), :id, :text, {selected: params[:hashtag_ids]},
+          multiple: true, required: true,
+          class: 'js-multiple-select js-ajax-select w-50', data: {'ajax-url': '/api/hashtags'} %>
+      </div>
+
+      <%= f.submit t('global.button.search'), class: 'btn btn-primary btn-sm mb-3' %>
+
+  <% end %>
+</section>

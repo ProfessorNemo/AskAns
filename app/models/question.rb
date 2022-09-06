@@ -24,19 +24,34 @@ class Question < ApplicationRecord
 
   scope :sorted, -> { order(created_at: :desc) }
 
+  scope :all_by_hashtags, lambda { |hashtags|
+    questions = includes(:user)
+    questions = if hashtags
+                  # связка в SQL с таблице хэштегов, только если они существуют
+                  questions.joins(:hashtags).where(hashtags: hashtags).preload(:hashtags)
+                else
+                  questions.includes(:question_hashtags, :hashtags)
+                end
+    # либо выбираем все вопросы
+    questions.order(created_at: :desc)
+  }
+
   private
 
+  # выбираем любые 2 слова из вопроса в качестве хэштега,
+  # содержащие от 2 до 10 букв
   def parse_hashtags(string)
-    string.to_s.split.map(&:downcase)
-          .map { |str| "##{str}" }.sample(3)
-          .map { |i| i.scan(Hashtag::REGEX) }
-          .flatten
+    string.downcase.split
+          .select { |i| i.chars.count.between?(2, 10) }
+          .map { |i| i.delete('^a-zA-Zа-яА-Я') }
+          .uniq.sample(2)
   end
 
+  # генератор хэштега
   def create_hashtags
     self.hashtags =
-      parse_hashtags(text.to_s).uniq.map do |hashtag|
-        Hashtag.create_or_find_by(text: hashtag)
+      parse_hashtags(text).map do |hashtag|
+        Hashtag.create_or_find_by(text: "##{hashtag}")
       end
   end
 end

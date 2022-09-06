@@ -31,6 +31,7 @@ en:
       register: Register
       ask: Ask me
       save: Save
+      search: Search questions by hashtags
     dialog:
       you_sure: Are you sure?
     flash:
@@ -115,5 +116,9 @@ en:
     question: Question
     answer: Answer
     return: return
+  hashtags:
+    show:
+      form:
+        questions: Questions
   question:
     unknown: Unknown

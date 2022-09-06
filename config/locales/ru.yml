@@ -31,6 +31,7 @@ ru:
       register: Регистрация
       ask: Спроси меня
       save: Сохранить
+      search: Поиск вопросов по хэштегам
     dialog:
       you_sure: Вы уверены?
     flash:
@@ -115,5 +116,9 @@ ru:
       question: Вопрос
       answer: Ответ
       return: Вернуться
+  hashtags:
+    show:
+      form:
+        questions: Вопросы
     question:
       unknown: Неизвестный
