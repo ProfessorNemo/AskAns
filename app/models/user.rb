@@ -13,6 +13,12 @@ class User < ApplicationRecord
 
   has_many :questions, dependent: :destroy
 
+  has_many :asked_questions,
+           class_name: 'Question',
+           foreign_key: :author_id,
+           dependent: :nullify,
+           inverse_of: :user
+
   has_secure_password validations: false
 
   validate :password_presence

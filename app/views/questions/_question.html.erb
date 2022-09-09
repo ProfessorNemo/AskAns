@@ -11,11 +11,11 @@
     </div>
 
     <section class="card-header">
-       <% if !author&.gravatar_hash.blank? && author.username != 'darling' %>
+       <% if !author&.gravatar_hash.blank? && author.username != Dotenv.load('.env')['TEST_USERNAME'] %>
           <%= image_tag "https://www.gravatar.com/avatar/#{author&.gravatar_hash}.jpg?s=#{50}",
                     class: 'user-image', alt: '[Foto]' %>
-       <% elsif author&.gravatar_hash.present? && author.username == 'darling' %>
-          <%= image_tag 'sofia.jpg', height: '50', width: '70',
+       <% elsif author&.gravatar_hash.present? && author.username == Dotenv.load('.env')['TEST_USERNAME'] %>
+          <%= image_tag 'Elizabeth.jpg', height: '80', width: '70',
                     class: 'user-image', alt: '[Foto]' %>
        <% else %>
           <%= image_tag 'avatar.jpg', size: '50',

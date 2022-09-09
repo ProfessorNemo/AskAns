@@ -18,10 +18,8 @@
 						<% I18n.available_locales.each do |locale| %>
 							<li>
 								<% if I18n.locale == locale %>
-									<%# <%= image_tag 'country-4x3/ru.svg', width: 34, alt: 'RU', class: "menu_icon" %>
 									<%= tag.span t(locale), class: 'dropdown-item' %>
 								<% else %>
-									<%# <%= image_tag 'country-4x3/england.svg', width: 34, alt: 'EN', class: "menu_icon"%>
 									<%= link_to t(locale), url_for(params_plus(locale: locale)),
 											class: 'dropdown-item' %>
 								<% end %>

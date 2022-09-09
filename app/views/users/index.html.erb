@@ -10,7 +10,6 @@
   <% @users.each do |user| %>
     <div class="users-list-item">
       <div class="user-image-div user-image-div-small">
-        <%# Пользуемся аж тремя хелперами %>
         <%# link_to — генерирует ссылку %>
         <%# image_tag — генерирует картинку %>
         <%# user_avatar — достает из пользователя ссылку на картинку или подставляет дефолтную %>
@@ -20,7 +19,7 @@
         <% unless user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
         <%= link_to user.gravatar(css_class: 'user-image'), user_path(user) %>
       <% else %>
-        <%= link_to image_tag('sofia.jpg', height: '100', width: '120',
+        <%= link_to image_tag('Elizabeth.jpg', height: '90', width: '80',
                      class: 'menu_icon', alt: '[Foto]'), user_path(user) %>
       <% end %>
 
@@ -38,7 +37,7 @@
                         required: true - чтоб эту форму нельзя было отправить пустой %>
         <%# ajax — асинхронный запрос отправляться сюда "/api/hashtags" и чтобы отсюда вытаскивать только те хэштеги,
                         которые подходят под критерии пользователя, т.е. исходя из того, что юзер напечатает %>
-      <%= f.collection_select :hashtag_ids, (@hashtags || []), :id, :text, {selected: params[:hashtag_ids]},
+      <%= f.collection_select :hashtag_ids, (helper_hashtag(1) || []), :id, :text, {selected: params[:hashtag_ids]},
           multiple: true, required: true,
           class: 'js-multiple-select js-ajax-select w-50', data: {'ajax-url': '/api/hashtags'} %>
       </div>

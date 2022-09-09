@@ -14,6 +14,24 @@
 #
 RUN_ARGS := $(wordlist 2, $(words $(MAKECMDGOALS)), $(MAKECMDGOALS))
 
+drop!:
+	rails db:drop
+
+initially:
+	rails db:create
+	rails db:migrate:up VERSION=20220824170626
+	rails db:migrate:up VERSION=20220824170747
+	rails db:migrate:up VERSION=20220824171409
+	rails db:migrate:up VERSION=20220824171627
+
+
+	rails db:seed
+	rails db:migrate
+
+
+
+
+
 migration:
 	bundle exec rails g migration $(RUN_ARGS)
 

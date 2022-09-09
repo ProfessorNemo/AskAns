@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Sep  4 20:51:48 2022
+# Make data base, printed on Wed Sep  7 20:28:12 2022
 
 # Variables
 
@@ -24,8 +24,6 @@ YVM_DIR = /home/professor/.yvm
 SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
-# environment
-GJS_DEBUG_OUTPUT = stderr
 # environment
 VSCODE_CWD = /home/professor/Документы/rubytut/lesson47-51
 # environment
@@ -53,7 +51,7 @@ PWD = /home/professor/Документы/rubytut/lesson47-51/AskAns
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/home/professor/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-OLDPWD = /home/professor/Документы/rubytut/lesson47-51/AskAns
+OLDPWD = /home/professor/Документы/rubytut/lesson47-51/вебинары
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # automatic
@@ -71,7 +69,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.121
+GNOME_TERMINAL_SERVICE = :1.103
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -103,15 +101,13 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 96233
+VSCODE_PID = 5359
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
-SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2888,unix/professor-N56JRH:/tmp/.ICE-unix/2888
+SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2809,unix/professor-N56JRH:/tmp/.ICE-unix/2809
 # automatic
 *F = $(notdir $*)
 # environment
@@ -133,11 +129,9 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f1b2a1c7_2156_4c83_b294_01d6aa8625ae
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b8b5c1d1_d473_4659_b8f2_82fd828b4e9f
 # environment
 MAKELEVEL := 0
 # default
@@ -156,8 +150,6 @@ SNAP_USER_COMMON = /home/professor/snap/code/common
 SNAP = /snap/code/105
 # environment
 bbq = oceanborn
-# environment
-INVOCATION_ID = b1bf56cd187b4b13891f0efa168313d2
 # environment
 SNAP_REVISION = 105
 # environment
@@ -185,13 +177,11 @@ GNUMAKEFLAGS :=
 # environment
 LOGNAME = professor
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
-# environment
 SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := migration
 # environment
-SYSTEMD_EXEC_PID = 2914
+SYSTEMD_EXEC_PID = 2834
 # environment
 DISPLAY = :1
 # environment
@@ -207,10 +197,6 @@ SNAP_DATA = /var/snap/code/105
 # environment
 SNAP_CONTEXT = QOr97p3x2z0Nc5TiXecuBuVjxJ5OHFJP9XqQmvSyHo88ZKvrTd_W
 # environment
-MANAGERPID = 2355
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 96190
-# environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
@@ -220,8 +206,6 @@ COLORTERM = truecolor
 GDK_PIXBUF_MODULE_FILE = /home/professor/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
 NVM_CD_FLAGS = 
-# environment
-JOURNAL_STREAM = 8:33750
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -275,20 +259,17 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=132/1024=13%, Rehash=0, Collisions=10/164=6%
+# Load=124/1024=12%, Rehash=0, Collisions=10/156=6%
 
 # Pattern-specific Variable Values
-
- 
-make: *** No rule to make target 'all'.  Stop.
 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (device 2049, inode 15866876): 32 files, no impossibilities.
+# . (device 2049, inode 15866876): 33 files, no impossibilities.
 
-# 32 files, no impossibilities in 1 directories.
+# 33 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -299,6 +280,9 @@ make: *** No rule to make target 'all'.  Stop.
 c: run-console
 #  Implicit rule search has not been done.
 #  Modification time never checked.
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 #  File has not been updated.
 
 rubocop:
@@ -318,7 +302,7 @@ webpacker:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-01 02:26:46.564815779
+#  Last modified 2022-09-07 02:09:36.577529872
 #  File has been updated.
 #  Successfully updated.
 
@@ -396,12 +380,12 @@ create:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 47 / storage = 415 B / avg = 8 B
-# current buf: size = 8162 B / used = 415 B / count = 47 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 48 / storage = 431 B / avg = 8 B
+# current buf: size = 8162 B / used = 431 B / count = 48 / avg = 8 B
 
-# strcache performance: lookups = 63 / hit rate = 25%
+# strcache performance: lookups = 64 / hit rate = 25%
 # hash-table stats:
-# Load=47/8192=1%, Rehash=0, Collisions=0/63=0%
-# Finished Make data base on Sun Sep  4 20:51:48 2022
+# Load=48/8192=1%, Rehash=0, Collisions=0/64=0%
+# Finished Make data base on Wed Sep  7 20:28:12 2022
 
  
