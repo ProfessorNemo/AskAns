@@ -30,8 +30,8 @@ PerceivedComplexity:
 Rails/I18nLocaleTexts:
   Enabled: false
 
-# Rails/FilePath:
-#   EnforcedStyle: arguments
+Rails/FilePath:
+  Enabled: false
 
 convention:Metrics/BlockLength:
   Max: 70

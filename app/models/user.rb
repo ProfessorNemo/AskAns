@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   include Username
   include Rememberable
+  include Blacklist
 
   HEX_BACKGROUND_COLOR_REGEX = /\A#([\da-f]{3}){1,2}\z/
   DEFAULT_BACKGROUND_COLOR = '#005a55'
@@ -21,8 +22,6 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
-  validate :password_presence
-  validate :password_complexity
   # Эту валидацию запускать только при обновлении записи и если указан новый пароль
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true,
@@ -44,6 +43,9 @@ class User < ApplicationRecord
   scope :without_questions, -> { left_joins(:questions).where(questions: { id: nil }) }
   # (передаем в лямбду параметр "name") и получим массив юзеров с данным параметром
   scope :by_name, ->(name) { where(name: name) }
+
+  validate :password_presence
+  validate :password_complexity
 
   def bg_color
     background_color || DEFAULT_BACKGROUND_COLOR

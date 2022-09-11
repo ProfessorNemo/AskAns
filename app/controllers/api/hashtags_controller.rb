@@ -4,11 +4,13 @@ module Api
   class HashtagsController < ApplicationController
     def index
       hashtags = Hashtag.arel_table
-      # запрос - я хочу найти все теги, заголовки которых
+      # запрос - я хочу найти все хэштеги, заголовки которых
       # содержат слово "%#{params[:term]}%"
       @hashtags = Hashtag.where(hashtags[:text].matches("%#{params[:term]}%"))
 
-      # render(@tags) выполнит сериализацию и превратит коллекцию тегов в json
+      # Оставшиеся после удаления вопросв хэштеги
+      @hashtags = helper_hashtag(1)
+      # render(@tags) выполнит сериализацию и превратит коллекцию хэштегов в json
       render json: HashtagBlueprint.render(@hashtags)
     end
   end

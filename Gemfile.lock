@@ -102,7 +102,6 @@ GEM
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jquery-rails (4.5.0)
@@ -273,7 +272,6 @@ DEPENDENCIES
   flag-css-rails
   flag-icons-rails
   foreman (~> 0.87.2)
-  hashie (~> 5.0)
   jquery-rails
   listen (~> 3.3)
   pagy (~> 5.10)

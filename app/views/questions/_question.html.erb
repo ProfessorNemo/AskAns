@@ -7,7 +7,7 @@
 
      <div class="text-small">
       <% author = question.author %>
-      <%= author ? (link_to "@#{author.username}", author) : t('.unknown') %>
+      <%= author ? (link_to "@#{author.username}", author) : t('global.text.unknown') %>
     </div>
 
     <section class="card-header">
@@ -25,13 +25,13 @@
 
     <%# Текст вопроса %>
     <div class="question-text text-lead">
-      <%= sanitize question.text %>
+      <%= truncate strip_tags(question.text), length: 60, omission: t('global.text.omission') %>
     </div>
 
     <%# Текст ответа, если он есть %>
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
-        <%= truncate strip_tags(question.answer), length: 100, omission: t('global.text.omission') %>
+        <%= truncate strip_tags(question.answer), length: 60, omission: t('global.text.omission') %>
       </div>
     <% end %>
 

@@ -15,6 +15,8 @@ class Question < ApplicationRecord
 
   validates :text, presence: true, length: { minimum: 1, maximum: 255 }
 
+  validate :del, on: :destroy
+
   after_save_commit :create_hashtags
 
   # те вопросы, у которых поле "answer" не содержит nil
@@ -42,16 +44,26 @@ class Question < ApplicationRecord
   # содержащие от 2 до 10 букв
   def parse_hashtags(string)
     string.downcase.split
-          .select { |i| i.chars.count.between?(2, 10) }
+          .select { |i| i.chars.count.between?(4, 20) }
           .map { |i| i.delete('^a-zA-Zа-яА-Я') }
-          .uniq.sample(2)
+          .uniq.sample(3)
   end
 
-  # генератор хэштега
+  # генератор хэштега (от анонима хэштеги не генерируюся)
   def create_hashtags
+    return if author_id.nil?
+
     self.hashtags =
-      parse_hashtags(text).map do |hashtag|
+      parse_hashtags("#{text} #{answer}").map do |hashtag|
         Hashtag.create_or_find_by(text: "##{hashtag}")
       end
+  end
+
+  def del
+    return if hashtags.blank? || author_id.nil?
+
+    self.hashtags = hashtags
+
+    hashtags.destroy_all
   end
 end

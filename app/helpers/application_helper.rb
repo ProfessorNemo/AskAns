@@ -34,20 +34,4 @@ module ApplicationHelper
   def language_bar
     I18n.locale.to_s == 'en' ? 'england' : 'ru'
   end
-
-  # do_id либо 0 - хэштег, либо 1 - id
-  # Извлечение массива отсортированных в алфавитном порядке хэштегов
-  # class: array и actriverecird relations
-  def helper_hashtag(do_id)
-    hashtags = Hashtag.alphabetical_sorting
-
-    hashtags.extend Hashie::Extensions::DeepFind
-
-    Hashtag.with_questions.find choose(hashtags, do_id)
-  end
-
-  def choose(hashtags, do_id)
-    hashtags.deep_find('#')
-            .filter_map { |x| x[do_id].respond_to?(:to_str) ? x[do_id] : x[1].to_i }
-  end
 end

@@ -2,7 +2,7 @@
 
 module Username
   extend ActiveSupport::Concern
-  NIK = %w[evil god].map(&:downcase).freeze
+  NIK = %w[evil god devil].map(&:downcase).freeze
 
   included do
     validates :username, presence: true, length: { in: 1..40 },
@@ -10,6 +10,8 @@ module Username
                                    message: :username_message }
 
     validate :check_nik, if: :should_validate
+
+    validate :register
 
     private
 
@@ -19,6 +21,8 @@ module Username
     end
 
     def register
+      return unless should_validate
+
       username.downcase
     end
 

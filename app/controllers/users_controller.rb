@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # пользователь в систему не вошел
   before_action :require_no_authentication, only: %i[new create]
   # пользователь в систему уже вошел
-  before_action :require_authentication, only: %i[show edit update destroy]
+  before_action :require_authentication, only: %i[edit update destroy]
   before_action :set_user!, only: %i[show edit update destroy]
 
   # Проверяем имеет ли юзер доступ к экшену, делаем это для всех действий, кроме
@@ -29,9 +29,6 @@ class UsersController < ApplicationController
     # User.where('created_at < ?', 1.year.ago).without_questions
 
     @hashtags = Hashtag.with_questions
-
-    # render(@tags) выполнит сериализацию и превратит коллекцию тегов в json
-    # render json: TagBlueprint.render(@hashtag)
   end
 
   def new

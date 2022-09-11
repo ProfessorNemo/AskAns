@@ -8,6 +8,7 @@ ru:
         username_error: этого пользователя %{username}!!!
         correct_error: не верный
         username_message: неразрешённый!
+        registration_error: не подходит для регистрации.
     attributes:
       question:
         text: Текст
@@ -40,6 +41,7 @@ ru:
       danger: Вам сюда нельзя!
     text:
       omission: "... (далее)"
+      unknown: Неизвестный
   menu:
     home: Хорошие вопросы
     sign_up: Зарегистрироваться

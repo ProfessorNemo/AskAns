@@ -23,7 +23,7 @@ User.create email: Dotenv.load('.env')['TEST_EMAIL'],
 
 # Нашли всех юзеров и после того как хэш пересчитали, юзеров сохранили
 # "u.send(:set_gravatar_hash)" - вызов закрытого (под "private") метода
-User.find_each do |u|
-  u.send(:set_gravatar_hash)
-  u.save
-end
+# User.find_each do |u|
+#   u.send(:set_gravatar_hash)
+#   u.save
+# end

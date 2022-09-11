@@ -8,6 +8,7 @@ en:
         username_error: should not be %{username}!!!
         correct_error: is incorrect
         username_message: unresolved!
+        registration_error: not eligible for registration.
     attributes:
       question:
         text: Text
@@ -40,6 +41,7 @@ en:
       danger: You can't come here!
     text:
       omission: "... (continued)"
+      unknown: Unknown
   menu:
     home: Good questions
     sign_up: Sign up
