@@ -24,16 +24,30 @@
     </section>
 
     <%# Текст вопроса %>
-    <div class="question-text text-lead">
-      <%= truncate strip_tags(question.text), length: 60, omission: t('global.text.omission') %>
-    </div>
-
-    <%# Текст ответа, если он есть %>
-    <% if question.answer.present? %>
-      <div class="question-answer text-lead">
-        <%= truncate strip_tags(question.answer), length: 60, omission: t('global.text.omission') %>
+    <div class="card-body">
+      <div class="question-text text-lead">
+        <% if question.text.split.map { |str| str.chars.count }.max > 40 %>
+          <p class="my-2">
+            <%= truncate strip_tags(question.text), length: 40, omission: t('global.text.omission') %>
+          </p>
+        <% else %>
+          <%= question.text %>
+        <% end %>
       </div>
-    <% end %>
+
+      <%# Текст ответа, если он есть %>
+      <% if question.answer.present? %>
+        <div class="question-answer text-lead">
+          <% if question.answer.split.map { |str| str.chars.count }.max > 40 %>
+            <p class="my-2">
+              <%= truncate strip_tags(question.answer), length: 40, omission: t('global.text.omission') %>
+            </p>
+          <% else %>
+            <%= question.answer %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 
     <div class="question-text text-lead">
       <% question.hashtags.each do |hashtag| %>

@@ -10,11 +10,6 @@
 					<% end %>
 
 			    <ul class="dropdown-menu">
-
-						<li>
-							<hr class="dropdown-divider">
-						</li>
-
 						<% I18n.available_locales.each do |locale| %>
 							<li>
 								<% if I18n.locale == locale %>
@@ -23,10 +18,6 @@
 									<%= link_to t(locale), url_for(params_plus(locale: locale)),
 											class: 'dropdown-item' %>
 								<% end %>
-
-								<li>
-									<hr class="dropdown-divider">
-								</li>
 					    </li>
 				    <% end %>
 			    </ul>
