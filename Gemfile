@@ -41,6 +41,7 @@ gem 'rails-i18n', '~> 7.0.3'
 
 # в json. Сериализатор работает быстрее, чем 'jbuilder', '~> 2.11'
 gem 'blueprinter'
+gem 'oj'
 
 # Импорт данных из .xlsx в БД
 gem 'roo', '~> 2.9.0'

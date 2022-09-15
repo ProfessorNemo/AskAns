@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :hashtags, only: :index
+
+    resources :users, only: :index
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do

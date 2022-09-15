@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Sep  7 20:28:12 2022
+# Make data base, printed on Thu Sep 15 09:35:37 2022
 
 # Variables
 
@@ -51,7 +51,7 @@ PWD = /home/professor/Документы/rubytut/lesson47-51/AskAns
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/home/professor/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-OLDPWD = /home/professor/Документы/rubytut/lesson47-51/вебинары
+OLDPWD = /home/professor/Документы/rubytut
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # automatic
@@ -69,7 +69,7 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.103
+GNOME_TERMINAL_SERVICE = :1.101
 # makefile
 MAKEFLAGS = pqrR
 # makefile
@@ -101,13 +101,13 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 5359
+VSCODE_PID = 6387
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2809,unix/professor-N56JRH:/tmp/.ICE-unix/2809
+SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2847,unix/professor-N56JRH:/tmp/.ICE-unix/2847
 # automatic
 *F = $(notdir $*)
 # environment
@@ -131,7 +131,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/b8b5c1d1_d473_4659_b8f2_82fd828b4e9f
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ccbd34d2_1c4e_4785_8358_afad94ca2b39
 # environment
 MAKELEVEL := 0
 # default
@@ -179,9 +179,9 @@ LOGNAME = professor
 # environment
 SNAP_ARCH = amd64
 # makefile
-.DEFAULT_GOAL := migration
+.DEFAULT_GOAL := drop!
 # environment
-SYSTEMD_EXEC_PID = 2834
+SYSTEMD_EXEC_PID = 2876
 # environment
 DISPLAY = :1
 # environment
@@ -267,9 +267,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 2049, inode 15866876): 33 files, no impossibilities.
+# . (device 2049, inode 15866876): 34 files, no impossibilities.
 
-# 33 files, no impossibilities in 1 directories.
+# 34 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -278,31 +278,31 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Files
 
 c: run-console
-#  Implicit rule search has not been done.
-#  Modification time never checked.
  
 make: *** No rule to make target 'all'.  Stop.
 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 rubocop:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 30):
+#  recipe to execute (from 'Makefile', line 45):
 	rubocop -A
 
 webpacker:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 36):
+#  recipe to execute (from 'Makefile', line 51):
 	./bin/webpack-dev-server
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-07 02:09:36.577529872
+#  Last modified 2022-09-11 04:04:16.101553501
 #  File has been updated.
 #  Successfully updated.
 
@@ -310,8 +310,24 @@ run-console:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 39):
+#  recipe to execute (from 'Makefile', line 54):
 	bundle exec rails console
+
+initially:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 21):
+	rails db:create
+	rails db:migrate:up VERSION=20220824170626
+	rails db:migrate:up VERSION=20220824170747
+	rails db:migrate:up VERSION=20220824171409
+	rails db:migrate:up VERSION=20220824171627
+	rails db:migrate:up VERSION=20220825232756
+	rails db:migrate:up VERSION=20220824192334
+	rake import:from_xlsx
+	rails db:migrate
+	rails db:seed
 
 # Not a target:
 .DEFAULT:
@@ -330,28 +346,35 @@ web:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 33):
+#  recipe to execute (from 'Makefile', line 48):
 	ruby bin/rails server -p 3000
 
 migration:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 18):
+#  recipe to execute (from 'Makefile', line 33):
 	bundle exec rails g migration $(RUN_ARGS)
 
 migrate:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 27):
+#  recipe to execute (from 'Makefile', line 42):
 	bundle exec rails db:migrate
+
+drop!:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 18):
+	rails db:drop
 
 model:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 21):
+#  recipe to execute (from 'Makefile', line 36):
 	bundle exec rails g model $(RUN_ARGS)
 
 db:
@@ -364,7 +387,7 @@ create:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 24):
+#  recipe to execute (from 'Makefile', line 39):
 	bundle exec rails db:create
 
 .PHONY: db
@@ -373,19 +396,19 @@ create:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=15/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=17/1024=2%, Rehash=0, Collisions=0/29=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 48 / storage = 431 B / avg = 8 B
-# current buf: size = 8162 B / used = 431 B / count = 48 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 51 / storage = 453 B / avg = 8 B
+# current buf: size = 8162 B / used = 453 B / count = 51 / avg = 8 B
 
-# strcache performance: lookups = 64 / hit rate = 25%
+# strcache performance: lookups = 69 / hit rate = 26%
 # hash-table stats:
-# Load=48/8192=1%, Rehash=0, Collisions=0/64=0%
-# Finished Make data base on Wed Sep  7 20:28:12 2022
+# Load=51/8192=1%, Rehash=0, Collisions=0/69=0%
+# Finished Make data base on Thu Sep 15 09:35:37 2022
 
  
