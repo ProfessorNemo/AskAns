@@ -11,7 +11,7 @@ module Blacklist
     private
 
     def blacklist
-      @blacklist ||= File.readlines(Rails.root.join('db/blacklist.txt'))
+      @blacklist ||= Rails.root.join('db/blacklist.txt').readlines
       @blacklist.map(&:strip)
     end
 

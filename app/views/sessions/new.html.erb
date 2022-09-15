@@ -1,4 +1,4 @@
-<% provide :page_title, t('.title') %>
+<% provide :page_title, t('.form.title') %>
 
 <div class="container content-wrapper buffer-both">
   <h1 class="title-medium"><%= t('.form.message') %></h1>
@@ -34,8 +34,9 @@
 
         <div class="form-action">
           <%= f.submit t('.form.submit'), class: 'button button-dark button-small' %>
+          <%= link_to t('.form.forgot_password'), new_password_reset_path,
+              class: 'btn btn-secondary' %>
         </div>
-
       <% end %>
     </div>
   </div>

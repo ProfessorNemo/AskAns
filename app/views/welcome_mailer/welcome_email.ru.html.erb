@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  </head>
+
+  <body>
+    <h1>Добро пожаловать на AskAns,
+      <%= @user.name_or_email %>
+    </h1>
+    <p>
+      Вы успешно зарегистрировались на AskAns, ваш адрес электронной почты:
+      <%= @user.email %>.<br></p>
+    <p>
+      Для входа на сайт просто перейдите по этой ссылке:
+      <%= link_to 'Страница пользователя',
+      new_session_url(user: @user.id,
+                            email: @user.email,
+                            locale: :ru),
+      target: '_blank' %>.
+    </p>
+    <p>Спасибо за участие и хорошего дня!</p>
+  </body>
+
+</html></html>

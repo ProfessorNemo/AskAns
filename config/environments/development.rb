@@ -44,11 +44,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -84,4 +79,18 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  ## НАСТРОЙКА ACTION_MAILER
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  # Отправка будет происходить через letter_opener. В продакшене
+  # будет не "delivery_method"
+  config.action_mailer.delivery_method = :letter_opener
+  # true, потому что изначально в девелопменте письма не отправляются вовсе
+  config.action_mailer.perform_deliveries = true
+  # Где живет приложение (адрес хоста). Это нужно для того, чтоб
+  # правильным образом генерировать полные ссылки с именем домена
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 end

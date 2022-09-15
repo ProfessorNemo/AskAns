@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep 15 09:35:37 2022
+# Make data base, printed on Thu Sep 15 13:22:39 2022
 
 # Variables
 
@@ -131,7 +133,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ccbd34d2_1c4e_4785_8358_afad94ca2b39
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a6e02ce1_25ed_408f_ae71_adfe81f34ef0
 # environment
 MAKELEVEL := 0
 # default
@@ -181,7 +183,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := drop!
 # environment
-SYSTEMD_EXEC_PID = 2876
+SYSTEMD_EXEC_PID = 4859
 # environment
 DISPLAY = :1
 # environment
@@ -274,13 +276,11 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Implicit Rules
 
 # No implicit rules.
+ 
 
 # Files
 
 c: run-console
- 
-make: *** No rule to make target 'all'.  Stop.
-
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -409,6 +409,6 @@ create:
 # strcache performance: lookups = 69 / hit rate = 26%
 # hash-table stats:
 # Load=51/8192=1%, Rehash=0, Collisions=0/69=0%
-# Finished Make data base on Thu Sep 15 09:35:37 2022
+# Finished Make data base on Thu Sep 15 13:22:39 2022
 
  

@@ -47,6 +47,7 @@ en:
     sign_up: Sign up
     sign_out: Sign out
     sign_in: Sign in
+
   sessions:
     create:
       invalid_creds: Incorrect email and/or password!
@@ -61,6 +62,8 @@ en:
         remember_me: Remember me
         submit: Sign in
         title: Sign In
+        forgot_password: I forgot password
+
   users:
     destroy:
       success: User deleted!
@@ -124,3 +127,26 @@ en:
         questions: Questions
   question:
     unknown: Unknown
+
+  password_resets:
+    fail: Could not reset your password...
+    edit:
+      title: Enter new password
+      form:
+        submit: Reset my password!
+    update:
+      success: Your password was reset!
+    create:
+      success: Password reset instructions were sent to your email address.
+    new:
+      title: Reset password
+      form:
+        email: Email
+        submit: Send reset instructions
+        back: Back to sign in
+
+  password_reset_mailer:
+    reset_email:
+      subject: 'Password reset | AskAns'
+  welcome_to_mailer:
+    subject: Welcome to our wonderful app!!!

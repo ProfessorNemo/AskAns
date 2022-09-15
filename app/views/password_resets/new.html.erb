@@ -1,0 +1,30 @@
+<% provide :page_title, t('.title') %>
+
+
+  <div class="container content-wrapper buffer-both">
+    <h1 class="title-medium"><%= t('.title') %></h1>
+    <div
+      class="column-1-2">
+      <%# password_reset_path - указываем url, чтобы запросить инструкции для сброса %>
+      <%= form_with url: password_reset_path do |f| %>
+        <div class="form">
+          <div class="field form-group mb-2">
+            <%= f.label :email, t('.form.email'), class: 'form-label' %>
+          </div>
+
+          <div class="field form-group mb-2">
+            <%= f.email_field :email, value: params[:email],
+					class: 'form-text-field', placeholder: 'E-mail', required: true %>
+          </div>
+        </div>
+
+        <div class="buffer-both">
+          <%= f.submit t('.form.submit'), class: 'button button-dark button-small ' %>
+        </div>
+        <div class="buffer-both">
+          <%= link_to t('.form.back'), new_session_path, class: 'button button-light button-small' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

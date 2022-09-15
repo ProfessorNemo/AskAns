@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   include Username
+  include Recoverable
   include Rememberable
   include Blacklist
 
@@ -10,7 +11,7 @@ class User < ApplicationRecord
 
   # виртуальный аттрибут в БД попадать не будет, чтоб существовал
   # на объекте user метод old_password
-  attr_accessor :old_password
+  attr_accessor :old_password, :skip_old_password
 
   has_many :questions, dependent: :destroy
 
@@ -22,8 +23,10 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
-  # Эту валидацию запускать только при обновлении записи и если указан новый пароль
-  validate :correct_old_password, on: :update, if: -> { password.present? }
+  # Эту валидацию нужно запускать только при обновлении записи и только  в том случае,
+  # если новый пароль был указан. Если нет - значит юзер пароль менять не хочет, - игнорируем.
+  # Если !skip_old_password - то юзеру старый пароль, который он не помнит, указывать не нужно
+  validate :correct_old_password, on: :update, if: -> { password.present? && !skip_old_password }
   validates :password, confirmation: true, allow_blank: true,
                        length: { minimum: 8, maximum: 70 }
 
@@ -40,7 +43,7 @@ class User < ApplicationRecord
   # сортировка юзеров по дате создания
   scope :sorted, -> { order(id: :desc) }
   # найти юзеров, у которых нет ни одного вопроса на странице
-  scope :without_questions, -> { left_joins(:questions).where(questions: { id: nil }) }
+  scope :without_questions, -> { where.missing(:questions) }
   # (передаем в лямбду параметр "name") и получим массив юзеров с данным параметром
   scope :by_name, ->(name) { where(name: name) }
 

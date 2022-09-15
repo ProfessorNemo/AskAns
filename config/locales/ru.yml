@@ -47,6 +47,7 @@ ru:
     sign_up: Зарегистрироваться
     sign_out: Выйти
     sign_in: Войти
+
   sessions:
     create:
       invalid_creds: Неверный email и/или пароль!
@@ -61,6 +62,8 @@ ru:
         remember_me: Запомнить меня
         submit: Войти
         title: Войти
+        forgot_password: Я забыл пароль
+
   users:
     destroy:
       success: Пользователь удалён!
@@ -124,3 +127,26 @@ ru:
         questions: Вопросы
     question:
       unknown: Неизвестный
+
+  password_resets:
+    fail: Не удалось сбросить ваш пароль...
+    edit:
+      title: Выберите новый пароль
+      form:
+        submit: Сбросить пароль!
+    update:
+      success: Ваш пароль был сброшен!
+    create:
+      success: Инструкции были отправлены на ваш адрес.
+    new:
+      title: Сбросить пароль
+      form:
+        email: Email
+        submit: Отправить инструкции для сброса пароля
+        back: Назад ко входу в систему
+
+  password_reset_mailer:
+    reset_email:
+      subject: 'Сброс пароля | AskAns'
+  welcome_to_mailer:
+    subject: Добро пожаловать в наше замечательное приложение!!!

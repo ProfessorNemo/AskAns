@@ -1,0 +1,10 @@
+Welcome to AskAns,
+<%= @user.name_or_email %>
+===============================================
+You have successfully signed up to AskAns,
+your user email is:
+<%= @user.email %>.
+To login to the site, just follow this link:
+<%= url_for new_session_url(user: @user.id,
+            email: @user.email, locale: :en) %>.
+Thanks for joining and have a great day!

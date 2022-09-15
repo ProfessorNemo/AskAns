@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     resources :users
 
+    resource :password_reset, only: %i[new create edit update]
+
     # Со страницы юзера будет отправляться форма на создание вопроса
     resources :questions, except: %i[show new]
 

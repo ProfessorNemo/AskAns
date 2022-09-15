@@ -1,0 +1,18 @@
+<%# Кто-то запросил сброс пароля для аккаунта %>
+<p>Someone has requested password reset for your account.</p>
+
+<%# Не edit_password_reset_path, а edit_password_reset_url
+url - сгенерирует полный путь к странице, указывая доменное имя нашего сайта.
+Зачем это делать? Это письмо будет открыто где-то на стороннем ресурсе, и,
+чтобы перевести юзера на наш ресурс, нам нужно писать полный адрес к нашему сайту.
+email: @user.email - емейл, для которого пытаемся сбросить пароль
+target: '_blank' - для того, чтобы открыть ссылку в новой вкладке%>
+<p>
+  <%= link_to 'Reset my password',
+      edit_password_reset_url(user: {password_reset_token: @user.password_reset_token,
+                            email: @user.email},
+                            locale: :en),
+      target: '_blank' %>
+</p>
+
+<%# { host: 'localhost:3000' } будет задействован при генерации полного url с учетом доменного имени %>

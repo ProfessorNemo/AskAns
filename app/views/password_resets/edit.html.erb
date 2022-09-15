@@ -1,0 +1,45 @@
+<% provide :page_title, t('.title') %>
+
+<div class="container content-wrapper buffer-both">
+  <h1 class="title_medium"><%= t('.title') %></h1>
+    <div
+      class="column-1-2">
+  <%# Выводим возможные ошибки, если юзер задал слишком короткий пароль %>
+  <%= render 'shared/errors', object: @user %>
+  <%# Указываем и форму и модель. Если укажем только модель, то при отправке формы @user
+  он отправит все это дело в UserController. Но мы хотим использовать другой контроллер,
+  поэтому указываем  url: password_reset_path и явно указываем method: :patch, говоря о том
+  что необходимо вызвать метод update, что мы что-то обновляем %>
+  <%# Также обязательно указывать токен (@user.password_reset_token) и email% (@user.email),
+  для которого делаем сброс. Если не сделать "hidden_field" (скрытое поле для указаний),
+  то это будет означать, что кто-то может подделать запрос "update" и сбросить пароль для
+  любой учетной записи. Токен проверяем в контроллере и для edit и для update %>
+    <%= form_with model: @user, url: password_reset_path, method: :patch do |f| %>
+    <%= f.hidden_field :password_reset_token, value: @user.password_reset_token %>
+    <%= f.hidden_field :email, value: @user.email %>
+
+      <div class="field form-group mb-2"> <div class="col-sm-2 col-form-label">
+        <%= f.label :password %>
+      </div>
+
+      <div class="field form-group mb-2">
+        <%= f.password_field :password, class: 'form-control form-control-lg' %>
+      </div>
+    </div>
+
+    <div class="field form-group mb-2">
+      <div class="col-sm-2 col-form-label">
+        <%= f.label :password_confirmation, for: 'user[password_confirmation]' %>
+      </div>
+
+      <div class="field form-group mb-2">
+        <%= f.password_field :password_confirmation, class: 'form-control form-control-lg' %>
+      </div>
+    </div>
+
+    <div class="buffer-both">
+    <%= f.submit t('.form.submit'), class: 'button button-light button-medium' %>
+		</div>
+  <% end %>
+</div>
+</div>
