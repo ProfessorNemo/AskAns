@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Sep 15 13:22:39 2022
+# Make data base, printed on Sun Sep 18 23:03:57 2022
 
 # Variables
 
@@ -16,8 +14,6 @@ make: *** No rule to make target 'all'.  Stop.
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
-# environment
-NO_AT_BRIDGE = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
@@ -27,7 +23,7 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-VSCODE_CWD = /home/professor/Документы/rubytut/lesson47-51
+VSCODE_CWD = /home/professor/Документы/rubytut/lesson47-51,58
 # environment
 WINDOWPATH = 2
 # environment
@@ -41,13 +37,13 @@ QT_ACCESSIBILITY = 1
 # environment
 SNAP_INSTANCE_NAME = code
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/105/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/108/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/professor/Документы/rubytut/lesson47-51/AskAns
+PWD = /home/professor/Документы/rubytut/lesson47-51,58/AskAns
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
@@ -61,7 +57,7 @@ OLDPWD = /home/professor/Документы/rubytut
 # environment
 NVM_INC = /home/professor/.nvm/versions/node/v14.19.3/include/node
 # environment
-VSCODE_CODE_CACHE_PATH = /home/professor/.config/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
+VSCODE_CODE_CACHE_PATH = /home/professor/.config/Code/CachedData/74b1f979648cc44d385a2286793c226e611f59e7
 # environment
 LANG = C
 # environment
@@ -71,11 +67,11 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.101
+GNOME_TERMINAL_SERVICE = :1.118
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/professor/Документы/rubytut/lesson47-51/AskAns
+CURDIR := /home/professor/Документы/rubytut/lesson47-51,58/AskAns
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
@@ -103,13 +99,13 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 6387
+VSCODE_PID = 198938
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2847,unix/professor-N56JRH:/tmp/.ICE-unix/2847
+SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2899,unix/professor-N56JRH:/tmp/.ICE-unix/2899
 # automatic
 *F = $(notdir $*)
 # environment
@@ -119,7 +115,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"e2673fac9b3b0beb38d486c37331d2f9.ru","_translationsConfigFile":"/home/professor/.config/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/tcf.json","_cacheRoot":"/home/professor/.config/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru","_resolvedLanguagePackCoreLocation":"/home/professor/.config/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"/home/professor/.config/Code/clp/e2673fac9b3b0beb38d486c37331d2f9.ru/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ru","availableLanguages":{"*":"ru"},"_languagePackId":"82b10cd20de2ad093dc119a3bdaec56e.ru","_translationsConfigFile":"/home/professor/.config/Code/clp/82b10cd20de2ad093dc119a3bdaec56e.ru/tcf.json","_cacheRoot":"/home/professor/.config/Code/clp/82b10cd20de2ad093dc119a3bdaec56e.ru","_resolvedLanguagePackCoreLocation":"/home/professor/.config/Code/clp/82b10cd20de2ad093dc119a3bdaec56e.ru/74b1f979648cc44d385a2286793c226e611f59e7","_corruptedFile":"/home/professor/.config/Code/clp/82b10cd20de2ad093dc119a3bdaec56e.ru/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -133,7 +129,7 @@ XMODIFIERS = @im=ibus
 # environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/a6e02ce1_25ed_408f_ae71_adfe81f34ef0
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/fdf6aff9_bab9_462a_b211_7b81e8a77208
 # environment
 MAKELEVEL := 0
 # default
@@ -149,11 +145,11 @@ MAKEFILES :=
 # environment
 SNAP_USER_COMMON = /home/professor/snap/code/common
 # environment
-SNAP = /snap/code/105
+SNAP = /snap/code/108
 # environment
 bbq = oceanborn
 # environment
-SNAP_REVISION = 105
+SNAP_REVISION = 108
 # environment
 SNAP_REAL_HOME = /home/professor
 # environment
@@ -183,7 +179,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := drop!
 # environment
-SYSTEMD_EXEC_PID = 4859
+SYSTEMD_EXEC_PID = 6015
 # environment
 DISPLAY = :1
 # environment
@@ -193,9 +189,7 @@ GTK_MODULES = gail:atk-bridge
 # default
 MAKE_VERSION := 4.3
 # environment
-DISABLE_WAYLAND = 1
-# environment
-SNAP_DATA = /var/snap/code/105
+SNAP_DATA = /var/snap/code/108
 # environment
 SNAP_CONTEXT = QOr97p3x2z0Nc5TiXecuBuVjxJ5OHFJP9XqQmvSyHo88ZKvrTd_W
 # environment
@@ -219,13 +213,13 @@ QT_IM_MODULE = ibus
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-3833debe-1.70.2-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-3833debe-1.71.2-main.sock
 # environment
 TERM = xterm-256color
 # environment
 SNAP_NAME = code
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/105/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/108/usr/share/glib-2.0/schemas
 # makefile (from 'Makefile', line 15)
 RUN_ARGS := 
 # environment
@@ -235,7 +229,7 @@ IM_CONFIG_PHASE = 1
 # automatic
 <F = $(notdir $<)
 # environment
-SNAP_VERSION = e4503b30
+SNAP_VERSION = 74b1f979
 # default
 SUFFIXES := 
 # environment
@@ -251,7 +245,7 @@ SNAP_COMMON = /var/snap/code/common
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync check-symlink load
 # environment
-SNAP_USER_DATA = /home/professor/snap/code/105
+SNAP_USER_DATA = /home/professor/snap/code/108
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -261,7 +255,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=124/1024=12%, Rehash=0, Collisions=10/156=6%
+# Load=122/1024=12%, Rehash=0, Collisions=10/154=6%
 
 # Pattern-specific Variable Values
 
@@ -276,7 +270,6 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Implicit Rules
 
 # No implicit rules.
- 
 
 # Files
 
@@ -284,6 +277,9 @@ c: run-console
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+
+ 
+make: *** No rule to make target 'all'.  Stop.
 
 rubocop:
 #  Implicit rule search has not been done.
@@ -409,6 +405,6 @@ create:
 # strcache performance: lookups = 69 / hit rate = 26%
 # hash-table stats:
 # Load=51/8192=1%, Rehash=0, Collisions=0/69=0%
-# Finished Make data base on Thu Sep 15 13:22:39 2022
+# Finished Make data base on Sun Sep 18 23:03:57 2022
 
  
