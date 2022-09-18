@@ -25,7 +25,9 @@ class QuestionsController < ApplicationController
 
     @question.author = (current_user.presence)
 
-    if @question.save
+    # Проверяем капчу вместе с сохранением вопроса. Если в капче была допущена
+    # ошибка, она будет добавлена в ошибки @question.errors.
+    if check_captcha(@question) && @question.save
       flash[:success] = t('.success')
       redirect_to user_path(@question.user)
     else
@@ -102,5 +104,9 @@ class QuestionsController < ApplicationController
     return unless resource.decorated?
 
     resource.object
+  end
+
+  def check_captcha(model)
+    current_user.present? || verify_recaptcha(model: model)
   end
 end

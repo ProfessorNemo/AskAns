@@ -40,8 +40,8 @@ class Question < ApplicationRecord
 
   private
 
-  # выбираем любые 2 слова из вопроса в качестве хэштега,
-  # содержащие от 2 до 10 букв
+  # выбираем любые 3 слова из вопроса в качестве хэштега,
+  # содержащие от 4 до 20 букв
   def parse_hashtags(string)
     string.downcase.split
           .select { |i| i.chars.count.between?(4, 20) }

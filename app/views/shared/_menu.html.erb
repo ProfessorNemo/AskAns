@@ -44,12 +44,12 @@
 				<%# Даем ссылки на его профиль и на логаут %>
 				<%= link_to "@#{current_user.username}", user_path(current_user) %>
 				|
-				<%= link_to t('menu.sign_out'), log_out_path %>
+				<%= link_to t('menu.sign_out'), session_path, data: { method: :delete } %>
 			<% else %>
 				<%# Если нету — ссылки на регистрацию и логин %>
-			<%= link_to t('menu.sign_up'), sign_up_path,
+			<%= link_to t('menu.sign_up'), new_user_path,
 					class: 'button button-light button-small' %>
-				<%= link_to t('menu.sign_in'), log_in_path,
+				<%= link_to t('menu.sign_in'), new_session_path,
 					class: 'button button-light button-small' %>
 			<% end %>
 

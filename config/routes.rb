@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
-    resources :sessions, only: %i[new create destroy]
+    # Для любого юзера будет только одна сессия регистрации (!)
+    resource :session, only: %i[new create destroy]
 
     resources :users
 
@@ -25,8 +26,8 @@ Rails.application.routes.draw do
     #
     # Для любознательных: синонимы мы добавили, чтобы показать одну вещь и потом
     # их удалим.
-    get 'sign_up' => 'users#new'
-    get 'log_out' => 'sessions#destroy'
-    get 'log_in' => 'sessions#new'
+    # get 'sign_up' => 'users#new'
+    # get 'log_out' => 'sessions#destroy'
+    # get 'log_in' => 'sessions#new'
   end
 end

@@ -8,7 +8,7 @@
       class="form">
       <%# Никакой модели у нас нет, нам просто нужно форму
               отправлять на нужный маршрут sessions_path %>
-      <%= form_with url: sessions_path do |f| %>
+      <%= form_with url: session_path do |f| %>
 
         <div class="form-field">
           <%= f.label :email, t('.form.email'), class: 'form-label' %>
