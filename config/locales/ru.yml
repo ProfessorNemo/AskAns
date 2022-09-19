@@ -150,3 +150,8 @@ ru:
       subject: 'Сброс пароля | AskAns'
   welcome_to_mailer:
     subject: Добро пожаловать в наше замечательное приложение!!!
+
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA был неверным, попробуйте еще раз.'
+      recaptcha_unreachable: 'Ошибка сервера проверки reCAPTCHA, повторите попытку.'

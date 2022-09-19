@@ -150,3 +150,8 @@ en:
       subject: 'Password reset | AskAns'
   welcome_to_mailer:
     subject: Welcome to our wonderful app!!!
+
+  recaptcha:
+    errors:
+      verification_failed: 'reCAPTCHA was incorrect, please try again.'
+      recaptcha_unreachable: 'reCAPTCHA verification server error, please try again.'
