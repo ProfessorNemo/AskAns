@@ -77,7 +77,8 @@ $ bin/dev
 - [`factory_bot_rails`](https://github.com/thoughtbot/factory_bot_rails)
 - [`letter_opener`](https://github.com/ryanb/letter_opener) to send emails in the development
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
+- [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password)
+- [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email
 - to be continued...
 
 Open `localhost:3000` in browser.
-
