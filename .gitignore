@@ -37,3 +37,4 @@ yarn-debug.log*
 .byebug_history
 .env
 .yarn
+.vscode/*
