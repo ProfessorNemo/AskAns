@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Sep 18 23:03:57 2022
+# Make data base, printed on Tue Sep 20 17:29:15 2022
 
 # Variables
 
@@ -14,6 +14,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 GDK_BACKEND = x11
 # environment
 LC_ALL = C
+# environment
+NO_AT_BRIDGE = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
@@ -23,7 +25,9 @@ SSH_AGENT_LAUNCHER = gnome-keyring
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-VSCODE_CWD = /home/professor/Документы/rubytut/lesson47-51,58
+GJS_DEBUG_OUTPUT = stderr
+# environment
+VSCODE_CWD = /home/professor/Документы/rubytut/gits
 # environment
 WINDOWPATH = 2
 # environment
@@ -43,13 +47,13 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
 # environment
-PWD = /home/professor/Документы/rubytut/lesson47-51,58/AskAns
+PWD = /home/professor/Документы/rubytut/gits/AskAns
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/home/professor/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-OLDPWD = /home/professor/Документы/rubytut
+OLDPWD = /home/professor/Документы/rubytut/gits/AskAns
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # automatic
@@ -67,11 +71,11 @@ XAUTHORITY = /run/user/1000/gdm/Xauthority
 # default
 .INCLUDE_DIRS = /usr/local/include /usr/include /usr/include
 # environment
-GNOME_TERMINAL_SERVICE = :1.118
+GNOME_TERMINAL_SERVICE = :1.102
 # makefile
 MAKEFLAGS = pqrR
 # makefile
-CURDIR := /home/professor/Документы/rubytut/lesson47-51,58/AskAns
+CURDIR := /home/professor/Документы/rubytut/gits/AskAns
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
@@ -99,13 +103,15 @@ SNAP_REEXEC =
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 198938
+VSCODE_PID = 8791
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2899,unix/professor-N56JRH:/tmp/.ICE-unix/2899
+BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
+SESSION_MANAGER = local/professor-N56JRH:@/tmp/.ICE-unix/2909,unix/professor-N56JRH:/tmp/.ICE-unix/2909
 # automatic
 *F = $(notdir $*)
 # environment
@@ -127,9 +133,11 @@ MAKECMDGOALS := all
 # environment
 XMODIFIERS = @im=ibus
 # environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
 SHLVL = 1
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/fdf6aff9_bab9_462a_b211_7b81e8a77208
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/7b1880f1_d871_4b35_bf4f_648cac20fe61
 # environment
 MAKELEVEL := 0
 # default
@@ -148,6 +156,8 @@ SNAP_USER_COMMON = /home/professor/snap/code/common
 SNAP = /snap/code/108
 # environment
 bbq = oceanborn
+# environment
+INVOCATION_ID = d7c47490bc604865858103032035ddde
 # environment
 SNAP_REVISION = 108
 # environment
@@ -175,11 +185,13 @@ GNUMAKEFLAGS :=
 # environment
 LOGNAME = professor
 # environment
+GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+# environment
 SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := drop!
 # environment
-SYSTEMD_EXEC_PID = 6015
+SYSTEMD_EXEC_PID = 4374
 # environment
 DISPLAY = :1
 # environment
@@ -193,6 +205,10 @@ SNAP_DATA = /var/snap/code/108
 # environment
 SNAP_CONTEXT = QOr97p3x2z0Nc5TiXecuBuVjxJ5OHFJP9XqQmvSyHo88ZKvrTd_W
 # environment
+MANAGERPID = 2433
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 8740
+# environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
@@ -202,6 +218,8 @@ COLORTERM = truecolor
 GDK_PIXBUF_MODULE_FILE = /home/professor/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
 NVM_CD_FLAGS = 
+# environment
+JOURNAL_STREAM = 8:33560
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -255,7 +273,7 @@ GDMSESSION = ubuntu
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
-# Load=122/1024=12%, Rehash=0, Collisions=10/154=6%
+# Load=131/1024=13%, Rehash=0, Collisions=10/163=6%
 
 # Pattern-specific Variable Values
 
@@ -264,6 +282,9 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 # Directories
 
 # . (device 2049, inode 15866876): 34 files, no impossibilities.
+
+ 
+make: *** No rule to make target 'all'.  Stop.
 
 # 34 files, no impossibilities in 1 directories.
 
@@ -277,9 +298,6 @@ c: run-console
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
- 
-make: *** No rule to make target 'all'.  Stop.
 
 rubocop:
 #  Implicit rule search has not been done.
@@ -405,6 +423,6 @@ create:
 # strcache performance: lookups = 69 / hit rate = 26%
 # hash-table stats:
 # Load=51/8192=1%, Rehash=0, Collisions=0/69=0%
-# Finished Make data base on Sun Sep 18 23:03:57 2022
+# Finished Make data base on Tue Sep 20 17:29:15 2022
 
  
