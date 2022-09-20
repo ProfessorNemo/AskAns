@@ -6,7 +6,8 @@
 
 Ask-me is an application where you can ask each other any questions and get answers, similar to the well-known ask.fm. The avatar for the user is added using a third-party global avatars service https://en.gravatar.com/site/implement/images/
 The user can also change the background color of the profile. On the user page, you can leave questions and answer them. When adding a question, the algorithm looks for hashtags starting with "#", changes color and makes them clickable. Clicking on a hashtag will take you to a page with questions from all users with that hashtag. The hashtags of all users are displayed on the main page (Solutions like "tom-select" and "ajax" are used here.
-ajax - an asynchronous request to be sent here "/api/hashtags" and to pull out only those tags from here that match the user's criteria, i.e. based on what the user types)
+
+(ajax - an asynchronous request to be sent here "/api/hashtags" and to pull out only those tags from here that match the user's criteria, i.e. based on what the user types)
 
 For avatars:
 
@@ -47,16 +48,21 @@ recaptcha:
   secret_key: <your secret key>
 ```
 # Setting environment variables:
-1st way:
-1. $ nano ~/.bash_profile
-2. export RECAPTCHA_ASKANS_PUBLIC_KEY="*********************************************"
-   export RECAPTCHA_ASKANS_PRIVATE_KEY="****************************************"
 
-# 2nd way:
+1st way:
+```
+$ nano ~/.bash_profile
+export RECAPTCHA_ASKANS_PUBLIC_KEY="***************************************"
+export RECAPTCHA_ASKANS_PRIVATE_KEY="**************************************"
+```
+
+2nd way:
+```
 $ EDITOR=vim rails credentials:edit
 recaptcha:
-  site_key: ****************************************
+  site_key: **************************************
   secret_key: ************************************
+```
 
 5. Start sever
 ```
