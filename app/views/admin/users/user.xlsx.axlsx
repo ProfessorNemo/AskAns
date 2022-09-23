@@ -1,0 +1,32 @@
+# frozen_string_literal: true
+
+# https://github.com/caxlsx/caxlsx/tree/master/examples
+# https://www.sitepoint.com/accept-and-send-zip-archives-with-rails-and-rubyzip/
+# https://www.sitepoint.com/generate-excel-spreadsheets-rails-axlsx-gem/
+
+# создать новый рабочий документ
+wb = xlsx_package.workbook
+# создать стили для форматирования
+s = wb.styles
+
+# Создать стиль "highlight_cell":
+
+# цвет фона
+highlight_cell = s.add_style(bg_color: 'EFC376')
+
+# выравнивание для ячеек по правому краю "alignment: { horizontal: :right }"
+# указать границу для ячеек "border: Axlsx::STYLE_THIN_BORDER"
+right_cell = s.add_style(border: Axlsx::STYLE_THIN_BORDER,
+                         alignment: { horizontal: :right })
+# формат даты для ячеек
+date_cell = s.add_style(format_code: 'yyyy-mm-dd')
+
+# добавить новый лист (nil - не применять форматирование к ячейке с "ID")
+wb.add_worksheet(name: 'User') do |sheet|
+  sheet.add_row ['ID', user.id], style: [nil, highlight_cell]
+  sheet.add_row ['Name', user.name], style: [nil, right_cell]
+  sheet.add_row ['Username', user.username], style: [nil, right_cell]
+  sheet.add_row ['Email', user.email], style: [nil, right_cell]
+  sheet.add_row ['Created at', user.created_at], style: [nil, date_cell]
+  sheet.add_row ['Updated at', user.updated_at], style: [nil, date_cell]
+end

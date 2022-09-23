@@ -1,0 +1,56 @@
+<% provide :page_title, t('.title') %>
+
+<div class="container content-wrapper buffer-both">
+    <h1 class="title-small"><%= t '.title' %></h1>
+
+    <%# загрузить данные в формате XLSX, причем они будут в формате архива %>
+    <div class="form-field">
+      <div class="btn-group">
+        <%= link_to t('.download_zipped'), admin_users_path(format: :zip),
+              class: 'button button-small button-dark' %>
+      </div>
+    </div>
+
+    <%= pagination @pagy %>
+    <section class="form-action">
+      <% scope = 'activerecord.attributes.user' %>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col"><%= t 'name', scope: scope %></th>
+            <th scope="col"><%= t 'username', scope: scope %></th>
+            <th scope="col"><%= t 'email', scope: scope %></th>
+            <th scope="col"><%= t 'created_at', scope: scope %></th>
+            <th scope="col"><%= t 'updated_at', scope: scope %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @users %>
+        </tbody>
+      </table>
+    </section>
+
+    <%= pagination @pagy %>
+    <div class="buffer-both">
+    <%# Можно загружать юзеров из файла XLSX<%>
+    <h2 class="title-small"><%= t '.upload_zipped' %></h2>
+
+    <%# url будем вести на "admin_users_path" - это метод "create" %>
+    <%= form_with url: admin_users_path do |f| %>
+      <div class="form-field">
+        <div class="col-sm-2 col-form-label">
+          <%= f.label :archive, t('.upload_form.archive') %>
+        </div>
+
+        <div class="form-field">
+          <%# поле для загрузки файла %>
+          <%# :archive - здесь будет располагаться путь к архиву %>
+        <%= f.file_field :archive, class: 'form-text-field' %>
+      </div>
+      </div>
+
+    <%= f.submit t('.upload_form.submit'), class: 'button button-small button-dark' %>
+  <% end %>
+  </div>
+</div>

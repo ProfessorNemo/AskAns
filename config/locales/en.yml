@@ -155,3 +155,15 @@ en:
     errors:
       verification_failed: 'reCAPTCHA was incorrect, please try again.'
       recaptcha_unreachable: 'reCAPTCHA verification server error, please try again.'
+
+  admin:
+    users:
+      create:
+        success: Users imported!
+      index:
+        download_zipped: Download zipped XLSX
+        title: Admin Users
+        upload_form:
+          archive: Select archive
+          submit: Upload!
+        upload_zipped: Upload users from XLSX

@@ -16,7 +16,11 @@ Upload your avatar under the email that you are going to use on other sites. And
 
 [`reCAPTCHA`](https://www.google.com/recaptcha/about/) is used for spam protection.
 
-Manual approaches were used to register and remember users in the system (see source code).
+A "manual approach" was used to authenticate and register users in the application
+(without the use of libraries such as "device") !
+
+Created a separate page for the administrator.
+The administrator can upload the archived Excel file and create multiple users with a single request.
 
 ### Installation
 
@@ -79,6 +83,11 @@ $ bin/dev
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
 - [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password)
 - [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email
+- [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives
+- [`caxlsx`](https://github.com/caxlsx/caxlsx) this is a solution that allows you to create .xlsx files
+- [`caxlsx_rails`](https://github.com/caxlsx/caxlsx_rails) this is a solution that allows you to work with templates
+- [`activerecord-import`](https://github.com/zdennis/activerecord-import) this is a solution that allows you to import many records into the database in one query
+- [`rubyXL`](https://github.com/weshatheleopard/rubyXL) this is a solution that allows you to read and modify .xlsx files
 - to be continued...
 
 Open `localhost:3000` in browser.

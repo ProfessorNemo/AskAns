@@ -155,3 +155,15 @@ ru:
     errors:
       verification_failed: 'reCAPTCHA был неверным, попробуйте еще раз.'
       recaptcha_unreachable: 'Ошибка сервера проверки reCAPTCHA, повторите попытку.'
+
+  admin:
+    users:
+      create:
+        success: Пользователи загружены!
+      index:
+        download_zipped: Загрузить архив с XLSX
+        title: Управление пользователями
+        upload_form:
+          archive: Выберите архив
+          submit: Загрузить!
+        upload_zipped: Загрузить пользователей в XLSX
