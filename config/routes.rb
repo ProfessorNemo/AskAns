@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     root 'users#index'
 
     namespace :admin do
-      resources :users, only: %i[index create show destroy]
+      resources :users, except: %i[new]
     end
 
     # Синонимы путей — в дополнение к созданным в ресурсах выше.

@@ -25,6 +25,32 @@
         <%= f.text_field :name, class: 'form-text-field' %>
       </div>
 
+      <div class="col-sm-2 col-form-label">
+        <div class="form-field">
+          <%= f.label :role, class:'form-label' %>
+        </div>
+
+          <%# readonly: true  - в это поле ввести ничего нельзя, да и в НЕадминском контроллере
+          среди разрешенных параметров роли нет к тому же. Роль поменять не получится%>
+        <div class="form-field">
+          <%= f.text_field :role, value: t(@user.role, scope: 'global.user.roles'),
+             class: 'form-control-plaintext form-control', readonly: true %>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-form-label">
+        <div class="form-field">
+          <%= f.label :status, class:'form-label' %>
+        </div>
+
+        <%# readonly: true  - в это поле ввести ничего нельзя, да и в НЕадминском контроллере
+        среди разрешенных параметров статуса нет к тому же. Статус поменять не получится %>
+        <div class="form-field">
+          <%= f.text_field :status, value: t(@user.status, scope: 'global.user.statuses'),
+            class: 'form-control-plaintext form-control',readonly: true %>
+        </div>
+      </div>
+
       <div class="form-field">
         <%= f.label t('.form.background_color'), class: 'form-label' %>
         <%= f.color_field :background_color, value: @user.bg_color %>

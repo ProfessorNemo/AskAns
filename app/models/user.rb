@@ -9,6 +9,19 @@ class User < ApplicationRecord
   HEX_BACKGROUND_COLOR_REGEX = /\A#([\da-f]{3}){1,2}\z/
   DEFAULT_BACKGROUND_COLOR = '#005a55'
 
+  # ролей может быть сколько угодно, наприер 3 - superadmin....
+  # Например: "u.admin_role?" - здесь role - suffix
+  enum role: { basic: 0, moderator: 1, admin: 2 }, _suffix: :role
+
+  # Например: "u.activated_status?" - здесь role - suffix
+  enum status: { activated: 0, blocked: 1 }, _suffix: :status
+
+  # роль должна быть
+  validates :role, presence: true
+
+  # статус должен быть
+  validates :status, presence: true
+
   # виртуальный аттрибут в БД попадать не будет, чтоб существовал
   # на объекте user метод old_password
   attr_accessor :old_password, :skip_old_password

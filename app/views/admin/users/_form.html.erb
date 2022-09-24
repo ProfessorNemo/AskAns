@@ -1,0 +1,78 @@
+<%= render 'shared/errors', object: user %>
+<%= form_with model: [:admin, user] do |f| %>
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :email, class: 'form-label' %>
+    </div>
+
+    <div class="form-field">
+        <%= f.email_field :email, class: 'form-text-field' %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :name, class: 'form-label' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.text_field :name, class: 'form-text-field' %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :username, class: 'form-label' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.text_field :username, class: 'form-text-field' %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :role, class: 'form-label' %>
+    </div>
+
+    <%# выведутся все роли, которые поддерживаются в приложении %>
+    <div class="form-field">
+      <%= f.select :role, user_roles, {}, class: 'form-select-text-select-field' %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :status, class:'form-label' %>
+    </div>
+
+    <%# выведутся все статусы, которые поддерживаются в приложении %>
+    <div class="form-field">
+      <%= f.select :status, user_statuses, {}, class: 'form-select-text-select-field' %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :password, class:'form-label' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.password_field :password, class: 'form-text-field'  %>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-form-label">
+    <div class="form-field">
+      <%= f.label :password_confirmation, class:'form-label'  %>
+    </div>
+
+    <div class="form-field">
+      <%= f.password_field :password_confirmation, class: 'form-text-field' %>
+    </div>
+  </div>
+
+  <%# админы могут сами регистрировать новых юзеров %>
+  <% t_key = (user.new_record? ? "register" : "save") %>
+  <%= f.submit t(t_key, scope: 'users.global.forms'), class: 'button button-dark button-small' %>
+<% end %>

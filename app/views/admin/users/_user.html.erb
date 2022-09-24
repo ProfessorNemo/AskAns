@@ -3,6 +3,18 @@
   <td><%= user.name %></td>
   <td><%= user.username %></td>
   <td><%= user.email %></td>
-  <td><%= user.created_at %></td>
-  <td><%= user.updated_at %></td>
+  <td><%= user.role %></td>
+  <td><%= l user.created_at, format: :short %></td>
+  <td>
+
+    <div class="btn-group">
+      <%= link_to t('global.link.edit'), edit_admin_user_path(user), class: 'btn btn-dark button-small' %>
+    </div>
+    <div class="btn-group">
+      <%= link_to t('global.link.delete'), admin_user_path(user), class: 'btn btn-danger button-small',
+      data: {method: :delete, confirm: t('global.dialog.you_sure')} %>
+    </div>
+
+
+  </td>
 </tr>

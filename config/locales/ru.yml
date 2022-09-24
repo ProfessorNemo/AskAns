@@ -22,10 +22,21 @@ ru:
         password_confirmation: Подтверждение пароля
         updated_at: Обновлён
         username: Никнейм
+        role: Роль
+        doing: Действие
+        status: Статус
     models:
       question: Вопрос
       user: Пользователь
   global:
+    user:
+      roles:
+        basic: Базовый
+        moderator: Модератор
+        admin: Админ
+      statuses:
+        activated: Активирован
+        blocked: Заблокирован
     button:
       delete: Удалить профиль
       edit: Редактировать профиль
@@ -42,6 +53,10 @@ ru:
     text:
       omission: "... (далее)"
       unknown: Неизвестный
+    link:
+      delete: Удалить
+      edit: Редактировать
+
   menu:
     home: Хорошие вопросы
     sign_up: Зарегистрироваться
@@ -167,3 +182,10 @@ ru:
           archive: Выберите архив
           submit: Загрузить!
         upload_zipped: Загрузить пользователей в XLSX
+      destroy:
+        success: Пользователь удалён!
+      update:
+        success: Пользователь обновлён!
+      edit:
+        title: Редактирование пользователя
+
