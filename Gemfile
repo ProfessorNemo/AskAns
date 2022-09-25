@@ -11,7 +11,6 @@ gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-# gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -68,8 +67,18 @@ gem 'famfamfam_flags_rails'
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_bot_rails'
   gem 'faker', '~> 2'
   gem 'pry-rails'
+  gem 'pundit-matchers', '~> 1.7.0'
+  gem 'rails-controller-testing'
+  gem 'rspec-rails', '>= 5.1.2'
+end
+
+group :test do
+  gem 'rspec', '~> 3.11'
+  gem 'vcr', '~> 6.1'
+  gem 'webmock', '~> 3.14'
 end
 
 group :development do
@@ -82,11 +91,13 @@ group :development do
   gem 'rubocop', '~> 1.30', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.14', require: false
+  gem 'rubocop-rspec', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
   # чтобы подгружать переменные в environment
   gem 'dotenv', '~> 2.7'
+  gem 'dotenv-rails', '~> 2.7'
 end
 
 # Gemfile (очистить базу данных)
@@ -100,3 +111,5 @@ gem 'letter_opener', '~> 1.8'
 gem 'recaptcha', '~> 5.12'
 
 gem 'pundit', '~> 2.2'
+
+gem 'faraday', '~> 2.5'
