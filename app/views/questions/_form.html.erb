@@ -10,7 +10,7 @@
 
       <div class="form-field">
         <%= f.label :text, t('.question'), class: 'form-label' %>
-        <%= f.text_area :text, class: 'form-textarea' %>
+        <%= f.text_area :text, class: 'form-textarea', readonly: true  %>
       </div>
 
       <%# Простая авторизация - может ли текущий юзер править вопрос? %>

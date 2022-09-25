@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Question < ApplicationRecord
+  include Authorship
+
   belongs_to :user
 
   # рельсы добавят к нему `_id` и найдут нужное поле в таблице

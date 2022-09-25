@@ -58,33 +58,39 @@
     </div>
 </div>
 
-<%# Блок с формой для задавания пользователю вопроса %>
-<div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
-  <div class="user-question-form buffer-both">
-    <div class="form-field">
-      <%# Мы используем хелпер form_for, принимающий на вход блок erb-кода, %>
-      <%# в котором доступна переменная f, содержащая так называемый form %>
-      <%# builder, с помощью которого можно делать поля формы для нового %>
-      <%# вопроса. %>
-        <%= form_for @new_question do |f| %>
-        <%# С помощью объекта для создания полей формы, связанной с моделью %>
-        <%# @new_question Мы создаем инпуты с нужными полями для формы, %>
-        <%# значения будут подставлены rails автоматически. %>
-          <%= f.hidden_field :user_id %>
-           <div class="form-field">
-              <%= f.label t('.form.your_question', username: @user.username), class: 'form-label' %>
-              <%= f.text_area :text, class: 'form-textarea' %>
-          </div>
+<%# для нового вопроса question нет, поэтому передаем название политики %>
+<% if policy(:question).new? %>
+  <%# Блок с формой для задавания пользователю вопроса %>
+  <%# Автор профиля не может создавать вопросы на своей странице %>
+  <% unless current_user == @user %>
+    <div class="user-question-form-div column-1-4 column-1-4-right" id='ask-form'>
+      <div class="user-question-form buffer-both">
+        <div class="form-field">
+          <%# Мы используем хелпер form_for, принимающий на вход блок erb-кода, %>
+          <%# в котором доступна переменная f, содержащая так называемый form %>
+          <%# builder, с помощью которого можно делать поля формы для нового %>
+          <%# вопроса. %>
+            <%= form_for @new_question do |f| %>
+            <%# С помощью объекта для создания полей формы, связанной с моделью %>
+            <%# @new_question Мы создаем инпуты с нужными полями для формы, %>
+            <%# значения будут подставлены rails автоматически. %>
+              <%= f.hidden_field :user_id %>
+              <div class="form-field">
+                  <%= f.label t('.form.your_question', username: @user.username), class: 'form-label' %>
+                  <%= f.text_area :text, class: 'form-textarea' %>
+              </div>
 
-          <%= recaptcha_tags size: 'compact' unless current_user.present? %>
+              <%= recaptcha_tags size: 'compact' unless current_user.present? %>
 
-          <div class="form-action">
-              <%= submit_tag t('.form.ask_question'), class: 'button button-small button-dark' %>
-          </div>
-      <% end %>
+              <div class="form-action">
+                  <%= submit_tag t('.form.ask_question'), class: 'button button-small button-dark' %>
+              </div>
+            <% end %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
 
 <%# Блок со списком вопросов к пользователю %>
 <div class="column-3-4">
@@ -106,4 +112,3 @@
       <%= pagination @pagy %>
     </div>
   </div>
-</div>

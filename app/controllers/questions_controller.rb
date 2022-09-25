@@ -7,6 +7,13 @@ class QuestionsController < ApplicationController
   # вопроса, это действие может вызвать даже неавторизованный пользователь.
   before_action :authorize_user, except: %i[create index]
 
+  # Проверяем, имеет ли пользователь право на выполнение запрошенного действия
+  before_action :authorize_question!
+  # М-д "verify_authorized" доступен из Pundit и он проверит, что мы в нашем "before_action"
+  # проверили права доступа. Если проверены не были, то выскочит ошибка. Проверка во всех
+  # действиях контроллера
+  after_action :verify_authorized, except: %i[create index]
+
   def index
     @hashtags = Hashtag.where(id: params[:hashtag_ids]) if params[:hashtag_ids]
     @pagy, @questions = pagy Question.includes(%i[author question_hashtags])
@@ -108,5 +115,14 @@ class QuestionsController < ApplicationController
 
   def check_captcha(model)
     current_user.present? || verify_recaptcha(model: model)
+  end
+
+  # Нужно авторизовать конкретный вопрос или просто использовать модель. Т.е. если
+  # вопрос есть, то мы делаем проверку относительно него. Если вопроса нет, то мы говорим
+  # что юзер пытается делать что-то относительно ресурса вопроса.
+  # Метод "authorize" доступен из Pundit, потому что в ApplicationController заинклюдили
+  # concern "Authorization", а этот concern в свою очередь инклюдит Pundit
+  def authorize_question!
+    authorize(@question || Question)
   end
 end

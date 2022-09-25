@@ -67,6 +67,18 @@ class User < ApplicationRecord
     background_color || DEFAULT_BACKGROUND_COLOR
   end
 
+  # Юзер м.б. автором вопроса, ответа и т.д., поэтому "obj".
+  # И скажем obj.author  == self (т.е.  obj.author  - это сам юзер).
+  # У вопросов, или у любых других ресурсов есть метод "user"
+  def author?(obj)
+    obj.author == self
+  end
+
+  # не гость
+  def guest?
+    false
+  end
+
   private
 
   # функция обратного вызова

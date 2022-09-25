@@ -62,18 +62,18 @@
     </div>
   </div>
 
-  <%# Если адресат вопроса — текущий пользователь, он может редактировать вопрос %>
-  <%# и отвечать на него %>
-  <% if question.user == current_user %>
     <%# Определяем какая будет иконка, если у вопроса нет ответа, то иконка %>
-    <%# овтета на письмо, иначе — карандашик %>
+    <%# ответа на письмо, иначе — карандашик %>
     <% edit_icon = question.answer.blank? ? 'reply' : 'pencil' %>
     <div class="question-actions">
-      <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
-      <%= link_to fa_icon('trash-o'), question_path(question),
+      <% if policy(question).edit? %>
+         <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
+      <% end %>
+      <% if policy(question).destroy? %>
+        <%= link_to fa_icon('trash-o'), question_path(question),
                   method: :delete, data: {confirm: t('global.dialog.you_sure')} %>
+      <% end %>
     </div>
-  <% end %>
 </div>
 
 
