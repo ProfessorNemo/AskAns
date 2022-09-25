@@ -62,6 +62,7 @@ ru:
     sign_up: Зарегистрироваться
     sign_out: Выйти
     sign_in: Войти
+    users: Пользователи
 
   sessions:
     create:
@@ -189,3 +190,8 @@ ru:
       edit:
         title: Редактирование пользователя
 
+  pundit:
+    default: 'You cannot perform this action.'
+    question_policy:
+      update?: 'You cannot edit this answer!'
+      create?: 'You cannot create answers!'

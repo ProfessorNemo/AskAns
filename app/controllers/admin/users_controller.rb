@@ -1,7 +1,9 @@
 module Admin
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     before_action :require_authentication
     before_action :set_user!, only: %i[edit update destroy]
+    before_action :authorize_user!
+    after_action :verify_authorized
 
     # вытащим всех юзеров и разобъем их по страницам
     def index
@@ -34,6 +36,7 @@ module Admin
     def edit; end
 
     def update
+
       # вместо ".merge(skip_old_password: true" можно
       # @user.skip_old_password = true - только в админском контроллере
       if @user.update user_params
@@ -92,6 +95,14 @@ module Admin
       params.require(:user).permit(
         :email, :name, :username, :password, :password_confirmation, :role, :status
       ).merge(skip_old_password: true)
+    end
+
+    # м-д "authorize" возьмется из базового контроллера "BaseController"
+    def authorize_user!
+      # с наследованием
+      authorize(@user || User)
+      # без наследования
+      # authorize([:admin, (@user || User)])
     end
   end
 end

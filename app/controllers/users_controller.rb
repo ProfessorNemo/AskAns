@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   # Проверяем имеет ли юзер доступ к экшену, делаем это для всех действий, кроме
   # :index, :new, :create, :show — к этим действиям есть доступ у всех, даже у
   # тех, у кого вообще нет аккаунта на нашем сайте.
-  before_action :authorize_user, except: %i[index new create show]
+  before_action :access_user, except: %i[index new create show]
+
+  before_action :authorize_user!
+  after_action :verify_authorized
 
   # Это действие отзывается, когда пользователь заходит по адресу /users
   def index
@@ -135,7 +138,11 @@ class UsersController < ApplicationController
   # Если загруженный из базы юзер и текущий залогиненный не совпадают — посылаем
   # его с помощью описанного в контроллере ApplicationController метода
   # reject_user.
-  def authorize_user
+  def access_user
     reject_user unless @user == current_user
+  end
+
+  def authorize_user!
+    authorize(@user || User)
   end
 end

@@ -1,48 +1,50 @@
 <% provide :page_title %>
 
-<%# Этот шаблон отрисуется, когда пользователь захочет посмотреть список пользователей %>
-<div class="content-wrapper buffer-both text-center">
-  <div class="buffer-both">
-    <h1 class="title-medium"><%= t('.form.title') %></h1>
-  </div>
-
-  <%# Этот код выводит каждого пользователя в цикле %>
-  <% @users.each do |user| %>
-    <div class="users-list-item">
-      <div class="user-image-div user-image-div-small">
-        <%# link_to — генерирует ссылку %>
-        <%# image_tag — генерирует картинку %>
-        <%# user_avatar — достает из пользователя ссылку на картинку или подставляет дефолтную %>
-        <%# Хелпер user_path(user) возвращает относительный путь %>
-        <%# страницы пользователя, например /users/1 %>
-
-        <% unless user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
-        <%= link_to user.gravatar(css_class: 'user-image'), user_path(user) %>
-      <% else %>
-        <%= link_to image_tag('Elizabeth.jpg', height: '90', width: '80',
-                     class: 'menu_icon', alt: '[Foto]'), user_path(user) %>
-      <% end %>
-
+<% if policy(:user).index? %>
+  <%# Этот шаблон отрисуется, когда пользователь захочет посмотреть список пользователей %>
+  <div class="content-wrapper buffer-both text-center">
+    <div class="buffer-both">
+      <h1 class="title-medium"><%= t('.form.title') %></h1>
     </div>
-  </div>
-<% end %>
 
-<section class="form-action">
+    <%# Этот код выводит каждого пользователя в цикле %>
+    <% @users.each do |user| %>
+      <div class="users-list-item">
+        <div class="user-image-div user-image-div-small">
+          <%# link_to — генерирует ссылку %>
+          <%# image_tag — генерирует картинку %>
+          <%# user_avatar — достает из пользователя ссылку на картинку или подставляет дефолтную %>
+          <%# Хелпер user_path(user) возвращает относительный путь %>
+          <%# страницы пользователя, например /users/1 %>
 
-    <%# отправляем форму на страницу "questions_path" - get-запрос%>
-    <%= form_with url: questions_path , method: :get do |f| %>
-      <div class="form-field">
-        <%# {selected: params[:hashtag_ids]} - т.е. когда форма будет отправлена и страница перерисуется,
-                        в этой форме выбирутся все те теги, которые выбраны для построения этого поиска.
-                        required: true - чтоб эту форму нельзя было отправить пустой %>
-        <%# ajax — асинхронный запрос отправляться сюда "/api/hashtags" и чтобы отсюда вытаскивать только те хэштеги,
-                        которые подходят под критерии пользователя, т.е. исходя из того, что юзер напечатает %>
-      <%= f.collection_select :hashtag_ids, (helper_hashtag(1) || []), :id, :text, {selected: params[:hashtag_ids]},
-          multiple: true, required: true,
-          class: 'js-multiple-select js-ajax-select w-50', data: {'ajax-url': '/api/hashtags'} %>
+          <% unless user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
+          <%= link_to user.gravatar(css_class: 'user-image'), user_path(user) %>
+        <% else %>
+          <%= link_to image_tag('Elizabeth.jpg', height: '90', width: '80',
+                      class: 'menu_icon', alt: '[Foto]'), user_path(user) %>
+        <% end %>
+
       </div>
-
-      <%= f.submit t('global.button.search'), class: 'btn btn-primary btn-sm mb-3' %>
-
+    </div>
   <% end %>
-</section>
+
+  <section class="form-action">
+
+      <%# отправляем форму на страницу "questions_path" - get-запрос%>
+      <%= form_with url: questions_path , method: :get do |f| %>
+        <div class="form-field">
+          <%# {selected: params[:hashtag_ids]} - т.е. когда форма будет отправлена и страница перерисуется,
+                          в этой форме выбирутся все те теги, которые выбраны для построения этого поиска.
+                          required: true - чтоб эту форму нельзя было отправить пустой %>
+          <%# ajax — асинхронный запрос отправляться сюда "/api/hashtags" и чтобы отсюда вытаскивать только те хэштеги,
+                          которые подходят под критерии пользователя, т.е. исходя из того, что юзер напечатает %>
+        <%= f.collection_select :hashtag_ids, (helper_hashtag(1) || []), :id, :text, {selected: params[:hashtag_ids]},
+            multiple: true, required: true,
+            class: 'js-multiple-select js-ajax-select w-50', data: {'ajax-url': '/api/hashtags'} %>
+        </div>
+
+        <%= f.submit t('global.button.search'), class: 'btn btn-primary btn-sm mb-3' %>
+
+    <% end %>
+  </section>
+<% end %>

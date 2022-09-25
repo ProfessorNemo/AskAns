@@ -62,6 +62,7 @@ en:
     sign_up: Sign up
     sign_out: Sign out
     sign_in: Sign in
+    users: Users
 
   sessions:
     create:
@@ -188,3 +189,9 @@ en:
         success: User updated!
       edit:
         title: Edit user
+
+  pundit:
+    default: Вы не можете выполнить это действие.
+    question_policy:
+      update?: 'Вы не можете редактировать этот вопрос!'
+      create?: 'Вы не можете создавать вопросы!'

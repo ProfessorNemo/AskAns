@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# класс "Ограничение". М-д "matches" принимает запрос, который был отправлен
+# на адрес '/admin/users'. Приходит на этот адрес запрос, перенаправлем в AdminConstraint
+# проверку, читаем запрос, смотрим, от кого он и решаем: пускать или нет.
+# "user_id" - помещен либо в сессию, либо в зашифрованные куки если юзер поставил галочку
+# "запомнить меня" (см. authentication.rb)
+# request.cookie_jar.encrypted[:user_id] - дешифровка куки
+class AdminConstraint
+  def matches?(request)
+    user_id = request.session[:user_id] || request.cookie_jar.encrypted[:user_id]
+
+    # является ли найденный юзер админом (если юзер найден)
+    User.find_by(id: user_id)&.admin_role?
+  end
+end
+
 Rails.application.routes.draw do
   resources :hashtags, only: %i[show], param: :text
 
@@ -22,8 +37,12 @@ Rails.application.routes.draw do
 
     root 'users#index'
 
+    # не будет существовать тогда маршрута для всех, кроме админа. Закрывается
+    # доступ к пространству маршрутов admin
     namespace :admin do
-      resources :users, except: %i[new]
+      constraints(AdminConstraint.new) do
+        resources :users, except: %i[new]
+      end
     end
 
     # Синонимы путей — в дополнение к созданным в ресурсах выше.
