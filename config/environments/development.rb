@@ -108,4 +108,3 @@ Rails.application.configure do
   #   read_timeout: 5
   # }
 end
-

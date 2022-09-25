@@ -99,4 +99,4 @@ gem 'letter_opener', '~> 1.8'
 
 gem 'recaptcha', '~> 5.12'
 
-gem "pundit", "~> 2.2"
+gem 'pundit', '~> 2.2'

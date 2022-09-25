@@ -20,7 +20,8 @@ A "manual approach" was used to authenticate and register users in the applicati
 (without the use of libraries such as "device") !
 
 Created a separate page for the administrator.
-The administrator can upload the archived Excel file and create multiple users with a single request.
+An administrator can upload a zipped Excel file and create multiple users with a single request. Only the administrator has access to the results of a request to the User Controller API, which provides a response in JSON format. All users, including guest users, have access to the hashtag API controller.
+Authorization (separation of access rights) in the application is implemented using the Pundit solution, policies are created, and a "guest user" service object is created.
 
 ### Installation
 
@@ -75,9 +76,12 @@ $ bin/dev
 ### Some used gems
 
 - [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization
+- [`pundit`](https://github.com/varvet/pundit) is a solution for creating a simple, reliable and scalable authorization system.
 - [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down    into simple hashes and serializes them to JSON
 - [`roo`](https://github.com/roo-rb/roo) for importing data from .xlsx to the database
 - [`rspec-rails`](https://github.com/rspec/rspec-rails) for tests
+- [`webmock`](https://github.com/bblimke/webmock) this is a library for stubbing and setting expectations on HTTP requests in Ruby.
+- [`vcr`](https://github.com/vcr/vcr) record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
 - [`factory_bot_rails`](https://github.com/thoughtbot/factory_bot_rails)
 - [`letter_opener`](https://github.com/ryanb/letter_opener) to send emails in the development
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
