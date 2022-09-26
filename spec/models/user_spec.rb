@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples_for 'a user' do
-  it { is_expected.to respond_to(:name) }
-  it { is_expected.to respond_to(:role) }
-  it { is_expected.to respond_to(:email) }
-  it { is_expected.to respond_to(:username) }
-  it { is_expected.to respond_to(:password) }
+  it { is_expected.to respond_to(:name, :role, :email, :username, :password) }
 end
 
 RSpec.describe User, type: :model do
@@ -67,7 +63,6 @@ RSpec.describe User, type: :model do
   end
 
   context 'continuation of validations' do
-
     it 'validates_user_admin' do
       user = build_stubbed(:admin)
       expect(user.role).to eq('admin')
@@ -77,6 +72,14 @@ RSpec.describe User, type: :model do
     it 'validates_user_blocked' do
       user = build_stubbed(:blocked)
       expect(user.status).to eq('blocked')
+    end
+
+    it 'creating multiple users' do
+      users = build_list(:user, 5) do |user, i|
+        user.username = "stranger#{('a'.ord + i).chr}"
+        expect(user).to be_valid
+      end
+      expect(users.count).to eq(5)
     end
   end
 end

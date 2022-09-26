@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases: [:author] do
     name { 'Suspense' }
     sequence :email do |n|
       "suspense#{n}@gmail.com"
@@ -10,6 +10,7 @@ FactoryBot.define do
     password { 'Omega123456!' }
     role { 'basic' }
     status { 'activated' }
+    sequence(:id) { |n| n }
 
     factory :user_with_incorrect_email do
       email { 'test' }
@@ -27,8 +28,22 @@ FactoryBot.define do
       status { 'blocked' }
     end
 
+    trait :id do
+      id { 1 }
+    end
+
+    trait :unknown_id do
+      password { 'Omega123456!' }
+      username { 'unknown' }
+      email { 'unknown@mail.ru' }
+      role { 'basic' }
+      status { 'activated' }
+    end
+
+    factory :another_user, traits: [:unknown_id]
     factory :admin, traits: [:admin]
     factory :blocked, traits: [:blocked]
+    factory :id, traits: [:id]
   end
 end
 
