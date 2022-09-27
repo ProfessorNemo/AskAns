@@ -29,7 +29,7 @@ module AskAns
     # Языки, которые буду поддерживаться
     config.i18n.available_locales = %i[en ru]
     # локаль по умолчанию
-    config.i18n.default_locale = :en
+    config.i18n.default_locale = :ru
 
     # Configuration for the application, engines, and railties goes here.
     #

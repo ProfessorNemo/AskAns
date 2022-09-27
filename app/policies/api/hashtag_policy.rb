@@ -3,7 +3,7 @@
 # Любые действия может выполнять только админ
 
 module Api
-  class UserPolicy < ApplicationPolicy
+  class HashtagPolicy < ApplicationPolicy
     def index?
       user.admin_role?
     end

@@ -2,6 +2,9 @@
 
 module Api
   class HashtagsController < ApplicationController
+    before_action :authorize_hashtag!
+    after_action :verify_authorized
+
     def index
       hashtags = Hashtag.arel_table
       # запрос - я хочу найти все хэштеги, заголовки которых
@@ -12,6 +15,13 @@ module Api
       @hashtags = helper_hashtag(1)
       # render(@tags) выполнит сериализацию и превратит коллекцию хэштегов в json
       render json: HashtagBlueprint.render(@hashtags)
+    end
+
+    private
+
+    # м-д "authorize" возьмется из базового контроллера "BaseController"
+    def authorize_hashtag!
+      authorize(@hashtag || Hashtag)
     end
   end
 end
