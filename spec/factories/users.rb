@@ -33,9 +33,10 @@ FactoryBot.define do
     end
 
     trait :unknown_id do
+      name { Faker::Name.middle_name }
       password { 'Omega123456!' }
-      username { 'unknown' }
-      email { 'unknown@mail.ru' }
+      username { Faker::Internet.username(specifier: 'Nancy') }
+      email { Faker::Internet.email }
       role { 'basic' }
       status { 'activated' }
     end
