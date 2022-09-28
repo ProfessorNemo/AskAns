@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action_mailer_matchers (1.2.0)
     actioncable (6.1.7)
       actionpack (= 6.1.7)
       activesupport (= 6.1.7)
@@ -225,7 +226,7 @@ GEM
       ffi (~> 1.0)
     recaptcha (5.12.3)
       json
-    regexp_parser (2.5.0)
+    regexp_parser (2.6.0)
     request_store (1.5.1)
       rack (>= 1.4)
     rexml (3.2.5)
@@ -291,6 +292,8 @@ GEM
       sprockets-rails
       tilt
     semantic_range (3.0.0)
+    shoulda-matchers (5.2.0)
+      activesupport (>= 5.2.0)
     spring (4.1.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -335,6 +338,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  action_mailer_matchers
   activerecord-import (~> 1.4)
   bcrypt (~> 3.1)
   blueprinter
@@ -379,6 +383,7 @@ DEPENDENCIES
   rubyXL (~> 3.4)
   rubyzip (~> 2.3)
   sass-rails (>= 6)
+  shoulda-matchers
   spring
   turbolinks (~> 5)
   valid_email2 (~> 4.0)

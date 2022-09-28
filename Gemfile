@@ -73,9 +73,11 @@ group :development, :test do
   gem 'pundit-matchers', '~> 1.7.0'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '>= 5.1.2'
+  gem 'shoulda-matchers'
 end
 
 group :test do
+  gem 'action_mailer_matchers'
   gem 'rspec', '~> 3.11'
   gem 'vcr', '~> 6.1'
   gem 'webmock', '~> 3.14'

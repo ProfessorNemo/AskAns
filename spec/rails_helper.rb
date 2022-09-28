@@ -13,6 +13,9 @@ require 'webmock/rspec'
 require_relative './support/factory_bot'
 require_relative './support/vcr'
 
+require 'rails-i18n'
+require 'action_mailer_matchers'
+
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
@@ -32,6 +35,8 @@ Pundit::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include ActionMailerMatchers
+
   config.example_status_persistence_file_path = 'spec/specs.txt'
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -67,4 +72,11 @@ RSpec.configure do |config|
   end)
 
   config.before { VCR.turn_on! }
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

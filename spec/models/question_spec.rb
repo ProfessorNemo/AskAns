@@ -39,7 +39,7 @@ RSpec.describe Question, type: :model do
 
     expect(described_class.unanswered.count).to eq(1)
 
-    # 3 hashtags are generated from one question
+    # генерация 3-х хэштегов из одного вопроса
     expect(hashtag.map(&:text)).to be_all(String)
 
     expect(hashtag.count).to eq(3)
