@@ -7,7 +7,7 @@
 Ask-me is an application where you can ask each other any questions and get answers, similar to the well-known ask.fm. The avatar for the user is added using a third-party global avatars service https://en.gravatar.com/site/implement/images/
 The user can also change the background color of the profile. On the user page, you can leave questions and answer them. When adding a question, the algorithm looks for hashtags starting with "#", changes color and makes them clickable. Clicking on a hashtag will take you to a page with questions from all users with that hashtag. The hashtags of all users are displayed on the main page (Solutions like "tom-select" and "ajax" are used here.
 
-(ajax - an asynchronous request to be sent here "/api/hashtags" and to pull out only those tags from here that match the user's criteria, i.e. based on what the user types)
+(ajax - an asynchronous request to be sent here "/api/hashtags" and to pull out only those hashtags from here that match the user's criteria, i.e. based on what the user types)
 
 For avatars:
 
@@ -23,6 +23,7 @@ Created a separate page for the administrator.
 An administrator can upload a zipped Excel file and create multiple users with a single request. Only the administrator has access to the results of a request to the User Controller API, which provides a response in JSON format. All users, including guest users, have access to the hashtag API controller.
 Authorization (separation of access rights) in the application is implemented using the Pundit solution, policies are created, and a "guest user" service object is created.
 
+The application is covered with tests...
 ### Installation
 
 1. Clone repo
