@@ -2,7 +2,7 @@
 
 ###### Ruby: `3.0.3` Rails: `6.1.6.` Language `Russian/English`
 
-### About
+### About:
 
 Ask-me is an application where you can ask each other any questions and get answers, similar to the well-known ask.fm. The avatar for the user is added using a third-party global avatars service https://en.gravatar.com/site/implement/images/
 The user can also change the background color of the profile. On the user page, you can leave questions and answer them. When adding a question, the algorithm looks for hashtags starting with "#", changes color and makes them clickable. Clicking on a hashtag will take you to a page with questions from all users with that hashtag. The hashtags of all users are displayed on the main page (Solutions like "tom-select" and "ajax" are used here.
@@ -24,7 +24,8 @@ An administrator can upload a zipped Excel file and create multiple users with a
 Authorization (separation of access rights) in the application is implemented using the Pundit solution, policies are created, and a "guest user" service object is created.
 
 The application is covered with tests...
-### Installation
+
+### Installation:
 
 1. Clone repo
 ```
@@ -74,7 +75,7 @@ recaptcha:
 ```
 $ bin/dev
 ```
-### Some used gems
+### Some used gems:
 
 - [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization
 - [`pundit`](https://github.com/varvet/pundit) is a solution for creating a simple, reliable and scalable authorization system.
@@ -95,7 +96,7 @@ $ bin/dev
 - [`rubyXL`](https://github.com/weshatheleopard/rubyXL) this is a solution that allows you to read and modify .xlsx files
 - to be continued...
 
-### Сommands to run tests
+### Сommands to run tests:
 ```
 $ bundle exec rspec spec/controllers/password_resets_spec.rb
 $ bundle exec rspec spec/controllers/questions_spec.rb
