@@ -11,7 +11,7 @@ target: '_blank' - для того, чтобы открыть ссылку в н
   <%= link_to 'Reset my password',
       edit_password_reset_url(user: {password_reset_token: @user.password_reset_token,
                             email: @user.email},
-                            locale: :en),
+                            host: 'localhost', locale: :en),
       target: '_blank' %>
 </p>
 

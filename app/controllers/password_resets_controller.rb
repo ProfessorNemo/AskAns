@@ -27,6 +27,7 @@ class PasswordResetsController < ApplicationController
     # deliver_later - поставит отправку письма в очередь и отправка произойдет
     # в фоновом режиме, в очередь и браузер юзера не зависнет. Если отправка из
     # фоновой задачи - то deliver_now. Из контроллера лучше использовать "deliver_later"
+
     PasswordResetMailer.with(user: @user).reset_email.deliver_later
 
     # не хочу для злоумышленников подсказывать, если ли юзер с таким емэйлом на сайте или нет.
