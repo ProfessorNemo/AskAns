@@ -175,8 +175,9 @@ en:
   admin:
     users:
       create:
-        success: Users imported!
+        success: You'll get an email once this operation is done
       index:
+        success: You'll get an email once this operation is done
         download_zipped: Download zipped XLSX
         title: Admin Users
         upload_form:
@@ -189,6 +190,13 @@ en:
         success: User updated!
       edit:
         title: Edit user
+    user_mailer:
+      bulk_import_done:
+        subject: User import done | AskAns
+      bulk_import_fail:
+        subject: User import failed | AskAns
+      bulk_export_done:
+        subject: User export done | AskAns
 
   pundit:
     default: Вы не можете выполнить это действие.
