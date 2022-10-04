@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 # класс "Ограничение". М-д "matches" принимает запрос, который был отправлен
 # на адрес '/admin/users'. Приходит на этот адрес запрос, перенаправлем в AdminConstraint
 # проверку, читаем запрос, смотрим, от кого он и решаем: пускать или нет.
@@ -16,6 +18,10 @@ class AdminConstraint
 end
 
 Rails.application.routes.draw do
+  # Смонтировать маршрут Sidekiq::Web , по какому адресу он будет доступен ('/sidekiq'),
+  # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (http://127.0.0.1:3000/sidekiq)
+  mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
+
   resources :hashtags, only: %i[show], param: :text
 
   namespace :api do

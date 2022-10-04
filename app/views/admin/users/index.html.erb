@@ -7,7 +7,8 @@
     <div class="form-field">
       <div class="btn-group">
         <%= link_to t('.download_zipped'), admin_users_path(format: :zip),
-              class: 'button button-small button-dark' %>
+        # Действительно ли вы хотите запустить эту задачу на выполнение
+              class: 'button button-small button-dark', data: {confirm: t('global.dialog.you_sure')} %>
       </div>
     </div>
 

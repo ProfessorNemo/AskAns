@@ -175,8 +175,9 @@ ru:
   admin:
     users:
       create:
-        success: Пользователи загружены!
+        success: Вы получите письмо, когда операция завершится
       index:
+        success: Вы получите письмо, когда операция завершится
         download_zipped: Загрузить архив с XLSX
         title: Управление пользователями
         upload_form:
@@ -189,6 +190,13 @@ ru:
         success: Пользователь обновлён!
       edit:
         title: Редактирование пользователя
+    user_mailer:
+      bulk_import_done:
+        subject: Импорт пользователей завершён | AskAns
+      bulk_import_fail:
+        subject: Импорт пользователей не удался | AskAns
+      bulk_export_done:
+        subject: Экспорт пользователей завершён | AskAns
 
   pundit:
     default: 'You cannot perform this action.'

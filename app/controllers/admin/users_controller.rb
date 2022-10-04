@@ -17,7 +17,13 @@ module Admin
           # render по умолчанию
         end
 
-        format.zip { respond_with_zipped_users }
+        format.zip do
+          UserBulkExportJob.perform_later current_user
+          # Задача поставлена в очередь на выполнение. Как только она завершится,
+          # вы получите уведомление на email
+          flash[:success] = t '.success'
+          redirect_to admin_users_path
+        end
       end
     end
 
@@ -28,7 +34,13 @@ module Admin
     # передаем ему архив "params[:archive]".
     def create
       if params[:archive].present?
-        UserBulkService.call params[:archive]
+        # UserBulkService.call params[:archive]
+        #
+        # Вместо вызова сервисного объекта с параметром "архив".
+        # perform_later - поставить задачу в очередь и сделать в фоне
+        # current_user - юзер, который инициировал задачу, и именно на его почту
+        # будет выслана инфа о выполнении задачи
+        UserBulkImportJob.perform_later create_blob, current_user
         flash[:success] = t('.success')
       end
 
@@ -55,6 +67,19 @@ module Admin
     end
 
     private
+
+    # создать новый файл в ActiveStorage
+    def create_blob
+      # открыть присланный временный файл
+      file = File.open params[:archive]
+      # "io" - input/output - содержимое файла, а в качестве имени файла - оригинальное имя архива
+      result = ActiveStorage::Blob.create_and_upload! io: file,
+                                                      filename: params[:archive].original_filename
+      file.close
+      # Вернем "key" - уникальный идентификатор загруженного файла в ActiveStorage. Этот ключ
+      # будет храниться в одной из созданных таблиц
+      result.key
+    end
 
     def respond_with_zipped_users
       # Сгенерировать zip-файл, в котором будут находиться файлы Excel
