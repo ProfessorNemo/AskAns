@@ -98,17 +98,7 @@ $ bin/dev
 
 ### Сommands to run tests:
 ```
-$ bundle exec rspec spec/controllers/password_resets_spec.rb
-$ bundle exec rspec spec/controllers/questions_spec.rb
-$ bundle exec rspec spec/controllers/sessions_spec.rb
-$ bundle exec rspec spec/mailers/password_reset_mailer_spec.rb
-$ bundle exec rspec spec/models/question_spec.rb
-$ bundle exec rspec spec/models/user_spec.rb
-$ bundle exec rspec spec/policies/question_policy_spec.rb
-$ bundle exec rspec spec/policies/user_policy_spec.rb
-$ bundle exec rspec spec/policies/admin/user_policy_spec.rb
-$ bundle exec rspec spec/requests/client_spec.rb
-$ bundle exec rspec spec/requests/users_json_spec.rb
+$ make rspec
 ```
 
 Open `localhost:3000` in browser.
