@@ -12,7 +12,6 @@ import '@popperjs/core'
 import 'bootstrap/js/dist/dropdown'
 
 import './custom.js'
-import './jscolor.js'
 import '../scripts/select'
 
 // для отображения выпадающей формы

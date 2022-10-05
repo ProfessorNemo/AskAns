@@ -1,6 +1,7 @@
 # Ask-Ans
 
 ###### Ruby: `3.0.3` Rails: `6.1.6.` Language `Russian/English`
+###### Application screenshots are located in the "screenshots" directory
 
 ### About:
 
@@ -133,4 +134,3 @@ $ make rspec
 
 Open `localhost:3000` in browser.
 
-## Application screenshots are located in the "screenshots" directory
