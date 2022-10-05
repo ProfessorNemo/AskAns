@@ -40,9 +40,8 @@ Authorization (separation of access rights) in the application is implemented us
 
 The process of sending emails (in our case to the administrator), as well as importing and exporting users, runs in the background. The archive is saved using ActiveStorage (see config/storage.yml) to itself locally in the “storage” directory and then work is performed with this archive in ActiveJob. Tasks are performed with the support of the Sidekiq adapter. He knows how to interact with RoR, because RoR has ActiveJob - a functionality that allows us to submit our tasks for execution in the background. Sidekiq uses Redis, which is a SQL database for storing task information.
 To install Redis, follow the link:
----
+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-en
----
 
 Create a separate tab where sidekiq will spin:
 ```
@@ -51,8 +50,7 @@ $ bundle exec sidekiq -q default
 where default is the execution queue.
 
 Sidekiq has an interface that allows you to see what broke, how many tasks were completed, when it happened, how many connections, what version of Redis has, how much memory Redis is using, etc. To connect this interface in the address bar, write:
-http://127.0.0.1:3000/sidekiq
-Only the administrator has access to it.
+http://127.0.0.1:3000/sidekiq. Only the administrator has access to it.
 
 The application is covered with tests...
 
@@ -135,6 +133,4 @@ $ make rspec
 
 Open `localhost:3000` in browser.
 
----
-Application screenshots are located in the "screenshots" directory
----
+## Application screenshots are located in the "screenshots" directory
