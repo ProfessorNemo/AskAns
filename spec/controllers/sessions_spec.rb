@@ -3,14 +3,13 @@
 RSpec.describe SessionsController, type: :controller do
   describe 'POST #create' do
     let(:user) do
-      User.new email: Faker::Internet.email,
-               name: Faker::Name.name,
-               username: Faker::Artist.name
+      User.create email: Faker::Internet.email,
+                  name: Faker::Name.name,
+                  username: Faker::Artist.name.split.join,
+                  password: 'Mars123456!'
     end
 
     before do
-      user.password = 'Mars123456!'
-      user.save
       user.remember_me
       cookies.encrypted.permanent[:remember_token] = user.remember_token
       cookies.encrypted.permanent[:user_id] = user.id
