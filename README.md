@@ -120,11 +120,12 @@ When executing the `make initially` console command to the application from the 
 several test users and one more user with a built-in avatar are loaded from the file "db/seeds.rb".
 After that, you need to appoint an admin. To do this, run the `make c` command in the console, and then write:
 
+```
 user = User.find_by id: ...
 user.update role: 'admin'
 user.reload
 exit
-
+```
 Now you will have administrator rights to download, upload, delete, edit
 and blocking users, as well as `http://127.0.0.1:3000/sidekiq`.
 Test archive with users - "lib/zipusers.zip"
