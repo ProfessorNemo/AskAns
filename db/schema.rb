@@ -80,9 +80,9 @@ ActiveRecord::Schema.define(version: 2022_10_04_205423) do
     t.string "remember_token_digest"
     t.string "password_digest"
     t.string "gravatar_hash"
+    t.string "background_color", default: "#005a55"
     t.string "password_reset_token"
     t.datetime "password_reset_token_sent_at"
-    t.string "background_color", default: "#005a55"
     t.integer "role", default: 0, null: false
     t.integer "status", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true

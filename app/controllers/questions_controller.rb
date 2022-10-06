@@ -14,6 +14,8 @@ class QuestionsController < ApplicationController
   # действиях контроллера
   after_action :verify_authorized, except: %i[create index]
 
+  around_action :skip_bullet, only: :index, if: -> { defined?(Bullet) }
+
   def index
     @hashtags = Hashtag.where(id: params[:hashtag_ids]) if params[:hashtag_ids]
     @pagy, @questions = pagy Question.includes(%i[author question_hashtags])
@@ -115,6 +117,14 @@ class QuestionsController < ApplicationController
 
   def check_captcha(model)
     current_user.present? || verify_recaptcha(model: model)
+  end
+
+  def skip_bullet
+    previous_value = Bullet.enable?
+    Bullet.enable = false
+    yield
+  ensure
+    Bullet.enable = previous_value
   end
 
   # Нужно авторизовать конкретный вопрос или просто использовать модель. Т.е. если

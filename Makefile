@@ -29,6 +29,7 @@ initially:
 	rails db:migrate
 	rails db:seed
 
+
 migration:
 	bundle exec rails g migration $(RUN_ARGS)
 

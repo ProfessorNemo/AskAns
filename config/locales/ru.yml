@@ -199,7 +199,7 @@ ru:
         subject: Экспорт пользователей завершён | AskAns
 
   pundit:
-    default: 'You cannot perform this action.'
+    default: Вы не можете выполнить это действие.
     question_policy:
-      update?: 'You cannot edit this answer!'
-      create?: 'You cannot create answers!'
+      update?: Вы не можете редактировать этот вопрос!
+      create?: Вы не можете создавать вопросы!

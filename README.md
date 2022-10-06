@@ -21,8 +21,8 @@ When adding a question, the algorithm looks for hashtags starting with "#", chan
 
 ### Аuthentication and registration:
 
-A "manual approach" was used to authenticate and register users in the application
-(without the use of libraries such as "device") !
+All logic related to authentication, registration, password creation and change
+done with a manual approach (without the use of libraries such as "device") !
 
 ### Spam Protection:
 
@@ -36,6 +36,7 @@ An administrator can upload a zipped Excel file and create multiple users with a
 ### Authorization:
 
 Authorization (separation of access rights) in the application is implemented using the Pundit solution, policies are created, and a "guest user" service object is created. Access to the hashtag controller (as an experiment) is allowed only to the administrator...
+A test archive with users for loading into the application is located in the directory "lib/zipusers.zip".
 
 ### Tasks running in the background:
 
@@ -96,9 +97,15 @@ export RECAPTCHA_ASKANS_PRIVATE_KEY="**************************************"
 2nd way:
 ```
 $ EDITOR=vim rails credentials:edit
+
+action_mailer:
+  mail_from: example@gmail.com
+  domain: example@gmail.com
+  password: ****************
+  user_name: example
 recaptcha:
   site_key: **************************************
-  secret_key: ************************************
+  secret_key: **************************************
 ```
 
 5. Start sever
@@ -106,11 +113,47 @@ recaptcha:
 $ bin/dev
 $ bundle exec sidekiq -q default
 ```
+
+### Additional Information:
+
+When executing the `make initially` console command to the application from the file "db/users.xlsx"
+several test users and one more user with a built-in avatar are loaded from the file "db/seeds.rb".
+After that, you need to appoint an admin. To do this, run the `make c` command in the console, and then write:
+
+user = User.find_by id: ...
+user.update role: 'admin'
+user.reload
+exit
+
+Now you will have administrator rights to download, upload, delete, edit
+and blocking users, as well as `http://127.0.0.1:3000/sidekiq`.
+Test archive with users - "lib/zipusers.zip"
+
+You can then run the tests with the `make rspec` command.
+
+Ask a few questions and save to the database to generate hashtags for the address
+http://127.0.0.1:3000/api/hashtag, which can only be accessed by the admin. From everyone
+question, 3 random hashtags are taken and entered into the database. Hashtags sorted alphabetically
+order and do not repeat. It should be noted that hashtags are generated only by questions,
+set by registered users.
+
+The `.env` file must contain the following information:
+email, password, test user nickname, private and public key
+Recaptcha and fake test token:
+
+```
+TEST_EMAIL=elizabeth-olsen@gmail.com
+TEST_PASSWORD=Elizabeth1989!
+TEST_USERNAME=Scarlet_Witch
+FAKE_TOKEN=VX1wGmO7YJWfW8XL3PY4JtUOm4VpQDc6lXywhnh%2FrYnBtq0wKPnbbYAvSIy87cknI7hv
+```
+
 ### Some used gems:
 
 - [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization
 - [`pundit`](https://github.com/varvet/pundit) is a solution for creating a simple, reliable and scalable authorization system.
-- [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down    into simple hashes and serializes them to JSON
+- [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down into simple hashes and serializes them to JSON
+- [`bullet`](https://github.com/flyerhzm/bullet) this is a solution to improve the performance of an application by reducing the number of requests it makes
 - [`roo`](https://github.com/roo-rb/roo) for importing data from .xlsx to the database
 - [`rspec-rails`](https://github.com/rspec/rspec-rails) for tests
 - [`webmock`](https://github.com/bblimke/webmock) this is a library for stubbing and setting expectations on HTTP requests in Ruby.

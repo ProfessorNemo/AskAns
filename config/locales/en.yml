@@ -199,7 +199,7 @@ en:
         subject: User export done | AskAns
 
   pundit:
-    default: Вы не можете выполнить это действие.
+    default: You cannot perform this action.
     question_policy:
-      update?: 'Вы не можете редактировать этот вопрос!'
-      create?: 'Вы не можете создавать вопросы!'
+      update?: You cannot edit this answer!
+      create?: You cannot create answers!

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Api
-  class HashtagsController < ApplicationController
+  class HashtagsController < BaseController
     before_action :authorize_hashtag!
     after_action :verify_authorized
 

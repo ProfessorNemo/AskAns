@@ -17,7 +17,6 @@ import '../scripts/select'
 // для отображения выпадающей формы
 import 'bootstrap/js/dist/collapse'
 
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

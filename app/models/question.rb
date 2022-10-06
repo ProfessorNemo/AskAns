@@ -47,7 +47,7 @@ class Question < ApplicationRecord
   def parse_hashtags(string)
     string.downcase.split
           .select { |i| i.chars.count.between?(4, 20) }
-          .map { |i| i.delete('^a-zA-Zа-яА-Я') }
+          .map { |i| i.delete('^a-zA-Zа-яА-Я-') }
           .uniq.sample(3)
   end
 

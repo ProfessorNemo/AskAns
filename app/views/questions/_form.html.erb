@@ -2,6 +2,7 @@
 <div
   class="form">
   <%# Форма для объекта @question %>
+  <%# <%= form_with(model: @question, url: questions_path) do |f| %>
     <%= form_for(@question) do |f| %>
       <%= render 'shared/errors', object: @question %>
 
@@ -10,7 +11,7 @@
 
       <div class="form-field">
         <%= f.label :text, t('.question'), class: 'form-label' %>
-        <%= f.text_area :text, class: 'form-textarea', readonly: true  %>
+        <%= f.text_area :text, class: 'form-textarea', readonly: (true if current_user.present?) %>
       </div>
 
       <%# Простая авторизация - может ли текущий юзер править вопрос? %>

@@ -12,7 +12,9 @@ User.create email: Dotenv.load('.env')['TEST_EMAIL'],
             name: 'Elizabeth',
             username: Dotenv.load('.env')['TEST_USERNAME'],
             password: Dotenv.load('.env')['TEST_PASSWORD'],
-            password_confirmation: Dotenv.load('.env')['TEST_PASSWORD']
+            password_confirmation: Dotenv.load('.env')['TEST_PASSWORD'],
+            role: 'basic',
+            status: 'activated'
 
 # сгенерировать 5 вопросов вновь созданного пользователя "user"
 # 5.times do

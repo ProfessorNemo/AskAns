@@ -80,7 +80,7 @@
                   <%= f.text_area :text, class: 'form-textarea' %>
               </div>
 
-              <%= recaptcha_tags size: 'compact' unless current_user.present? %>
+              <%= recaptcha_tags size: 'compact' unless current_user.present?%>
 
               <div class="form-action">
                   <%= submit_tag t('.form.ask_question'), class: 'button button-small button-dark' %>

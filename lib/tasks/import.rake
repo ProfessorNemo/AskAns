@@ -26,6 +26,8 @@ namespace :import do
       end
 
       user = User.new(user_data)
+      user.role = 'basic'
+      user.status = 'activated'
 
       puts "Saving User with email '#{user.email}'"
 
