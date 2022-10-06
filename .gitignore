@@ -39,3 +39,5 @@ yarn-debug.log*
 .yarn
 spec/specs.txt
 .vscode/*
+yarn.lock
+trsee
