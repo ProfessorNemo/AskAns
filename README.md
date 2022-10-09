@@ -1,6 +1,6 @@
 # Ask-Ans
 
-###### Ruby: `3.0.3` Rails: `6.1.6.` Language `Russian/English`
+###### Ruby: `3.0.3` Rails: `6.1.6.` Yarn: `1.22.19.` Nodejs: `12.22.9.` Language `Russian/English`
 ###### Application screenshots are located in the "screenshots" directory
 
 ### About:
@@ -74,7 +74,12 @@ $ bundle
 $ make initially
 ```
 
-4. Generate `master.key` and credentials file (at first remove old file `config/credentials.yml.enc`)
+4. Install and update all dependencies in "package.json" file
+```
+$ yarn install && yarn upgrade
+```
+
+5. Generate `master.key` and credentials file (at first remove old file `config/credentials.yml.enc`)
 ```
 $ EDITOR=nano rails credentials:edit
 ```
