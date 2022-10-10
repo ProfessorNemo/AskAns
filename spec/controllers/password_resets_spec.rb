@@ -3,14 +3,14 @@
 RSpec.describe PasswordResetsController, type: :controller do
   describe 'reset_created' do
     let(:user) do
-      User.new email: Faker::Internet.email,
-               name: Faker::Name.name,
-               username: Faker::Artist.name
+      User.create email: Faker::Internet.email,
+                  name: Faker::Name.name,
+                  username: 'Artist',
+                  password: 'Mars123456!',
+                  password_confirmation: 'Mars123456!'
     end
 
     before do
-      user.password = 'Mars123456!'
-      user.save
       user.password_reset_token = Box::Encrypting.digest(SecureRandom.urlsafe_base64)
       user.password_reset_token_sent_at = Time.current
     end
@@ -23,6 +23,21 @@ RSpec.describe PasswordResetsController, type: :controller do
       expect(mail.to).to eq([user.email])
 
       expect(mail.from).to eq([Rails.application.credentials.dig(:action_mailer, :mail_from)])
+    end
+
+    it 'redirects to new_session_path' do
+      post :create, params: { email: user.email }
+
+      expect(response).to redirect_to(new_session_path)
+      expect(flash[:success]).not_to be_nil
+    end
+
+    it 'redirects to new_session_path if update password' do
+      patch :update
+
+      expect(response).to redirect_to(new_session_path)
+      expect(response).to have_http_status(:found)
+      expect(flash[:success]).to be_nil
     end
   end
 end

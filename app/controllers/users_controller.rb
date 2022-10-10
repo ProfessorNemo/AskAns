@@ -111,7 +111,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    sign_out
     if @user.destroy
       flash[:success] = t '.success'
       redirect_to root_path

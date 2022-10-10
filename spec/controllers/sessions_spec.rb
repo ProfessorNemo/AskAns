@@ -41,21 +41,53 @@ RSpec.describe SessionsController, type: :controller do
     end
   end
 
-  describe '#create' do
-    it 'redirects to @user' do
-      new_user = User.new(id: 1, name: Faker::Name.name,
-                          email: Faker::Internet.email,
-                          username: Faker::Artist.name)
-      post :create, params: {
-        user: {
-          id: new_user.id,
-          username: new_user.name,
-          email: new_user.email
-        }
-      }
+  context 'when user is logged in' do
+    describe '#create' do
+      it 'redirects to @user' do
+        user = User.create(id: 1, name: Faker::Name.name,
+                           email: Faker::Internet.email,
+                           username: 'Artist',
+                           password: 'Mars123456!',
+                           password_confirmation: 'Mars123456!')
 
-      expect(response).to have_http_status(:ok)
-      expect(new_user.id).to eq(1)
+        user.remember_me
+        cookies.encrypted.permanent[:remember_token] = user.remember_token
+        cookies.encrypted.permanent[:user_id] = user.id
+
+        post :create
+
+        expect(user.persisted?).to be(true)
+        expect(response).to have_http_status(:found)
+        expect(response).to redirect_to(root_path)
+        expect(user.id).to eq(1)
+        # вы уже вошли в систему
+        expect(flash[:warning]).not_to be_nil
+      end
+
+      specify '#destroy' do
+        delete :destroy
+
+        expect(response).to redirect_to(root_path)
+      end
+    end
+  end
+
+  context 'when the user is not logged in' do
+    describe '#create' do
+      it 'redirects to @user' do
+        user = User.new(id: 1, name: Faker::Name.name,
+                        email: Faker::Internet.email,
+                        username: 'Artist',
+                        password: 'Mars123456!',
+                        password_confirmation: 'Mars123456!')
+
+        post :create
+
+        expect(user.persisted?).to be(false)
+        expect(response).not_to have_http_status(:found)
+        expect(response).to render_template('new')
+        expect(flash[:warning]).not_to be_nil
+      end
     end
   end
 end
