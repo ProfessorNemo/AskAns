@@ -11,7 +11,7 @@ RSpec.describe UserPolicy, type: :policy do
     it { is_expected.to permit_action(:show) }
     it { is_expected.to permit_action(:create) }
     it { is_expected.to permit_action(:index) }
-    it { is_expected.to forbid_action(:destroy) }
+    it { is_expected.to permit_action(:destroy) }
     it { is_expected.to forbid_action(:update) }
   end
 end

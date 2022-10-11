@@ -4,6 +4,16 @@ RSpec.describe Question, type: :model do
   let(:user) { create(:id) }
   let(:question) { build(:question_id) }
 
+  context 'validations check' do
+    # убедиться, что есть валидация на присутствие текста
+    it { is_expected.to validate_presence_of :text }
+  end
+
+  # вопрос принадлежит юзеру
+  describe 'associations' do
+    it { is_expected.to belong_to(:user).class_name('User') }
+  end
+
   context 'creating a question' do
     it 'when the user is the author' do
       expect(user.role).to eq('basic')
