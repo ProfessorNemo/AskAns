@@ -71,34 +71,42 @@ RSpec.describe QuestionsController, type: :controller do
   end
 
   context 'when the destroy and update methods are executed' do
-    let(:user) { create(:admin) }
+    let(:user) { create(:user) }
     let(:question) { build(:guest, text: quest[0]) }
-    let(:another_user) { create(:another_user) }
 
     before do
       question.user = user
       question.save
-      question.update answer: 'Nothing!', author_id: another_user.id
+      user.remember_me
+      cookies.encrypted.permanent[:remember_token] = user.remember_token
+      cookies.encrypted.permanent[:user_id] = user.id
     end
 
     it 'question updated' do
-      # don't working....?
+      expect(question.persisted?).to be(true)
+
       put :update,
           params: { 'id' => question.id,
-                    'question' => { 'author_id' => another_user.id,
-                                    'answer' => 'Nothing!' } }
+                    'question' => { 'user_id' => user.id, 'answer' => 'Nothing!' } }
+
+      question = assigns(:question)
 
       expect(question.updated_at != question.created_at).to be(true)
-      expect(question.persisted?).to be(true)
+
       expect(response).to have_http_status(:found)
-      expect(flash[:success]).to be_nil
+      expect(response).to redirect_to(user_path(question.user))
+      expect(flash[:success]).not_to be_nil
     end
 
     it 'question deleted' do
-      question.destroy
+      delete :destroy, params: { id: question.id }
+      question = assigns(:question)
 
       expect(question.persisted?).to be(false)
       expect(Question.find_by(id: question.id).present?).to be(false)
+      expect(response).to redirect_to(user_path(user))
+      expect(response).to have_http_status(:found)
+      expect(flash[:success]).not_to be_nil
     end
   end
 end

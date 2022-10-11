@@ -26,6 +26,6 @@ class UserPolicy < ApplicationPolicy
   # никто не может из неадминского контроллера. Но при желании можно сделать так,
   # чтоб юзеры смогли удалять свои учетные записи
   def destroy?
-    false
+    true
   end
 end
