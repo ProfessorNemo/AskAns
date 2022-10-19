@@ -14,8 +14,8 @@ module Api
     private
 
     # м-д "authorize" возьмется из базового контроллера "BaseController"
-    def authorize_user!
-      authorize(@user || User)
-    end
+    # def authorize_user!
+    #   authorize(@user || User)
+    # end
   end
 end

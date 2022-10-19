@@ -26,10 +26,12 @@
 
     <div class="user-details">
 
-      <div class="user-ask-button container text-center">
-        <%= link_to t('global.button.ask'), user_path(@user), class: 'button button-light',
-                    id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
-      </div>
+      <% unless current_user == @user  %>
+        <div class="user-ask-button container text-center">
+          <%= link_to t('global.button.ask'), user_path(@user), class: 'button button-light',
+                      id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
+        </div>
+      <% end %>
 
       <div class="user-statistics container text-center">
 

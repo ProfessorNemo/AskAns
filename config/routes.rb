@@ -26,8 +26,16 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :hashtags, only: :index
-
     resources :users, only: :index
+  end
+
+  # API V1 (версия 1) routes
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [] do
+        resources :questions, only: :index
+      end
+    end
   end
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
