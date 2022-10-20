@@ -15,6 +15,10 @@ RSpec.describe PasswordResetsController, type: :controller do
       user.password_reset_token_sent_at = Time.current
     end
 
+    after do
+      User.destroy_all
+    end
+
     it 'renders the headers' do
       mail = PasswordResetMailer.with(user: user).reset_email.deliver_now
 

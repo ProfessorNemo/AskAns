@@ -31,7 +31,13 @@ done with a manual approach (without the use of libraries such as "device") !
 ### Administration:
 
 Created a separate page for the administrator.
-An administrator can upload a zipped Excel file and create multiple users with a single request. Only the administrator has access to the results of a request to the User Controller API, which provides a response in JSON format. All users, including guest users, have access to the user API controller.
+An administrator can upload zipped Excel files and create multiple users with a single request.
+
+### API:
+All users except guests have access to API. To access the API, which provides a response in JSON format, you need to generate an `api-token` on the user page, which will then be displayed on the profile edit page.
+users_api: `http://127.0.0.1:3000/api/v1/users?api_token=************`
+questions_api (for a specific username): `http://127.0.0.1:3000/api/v1/users/username/questions?api_token=************`
+hashtags_api: `http://127.0.0.1:3000/api/v1/hashtags?api_token=****************`
 
 ### Authorization:
 
@@ -111,6 +117,7 @@ action_mailer:
 recaptcha:
   site_key: **************************************
   secret_key: **************************************
+api_token: ******************************************
 ```
 
 5. Start sever

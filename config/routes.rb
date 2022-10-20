@@ -24,17 +24,15 @@ Rails.application.routes.draw do
 
   resources :hashtags, only: %i[show], param: :text
 
-  namespace :api do
-    resources :hashtags, only: :index
-    resources :users, only: :index
-  end
-
   # API V1 (версия 1) routes
   namespace :api do
     namespace :v1 do
-      resources :users, only: [] do
+      resources :users, only: [], param: :username do
         resources :questions, only: :index
       end
+
+      resources :hashtags, only: :index
+      resources :users, only: :index
     end
   end
 

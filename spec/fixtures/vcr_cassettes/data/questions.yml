@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://127.0.0.1:3000/api/v1/users/Scarlet_Witch/questions?api_token=<api_token>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.5.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Language:
+      - ru
+      Content-Type:
+      - application/json; charset=utf-8
+      Vary:
+      - Accept
+      X-Bullet-Footer-Text:
+      - '["user: professor  USE eager loading detected    Question => [:author]\n  Add
+        to your query: .includes([:author])"]'
+      X-Bullet-Console-Text:
+      - !binary |-
+        WyJ1c2VyOiBwcm9mZXNzb3JcblVTRSBlYWdlciBsb2FkaW5nIGRldGVjdGVkXG4gIFF1ZXN0aW9uID0+IFs6YXV0aG9yXVxuICBBZGQgdG8geW91ciBxdWVyeTogLmluY2x1ZGVzKFs6YXV0aG9yXSlcbkNhbGwgc3RhY2tcbiAgL2hvbWUvcHJvZmVzc29yL9CU0L7QutGD0LzQtdC90YLRiy9ydWJ5dHV0L2dpdHMvQXNrQW5zL2FwcC9jb250cm9sbGVycy9hcGkvdjEvcXVlc3Rpb25zX2NvbnRyb2xsZXIucmI6OTppbiBgaW5kZXgnXG4gIC9ob21lL3Byb2Zlc3Nvci/QlNC+0LrRg9C80LXQvdGC0YsvcnVieXR1dC9naXRzL0Fza0Fucy9hcHAvY29udHJvbGxlcnMvY29uY2VybnMvaW50ZXJuYXRpb25hbGl6YXRpb24ucmI6MjA6aW4gYHN3aXRjaF9sb2NhbGUnXG5cbiJd
+      Cache-Control:
+      - no-store, must-revalidate, private, max-age=0
+      X-Request-Id:
+      - cc10b147-ddfb-4f0b-a2f0-a1b080e28a1c
+      X-Runtime:
+      - '0.054345'
+      X-Miniprofiler-Original-Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Miniprofiler-Ids:
+      - 3ulkhi99uy03yh39m3xh,2xy2estjzn5ffsd4ulbt,e55rwk8sz3k9k07r3wkm
+      Set-Cookie:
+      - __profilin=p%3Dt; path=/; HttpOnly; SameSite=Lax
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3siaWQiOjEsImFuc3dlciI6ItCSINC60L7Qu9C00L7QstGB0YLQstC1LCDQs9C+0YHQv9C+0LTQuNC9INCf0YDQvtGE0LXRgdGB0L7RgCwg0LIg0LrQvtC70LTQvtCy0YHRgtCy0LUpIiwiYXV0aG9yIjp7ImlkIjo4LCJlbWFpbCI6ImdsZWJvY2VhbmJvcm5AZ21haWwuY29tIiwibmFtZSI6IkdsZWJjaGlrIiwidXNlcm5hbWUiOiJwcm9mZXNzb3IifSwidGV4dCI6ItCf0YDQuNCy0LXRgiwg0JDQu9Cw0Y8g0JLQtdC00YzQvNCwISDQmtCw0Log0L/RgNC+0YjQtdC7INGC0LLQvtC5INC00LXQvdGMPyIsInVzZXIiOnsiaWQiOjcsImVtYWlsIjoiZWxpemFiZXRoLW9sc2VuQGdtYWlsLmNvbSIsIm5hbWUiOiJFbGl6YWJldGgiLCJ1c2VybmFtZSI6IlNjYXJsZXRfV2l0Y2gifX0seyJpZCI6NSwiYW5zd2VyIjoi0YHQvtGB0LjRgdC60LAiLCJhdXRob3IiOnsiaWQiOjgsImVtYWlsIjoiZ2xlYm9jZWFuYm9ybkBnbWFpbC5jb20iLCJuYW1lIjoiR2xlYmNoaWsiLCJ1c2VybmFtZSI6InByb2Zlc3NvciJ9LCJ0ZXh0Ijoi0K3RgtC+INCy0LrRg9GB0L3QvtC1INC40LfQtNC10LvQuNC1INC/0L7Rj9Cy0LjQu9C+0YHRjCDQsiDRgdGA0LXQtNC90LXQstC10LrQvtCy0L7QuSDQk9C10YDQvNCw0L3QuNC4LCDQsCDQv9GA0LjQvtCx0YDQtdC70L4g0YHQvtCy0YDQtdC80LXQvdC90YvQuSDQstC40LQg0LIg0L3QsNGH0LDQu9C1IDE5INCy0LXQutCwLiIsInVzZXIiOnsiaWQiOjcsImVtYWlsIjoiZWxpemFiZXRoLW9sc2VuQGdtYWlsLmNvbSIsIm5hbWUiOiJFbGl6YWJldGgiLCJ1c2VybmFtZSI6IlNjYXJsZXRfV2l0Y2gifX0seyJpZCI6NiwiYW5zd2VyIjoi0L/QvtC70L7RgdCwIiwiYXV0aG9yIjp7ImlkIjo4LCJlbWFpbCI6ImdsZWJvY2VhbmJvcm5AZ21haWwuY29tIiwibmFtZSI6IkdsZWJjaGlrIiwidXNlcm5hbWUiOiJwcm9mZXNzb3IifSwidGV4dCI6ItCSINGB0YLQsNGA0L7QuSDRgNGD0YHRgdC60L7QuSDQtNC10YDQtdCy0L3QtSDQvdC10LHQvtC70YzRiNC+0Lkg0YPQt9C60LjQuSDRg9GH0LDRgdGC0L7QuiDQv9Cw0YXQvtGC0L3QvtC5INC30LXQvNC70LguIiwidXNlciI6eyJpZCI6NywiZW1haWwiOiJlbGl6YWJldGgtb2xzZW5AZ21haWwuY29tIiwibmFtZSI6IkVsaXphYmV0aCIsInVzZXJuYW1lIjoiU2NhcmxldF9XaXRjaCJ9fSx7ImlkIjo3LCJhbnN3ZXIiOiLQv9C+0LTQvtGA0L7QttC90LjQuiIsImF1dGhvciI6eyJpZCI6OCwiZW1haWwiOiJnbGVib2NlYW5ib3JuQGdtYWlsLmNvbSIsIm5hbWUiOiJHbGViY2hpayIsInVzZXJuYW1lIjoicHJvZmVzc29yIn0sInRleHQiOiLQmtCw0LrQsNGPINGC0YDQsNCy0LAg0LHRi9C70LAg0L3QsNC30LLQsNC90LAg0LjQvdC00LXQudGG0LDQvNC4IMKr0YHQu9C10LTQvtC8INCx0LXQu9C+0LPQviDRh9C10LvQvtCy0LXQutCwwrs/XHJcbiIsInVzZXIiOnsiaWQiOjcsImVtYWlsIjoiZWxpemFiZXRoLW9sc2VuQGdtYWlsLmNvbSIsIm5hbWUiOiJFbGl6YWJldGgiLCJ1c2VybmFtZSI6IlNjYXJsZXRfV2l0Y2gifX0seyJpZCI6OSwiYW5zd2VyIjpudWxsLCJhdXRob3IiOm51bGwsInRleHQiOiLQn9GA0LjQstC10YIg0LjQtyDQvNCw0YjQuNC90YshIiwidXNlciI6eyJpZCI6NywiZW1haWwiOiJlbGl6YWJldGgtb2xzZW5AZ21haWwuY29tIiwibmFtZSI6IkVsaXphYmV0aCIsInVzZXJuYW1lIjoiU2NhcmxldF9XaXRjaCJ9fSx7ImlkIjoxMCwiYW5zd2VyIjpudWxsLCJhdXRob3IiOnsiaWQiOjgsImVtYWlsIjoiZ2xlYm9jZWFuYm9ybkBnbWFpbC5jb20iLCJuYW1lIjoiR2xlYmNoaWsiLCJ1c2VybmFtZSI6InByb2Zlc3NvciJ9LCJ0ZXh0Ijoi0JrQsNC60L7QuSDQt9C90LDQuiDQstC+0YHRgtC+0YfQvdC+0LPQviDQs9C+0YDQvtGB0LrQvtC/0LAg0YHQu9C10LTRg9C10YIg0LfQsCDQt9C90LDQutC+0Lwg0JTRgNCw0LrQvtC90LA/IiwidXNlciI6eyJpZCI6NywiZW1haWwiOiJlbGl6YWJldGgtb2xzZW5AZ21haWwuY29tIiwibmFtZSI6IkVsaXphYmV0aCIsInVzZXJuYW1lIjoiU2NhcmxldF9XaXRjaCJ9fV0=
+  recorded_at: Wed, 19 Oct 2022 23:53:52 GMT
+recorded_with: VCR 6.1.0

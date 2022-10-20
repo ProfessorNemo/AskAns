@@ -65,7 +65,7 @@ rspec:
 	bundle exec rspec spec/policies/user_policy_spec.rb
 	bundle exec rspec spec/policies/admin/user_policy_spec.rb
 	bundle exec rspec spec/requests/client_spec.rb
-	bundle exec rspec spec/requests/users_json_spec.rb
+	bundle exec rspec spec/requests/api_json_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_export_service_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_import_service_spec.rb
 

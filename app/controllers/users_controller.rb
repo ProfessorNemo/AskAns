@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   before_action :authorize_user!
   after_action :verify_authorized
 
+  before_action :check_button, only: :show
+
   # Это действие отзывается, когда пользователь заходит по адресу /users
   def index
     @users = User.sorted
@@ -131,7 +133,7 @@ class UsersController < ApplicationController
   # :avatar_url. Другие ключи будут отброшены.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :name, :username, :old_password, :background_color)
+                                 :name, :username, :old_password, :background_color, :api_token)
   end
 
   # Если загруженный из базы юзер и текущий залогиненный не совпадают — посылаем
@@ -143,5 +145,16 @@ class UsersController < ApplicationController
 
   def authorize_user!
     authorize(@user || User)
+  end
+
+  # проверка нажатия кнопки генерации токена на странице пользователя
+  def check_button
+    @user = User.find params[:id]
+
+    if params[:pressing] && @user == current_user
+      @user.generate_token
+    elsif params[:pressing] && @user != current_user
+      flash.now[:warning] = t '.forbidden'
+    end
   end
 end

@@ -79,6 +79,16 @@ class User < ApplicationRecord
     false
   end
 
+  # сгенерировать api_token
+  def generate_token
+    transaction do
+      if has_attribute?('api_token')
+        update api_token: SecureRandom.alphanumeric(32)
+        reload
+      end
+    end
+  end
+
   private
 
   # функция обратного вызова

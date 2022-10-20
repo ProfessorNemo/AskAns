@@ -17,8 +17,8 @@ VCR.configure do |c|
   c.cassette_library_dir = File.join(
     File.dirname(__FILE__), '..', 'fixtures', 'vcr_cassettes'
   )
-  # чтоб реальный токен не попал в кассеты (замена на заглушку "<API_KEY>")
-  c.filter_sensitive_data('<API_KEY>') do
-    ENV.fetch('API_KEY', 'hidden')
+  # чтоб реальный токен не попал в кассеты (замена на заглушку "<api_token>")
+  c.filter_sensitive_data('<api_token>') do
+    Rails.application.credentials[:api_token]
   end
 end

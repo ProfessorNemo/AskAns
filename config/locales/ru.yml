@@ -111,6 +111,7 @@ ru:
         password: Пароль
         password_confirmation: Подтверждение пароля
     show:
+      forbidden: Это не ваш профиль!
       form:
         ask_question: Задать вопрос
         your_question: Ваш вопрос для %{username}

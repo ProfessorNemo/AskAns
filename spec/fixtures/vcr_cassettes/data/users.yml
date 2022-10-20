@@ -2,23 +2,17 @@
 http_interactions:
 - request:
     method: get
-    uri: http://127.0.0.1:3000/api/users
+    uri: http://127.0.0.1:3000/api/v1/users?api_token=<api_token>
     body:
       encoding: US-ASCII
       string: ''
     headers:
-      Accept:
-      - text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
       User-Agent:
-      - Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0
-      Host:
-      - 127.0.0.1:3000
-      Connection:
-      - keep-alive
-      Token:
-      - VX1wGmO7YJWfW8XL3PY4JtUOm4VpQDc6lXywhnh%2FrYnBtq0wKPnbbYAvSIy87cknI7hv
+      - Faraday v2.5.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
@@ -40,22 +34,24 @@ http_interactions:
       - ru
       Content-Type:
       - application/json; charset=utf-8
+      Vary:
+      - Accept
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - 29cd510c-0358-4bfc-909b-4f7530fb7d9c
+      - baf0fc98-5e0d-4020-940c-f4c9c9bfee7a
       X-Runtime:
-      - '0.005878'
+      - '0.062165'
       X-Miniprofiler-Original-Cache-Control:
       - max-age=0, private, must-revalidate
       X-Miniprofiler-Ids:
-      - qzxwhki0se5ge9g5drrm,2nmrcpzcp255ogipe8kq,hb0w6bhys7wj3gmon8mr,9zs7vvjgnn0tv3gkzkat,42dlyz4kh2yzv198bg7v,r98onuf8q7pz6zqubv9z,8tx1exeyvyqfqj4oqtaw,d2415sixwub588t2sr77,8uet16b5o2qp777nao2q,absqr4fhf6engu5q7zoh,axjxde8xvijihfv9nk1u,meo90gytarp06plk7i3c,hrnrs6ievqttsj6nt3fw,p4hhzfhts7v0t4ga7kic,tgdbj7su28vg7ag1ggws,wn4ybz9x4vjrswj4fmtv,h94f4bej09u6rprain3u,ig6it8yfp4zn3nwt2963,58m879tilxevdzn5ea2o,dbe6qqyjzhm1wht0vjkh
+      - e55rwk8sz3k9k07r3wkm,2xy2estjzn5ffsd4ulbt
       Set-Cookie:
       - __profilin=p%3Dt; path=/; HttpOnly; SameSite=Lax
       Transfer-Encoding:
       - chunked
     body:
       encoding: UTF-8
-      string: '[{"id":2,"email":"kent@gmail.com","name":null,"username":"kent"},{"id":3,"email":"nemo@gmail.com","name":"Nemo","username":"captain_nemo"},{"id":4,"email":"nataha@gmail.com","name":"Natasha","username":"nataha"},{"id":5,"email":"galya@gmail.com","name":"Galya","username":"peach"},{"id":6,"email":"sofia@gmail.com","name":"Sofia","username":"darling"},{"id":1,"email":"mara@gmail.com","name":"Marina","username":"marinka"},{"id":7,"email":"elizabeth-olsen@gmail.com","name":"Elizabeth","username":"Scarlet_Witch"},{"id":16,"email":"konstantin@gmail.com","name":"konstantin","username":"Kostet"},{"id":17,"email":"sherlok@gmail.com","name":"Holmes","username":"tracker"},{"id":18,"email":"chack@gmail.com","name":"Chack","username":"chaka"},{"id":19,"email":"michelle@gmail.com","name":"Michelle","username":"catwoman"},{"id":20,"email":"harrisson@gmail.com","name":"Harrisson","username":"goober"},{"id":21,"email":"jan@gmail.com","name":"Jan","username":"zhenya"},{"id":25,"email":"marko@mail.ru","name":"Marko","username":"markopolo"},{"id":15,"email":"gleboceanborn@gmail.com","name":"Glebchik","username":"professor"}]'
-  recorded_at: Tue, 27 Sep 2022 21:47:44 GMT
+      string: '[{"id":2,"email":"kent@gmail.com","name":null,"username":"kent"},{"id":3,"email":"nemo@gmail.com","name":"Nemo","username":"captain_nemo"},{"id":4,"email":"nataha@gmail.com","name":"Natasha","username":"nataha"},{"id":5,"email":"galya@gmail.com","name":"Galya","username":"peach"},{"id":7,"email":"elizabeth-olsen@gmail.com","name":"Elizabeth","username":"Scarlet_Witch"},{"id":9,"email":"sherlok@gmail.com","name":"Holmes","username":"tracker"},{"id":10,"email":"chack@gmail.com","name":"Chack","username":"chaka"},{"id":11,"email":"michelle@gmail.com","name":"Michelle","username":"catwoman"},{"id":12,"email":"harrisson@gmail.com","name":"Harrisson","username":"goober"},{"id":13,"email":"jan@gmail.com","name":"Jan","username":"zhenya"},{"id":6,"email":"sofia@gmail.com","name":"Sofia","username":"darling"},{"id":8,"email":"gleboceanborn@gmail.com","name":"Glebchik","username":"professor"}]'
+  recorded_at: Wed, 19 Oct 2022 23:53:52 GMT
 recorded_with: VCR 6.1.0
