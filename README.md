@@ -1,6 +1,6 @@
 # Ask-Ans
 
-###### Ruby: `3.0.3` Rails: `6.1.6` Yarn: `1.22.19` Nodejs: `12.22.9` Language `Russian/English`
+###### Ruby: `3.0.3` Rails: `6.1.6` Yarn: `1.22.19` Nodejs: `12.22.9` Language: `Russian/English`
 ###### Application screenshots are located in the "screenshots" directory
 
 ### About:
