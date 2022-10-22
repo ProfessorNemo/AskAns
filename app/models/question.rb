@@ -55,10 +55,12 @@ class Question < ApplicationRecord
   def create_hashtags
     return if author_id.nil?
 
-    self.hashtags =
-      parse_hashtags("#{text} #{answer}").map do |hashtag|
-        Hashtag.create_or_find_by(text: "##{hashtag}")
-      end
+    transaction do
+      self.hashtags =
+        parse_hashtags("#{text} #{answer}").map do |hashtag|
+          Hashtag.create_or_find_by(text: "##{hashtag}")
+        end
+    end
   end
 
   def del

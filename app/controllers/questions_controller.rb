@@ -29,19 +29,35 @@ class QuestionsController < ApplicationController
   # Действие create будет отзываться при POST-запросе по адресу /questions из
   # формы нового вопроса, которая находится в шаблоне на странице
   # /questions/edit
+  # def create
+  #   @question = Question.new question_params
+
+  #   @question.author = current_user
+
+  #   # Проверяем капчу вместе с сохранением вопроса. Если в капче была допущена
+  #   # ошибка, она будет добавлена в ошибки @question.errors.
+  #   if check_captcha(@question) && @question.save
+  #     flash[:success] = t('.success')
+  #     redirect_to user_path(@question.user)
+  #   else
+  #     # потому что "new" - шаблона нет
+  #     render :edit
+  #   end
+  # end
+
+  # обращаемся к output по ключу "question" (см. метод build_model)
   def create
-    @question = Question.new question_params
+    Questions::Create.call(params: question_params,
+                           current_user: current_user) do |m|
+      m.failure :validation do |result|
+        @question = result[:question]
+        render :edit
+      end
 
-    @question.author = (current_user.presence)
-
-    # Проверяем капчу вместе с сохранением вопроса. Если в капче была допущена
-    # ошибка, она будет добавлена в ошибки @question.errors.
-    if check_captcha(@question) && @question.save
-      flash[:success] = t('.success')
-      redirect_to user_path(@question.user)
-    else
-      # потому что "new" - шаблона нет
-      render :edit
+      # достаем в случае успеха:
+      m.success do |result|
+        redirect_to user_path(result[:question].user), success: t('.success')
+      end
     end
   end
 

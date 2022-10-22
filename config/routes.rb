@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (http://127.0.0.1:3000/sidekiq)
   mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
-  resources :hashtags, only: %i[show], param: :text
+  resources :hashtags, only: :show, param: :text
 
   # API V1 (версия 1) routes
   namespace :api do

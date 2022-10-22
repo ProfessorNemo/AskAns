@@ -6,7 +6,13 @@ class Hashtag < ApplicationRecord
 
   validates :text, presence: true
 
-  scope :with_questions, -> { joins(:questions).distinct }
+  # Все те хэштеги, у которых есть вопросы
+  # scope :with_questions, -> { joins(:questions).distinct }
+  #
+  # или
+  #
+  # Все те хэштеги, у которых есть вопросы (экономия ресурсов ЦП, не используем join)
+  scope :with_questions, -> { where_exists(:question_hashtags) }
 
   scope :alphabetical_sorting, lambda {
     joins(:questions).distinct

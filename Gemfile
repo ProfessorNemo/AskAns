@@ -118,3 +118,7 @@ gem 'recaptcha', '~> 5.12'
 gem 'pundit', '~> 2.2'
 
 gem 'faraday', '~> 2.5'
+
+gem 'dry-transaction', '~> 0.14.0'
+
+gem 'where_exists', '~> 2.0'
