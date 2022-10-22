@@ -178,6 +178,7 @@ FAKE_TOKEN=VX1wGmO7YJWfW8XL3PY4JtUOm4VpQDc6lXywhnh%2FrYnBtq0wKPnbbYAvSIy87cknI7h
 - [`letter_opener`](https://github.com/ryanb/letter_opener) to send emails in the development
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
 - [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password)
+- [`dry-transaction`](https://github.com/dry-rb/dry-transaction) This is a library provides an easy way to define a complex business transaction that involves multi-stage processing and many different objects, in particular to capture and return errors at any stage of the transaction.
 - [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email
 - [`where_exists`](https://github.com/EugZol/where_exists) Rails way to harness the power of SQL EXISTS condition
 - [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives
