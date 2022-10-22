@@ -179,6 +179,7 @@ FAKE_TOKEN=VX1wGmO7YJWfW8XL3PY4JtUOm4VpQDc6lXywhnh%2FrYnBtq0wKPnbbYAvSIy87cknI7h
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
 - [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password)
 - [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email
+- [`where_exists`](https://github.com/EugZol/where_exists) Rails way to harness the power of SQL EXISTS condition
 - [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives
 - [`caxlsx`](https://github.com/caxlsx/caxlsx) this is a solution that allows you to create .xlsx files
 - [`caxlsx_rails`](https://github.com/caxlsx/caxlsx_rails) this is a solution that allows you to work with templates
