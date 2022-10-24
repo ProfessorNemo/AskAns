@@ -18,8 +18,8 @@ document.addEventListener("turbolinks:load", function() {
                 },
                 // в качестве значения - id тегов, в качестве отображения и для поиска - title
                 valueField: 'id',
-                labelField: 'title',
-                searchField: 'title',
+                labelField: 'text',
+                searchField: 'text',
                 // если тега нет, то создать его не получится
                 create: false,
                 // load функции, которая принимает запрос и callback (term - это то, что написал юзер)

@@ -10,7 +10,7 @@ gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.4.3'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -122,3 +122,5 @@ gem 'faraday', '~> 2.5'
 gem 'dry-transaction', '~> 0.14.0'
 
 gem 'where_exists', '~> 2.0'
+
+gem "mailjet", "~> 1.7"
