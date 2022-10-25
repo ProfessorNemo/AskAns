@@ -3,6 +3,8 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  config.action_mailer.delivery_method = :mailjet
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

@@ -44,5 +44,7 @@ module AskAns
 
     # временная зона сервера
     config.time_zone = 'Moscow'
+
+    config.action_mailer.delivery_method = :mailjet
   end
 end
