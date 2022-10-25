@@ -2,7 +2,7 @@
 
 RSpec.configure { |c| c.before { expect(controller).not_to be_nil } }
 
-RSpec.describe QuestionsController, type: :controller do
+RSpec.describe QuestionsController do
   User.destroy_all
 
   let(:quest) { ['What are you doind here?', 'Where are my 17 years old?'].freeze }

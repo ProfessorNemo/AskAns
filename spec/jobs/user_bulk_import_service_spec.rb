@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe UserBulkImportJob, type: :job do
+RSpec.describe UserBulkImportJob do
   include ActiveJob::TestHelper
 
   subject(:job) { described_class.perform_later archive_key, initiator }

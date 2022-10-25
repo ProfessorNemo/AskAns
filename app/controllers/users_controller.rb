@@ -36,60 +36,6 @@ class UsersController < ApplicationController
     @hashtags = Hashtag.with_questions
   end
 
-  def new
-    @user = User.new
-  end
-
-  # Действие create будет отзываться при POST-запросе по адресу /users из формы
-  # нового пользователя, которая находится в шаблоне на странице /users/new.
-  def create
-    @user = User.new user_params
-
-    if @user.save
-      # Если удалось сохранить, отправляем пользователя на главную с сообщение, что
-      # пользователь создан.
-      # признак для юзера, что он в систему вошел
-      sign_in @user
-      WelcomeMailer.with(user: @user).welcome_email.deliver_later
-      flash[:success] = t('.success', name: current_user.name_or_email)
-      redirect_to root_path
-    else
-      # Если не удалось по какой-то причине сохранить пользователя, то рисуем
-      # (обратите внимание, это не редирект), страницу new с формой
-      # пользователя, который у нас лежит в переменной @user. В этом объекте
-      # содержатся ошибки валидации, которые выведет шаблон формы.
-      render :new
-    end
-  end
-
-  def edit; end
-
-  # Действие update будет отзываться при PUT-запросе из формы редактирования
-  # пользователя, которая находится по адресу /users/:id, например,
-  # /users/1
-  #
-  # Перед этим действием сработает before_action :load_user и в переменной @user
-  # у нас будет лежать пользовать с нужным id равным params[:id].
-  def update
-    # Аналогично create, мы получаем параметры нового (обновленного)
-    # пользователя с помощью метода user_params, и пытаемся обновить @user с
-    # этими значениями.
-    if @user.update user_params
-      flash[:success] = t '.success'
-      redirect_to user_path(@user)
-    else
-      # Если не получилось, как и в create рисуем страницу редактирования
-      # пользователя, на которой нам будет доступен объект @user, содержащий
-      # информацию об ошибках валидации, которые отобразит форма.
-      render :edit
-    end
-  end
-
-  # Это действие отзывается, когда пользователь заходит по адресу /users/:id,
-  # например /users/1
-  #
-  # Перед этим действием сработает before_action :load_user и в переменной @user
-  # у нас будет лежать пользовать с нужным id равным params[:id].
   def show
     @user = @user.decorate
 
@@ -110,6 +56,60 @@ class UsersController < ApplicationController
     @answers_count = @questions.answered.count
     # Количество вопросов без ответа
     @unanswered_count = @questions.unanswered.count
+  end
+
+  # Действие create будет отзываться при POST-запросе по адресу /users из формы
+  # нового пользователя, которая находится в шаблоне на странице /users/new.
+  def new
+    @user = User.new
+  end
+
+  def edit; end
+
+  # Действие update будет отзываться при PUT-запросе из формы редактирования
+  # пользователя, которая находится по адресу /users/:id, например,
+  # /users/1
+  #
+  # Перед этим действием сработает before_action :load_user и в переменной @user
+  # у нас будет лежать пользовать с нужным id равным params[:id].
+  def create
+    @user = User.new user_params
+
+    if @user.save
+      # Если удалось сохранить, отправляем пользователя на главную с сообщение, что
+      # пользователь создан.
+      # признак для юзера, что он в систему вошел
+      sign_in @user
+      WelcomeMailer.with(user: @user).welcome_email.deliver_later
+      flash[:success] = t('.success', name: current_user.name_or_email)
+      redirect_to root_path
+    else
+      # Если не удалось по какой-то причине сохранить пользователя, то рисуем
+      # (обратите внимание, это не редирект), страницу new с формой
+      # пользователя, который у нас лежит в переменной @user. В этом объекте
+      # содержатся ошибки валидации, которые выведет шаблон формы.
+      render :new
+    end
+  end
+
+  # Это действие отзывается, когда пользователь заходит по адресу /users/:id,
+  # например /users/1
+  #
+  # Перед этим действием сработает before_action :load_user и в переменной @user
+  # у нас будет лежать пользовать с нужным id равным params[:id].
+  def update
+    # Аналогично create, мы получаем параметры нового (обновленного)
+    # пользователя с помощью метода user_params, и пытаемся обновить @user с
+    # этими значениями.
+    if @user.update user_params
+      flash[:success] = t '.success'
+      redirect_to user_path(@user)
+    else
+      # Если не получилось, как и в create рисуем страницу редактирования
+      # пользователя, на которой нам будет доступен объект @user, содержащий
+      # информацию об ошибках валидации, которые отобразит форма.
+      render :edit
+    end
   end
 
   def destroy

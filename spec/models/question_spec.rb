@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Question, type: :model do
+RSpec.describe Question do
   let(:user) { create(:id) }
   let(:question) { build(:question_id) }
 

@@ -5,7 +5,7 @@
 				<li class="dropdown">
 					<%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-white',
 										data: {"bs-toggle": 'dropdown'} do %>
-							<%= tag.span '', class: "famfamfam-flag-#{language_bar}" %>
+							<%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
 						<%= t I18n.locale %>
 					<% end %>
 

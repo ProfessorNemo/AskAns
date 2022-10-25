@@ -8,6 +8,9 @@ class PasswordResetsController < ApplicationController
   before_action :set_user, only: %i[edit update]
 
   # отправить инструкции по сбросу пароля
+  def edit; end
+
+  # Найти юзера по токену и emaily
   def create
     # найдем юзера по его емэйлу, взяв его из params[:email]
     # В params[:email] email будет доступен, потому что в форме "new"
@@ -36,9 +39,6 @@ class PasswordResetsController < ApplicationController
     # редирект на страницу входа в систему
     redirect_to new_session_path
   end
-
-  # Найти юзера по токену и emaily
-  def edit; end
 
   def update
     if @user.update user_params

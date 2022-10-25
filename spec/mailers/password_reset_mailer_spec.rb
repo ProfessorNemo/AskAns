@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe PasswordResetMailer, type: :mailer do
+RSpec.describe PasswordResetMailer do
   let(:user) { build_stubbed(:another_user) }
   let(:mail) { described_class.with(user: user).reset_email.deliver_now }
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe PasswordResetsController, type: :controller do
+RSpec.describe PasswordResetsController do
   describe 'reset_created' do
     let(:user) do
       User.create email: Faker::Internet.email,

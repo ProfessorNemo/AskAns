@@ -93,6 +93,5 @@ Rails.application.configure do
   # config.action_mailer.perform_deliveries = true
   # Где живет приложение (адрес хоста). Это нужно для того, чтоб
   # правильным образом генерировать полные ссылки с именем домена
-  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

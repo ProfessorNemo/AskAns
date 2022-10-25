@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe UserBulkExportJob, type: :job do
+RSpec.describe UserBulkExportJob do
   include ActiveJob::TestHelper
 
   subject(:job) { described_class.perform_later initiator }

@@ -40,7 +40,7 @@
                           которые подходят под критерии пользователя, т.е. исходя из того, что юзер напечатает %>
         <%= f.collection_select :hashtag_ids, (helper_hashtag(1) || []), :id, :text, {selected: params[:hashtag_ids]},
             multiple: true, required: true,
-            class: 'js-multiple-select js-ajax-select w-50', data: {'ajax-url': '/api/hashtags'} %>
+            class: 'js-multiple-select js-ajax-select w-100', data: {'ajax-url': '/api/hashtags'} %>
         </div>
 
         <%= f.submit t('global.button.search'), class: 'btn btn-primary btn-sm mb-3' %>

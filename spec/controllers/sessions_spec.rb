@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe SessionsController, type: :controller do
+RSpec.describe SessionsController do
   describe 'POST #create' do
     let(:user) do
       User.create email: Faker::Internet.email,
@@ -29,7 +29,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe '#new' do
     it 'render :new' do
-      new_user = build :user
+      new_user = build(:user)
       get :new, params: {
         user: {
           id: new_user.id,

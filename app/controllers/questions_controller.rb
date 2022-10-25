@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   # GET /questions/1/edit
-  def edit; end
+  def show; end
 
   # Действие create будет отзываться при POST-запросе по адресу /questions из
   # формы нового вопроса, которая находится в шаблоне на странице
@@ -46,6 +46,13 @@ class QuestionsController < ApplicationController
   # end
 
   # обращаемся к output по ключу "question" (см. метод build_model)
+  def edit; end
+
+  # Действие update будет отзываться при PUT-запросе из формы редактирования
+  # вопроса, которая находится по адресу /questions/:id, например, /questions/1
+  #
+  # Перед этим действием сработает before_action :load_questions и в переменной
+  # @question у нас будет лежать вопрос с нужным id равным params[:id].
   def create
     Questions::Create.call(params: question_params,
                            current_user: current_user) do |m|
@@ -61,8 +68,8 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # Действие update будет отзываться при PUT-запросе из формы редактирования
-  # вопроса, которая находится по адресу /questions/:id, например, /questions/1
+  # Действие destroy будет отзываться при DELETE-запросе со страницы
+  # пользователя, которая находится по адресу /users/:id/show.
   #
   # Перед этим действием сработает before_action :load_questions и в переменной
   # @question у нас будет лежать вопрос с нужным id равным params[:id].
@@ -75,11 +82,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # Действие destroy будет отзываться при DELETE-запросе со страницы
-  # пользователя, которая находится по адресу /users/:id/show.
-  #
-  # Перед этим действием сработает before_action :load_questions и в переменной
-  # @question у нас будет лежать вопрос с нужным id равным params[:id].
   def destroy
     # Перед тем, как удалять вопрос, сохраним пользователя, чтобы знать, куда
     # редиректить после удаления.
@@ -94,8 +96,6 @@ class QuestionsController < ApplicationController
     flash[:success] = t('.success')
     redirect_to user_path(user)
   end
-
-  def show; end
 
   private
 

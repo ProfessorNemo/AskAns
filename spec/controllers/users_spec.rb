@@ -2,7 +2,7 @@
 
 RSpec.configure { |c| c.before { expect(controller).not_to be_nil } }
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe UsersController do
   let(:user) { create(:user) }
   # before { create_list(:user, 30) }
 
@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe '#new' do
     it 'render :new' do
-      new_user = build :user
+      new_user = build(:user)
       get :new, params: {
         user: {
           id: new_user.id,
