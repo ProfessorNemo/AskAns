@@ -120,9 +120,9 @@ recaptcha:
 api_token: ******************************************
 ```
 
-5. Start sever
-```
+5. Start server:
 In each separate console tab, type the following commands:
+```
 $ make redis
 Then:
 $ bin/dev
