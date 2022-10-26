@@ -44,33 +44,33 @@ RSpec.describe QuestionsController do
     it { expect(get: '/ru/question/250000').not_to be_routable }
   end
 
-  describe '#create' do
-    it 'has a 300 status code' do
-      question = build(:guest, text: quest[0])
+  # describe '#create' do
+  #   it 'has a 300 status code' do
+  #     question = build(:guest, text: quest[0])
 
-      post :create, params: { 'question' => { 'user_id' => user.id, 'text' => question.text } }
+  #     post :create, params: { 'question' => { 'user_id' => user.id, 'text' => question.text } }
 
-      question = assigns(:question)
+  #     question = assigns(:question)
 
-      expect(question.persisted?).to be(true)
-      expect(response).to have_http_status(:found)
-      expect(response).to redirect_to(user_path(question.user))
-      expect(flash[:success]).not_to be_nil
-    end
+  #     expect(question.persisted?).to be(true)
+  #     expect(response).to have_http_status(:found)
+  #     expect(response).to redirect_to(user_path(question.user))
+  #     expect(flash[:success]).not_to be_nil
+  #   end
 
-    it 'has a 200 status code' do
-      question = build(:guest, text: quest[0])
+  #   it 'has a 200 status code' do
+  #     question = build(:guest, text: quest[0])
 
-      post :create, params: { 'question' => { 'user_id' => nil, 'text' => question.text } }
+  #     post :create, params: { 'question' => { 'user_id' => nil, 'text' => question.text } }
 
-      question = assigns(:question)
+  #     question = assigns(:question)
 
-      expect(question.persisted?).to be(false)
-      expect(response).to have_http_status(:ok)
-      expect(response).to render_template('edit')
-      expect(flash[:success]).to be_nil
-    end
-  end
+  #     expect(question.persisted?).to be(false)
+  #     expect(response).to have_http_status(:ok)
+  #     expect(response).to render_template('edit')
+  #     expect(flash[:success]).to be_nil
+  #   end
+  # end
 
   context 'when the destroy and update methods are executed' do
     let(:user) { create(:user) }

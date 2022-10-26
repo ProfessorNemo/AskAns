@@ -26,7 +26,7 @@ RSpec.describe PasswordResetsController do
 
       expect(mail.to).to eq([user.email])
 
-      expect(mail.from).to eq([Rails.application.credentials.dig(:action_mailer, :mail_from)])
+      expect(mail.from).to eq([ENV.fetch('MAILJET_SENDER', nil)])
     end
 
     it 'redirects to new_session_path' do

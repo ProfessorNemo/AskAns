@@ -122,7 +122,7 @@ api_token: ******************************************
 
 5. Start sever
 ```
-Start in a separate console folder:
+In each separate console tab, type the following commands:
 $ make redis
 Then:
 $ bin/dev
@@ -147,9 +147,7 @@ Test archive with users - "lib/zipusers.zip"
 You can then run the tests with the `make rspec` command.
 
 Ask a few questions and save to the database to generate hashtags for the address
-http://127.0.0.1:3000/api/hashtag, which can only be accessed by the admin. From everyone
-question, 3 random hashtags are taken and entered into the database. Hashtags sorted alphabetically
-order and do not repeat. It should be noted that hashtags are generated only by questions,
+`http://127.0.0.1:3000/api/v1/hashtags?api_token=****************`, which can only be accessed by the admin. From everyone question, 3 random hashtags are taken and entered into the database. Hashtags sorted alphabetically order and do not repeat. It should be noted that hashtags are generated only by questions,
 set by registered users.
 
 The `.env` file must contain the following information:
@@ -192,7 +190,10 @@ MAILJET_SENDER = 'example@example.ru'
 - [`Sidekiq`](https://github.com/mperham/sidekiq) uses threads to handle many jobs at the same time in the same process.
 
 ### Сommands to run tests:
+In each separate console tab, type the following commands:
 ```
+$ make redis
+$ bin/dev
 $ make rspec
 ```
 

@@ -14,7 +14,7 @@ RSpec.describe PasswordResetMailer do
     end
 
     it 'sender\'s mailing address' do
-      expect(mail.from).to eq([Rails.application.credentials.dig(:action_mailer, :mail_from)])
+      expect(mail.from).to eq([ENV.fetch('MAILJET_SENDER', nil)])
     end
 
     it 'one email was sent' do
