@@ -1,6 +1,6 @@
 # Ask-Ans
 
-###### Ruby: `3.0.3` Rails: `6.1.6` Yarn: `1.22.19` Nodejs: `12.22.9` Language: `Russian/English`
+###### Ruby: `3.0.3` Rails: `6.1.6` Yarn: `3.2.1` Nodejs: `12.22.9` Node: `17.1.0` Language: `Russian/English`
 ###### Application screenshots are located in the "screenshots" directory
 
 ### About:
@@ -54,16 +54,18 @@ To install Redis, follow the link:
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-en
 
-Create a separate tab where sidekiq will spin:
-```
-$ bundle exec sidekiq -q default
-```
-where default is the execution queue.
-
 Sidekiq has an interface that allows you to see what broke, how many tasks were completed, when it happened, how many connections, what version of Redis has, how much memory Redis is using, etc. To connect this interface in the address bar, write:
 http://127.0.0.1:3000/sidekiq. Only the administrator has access to it.
 
 The application is covered with tests...
+
+### Frontend:
+Made a migration from `Webpacker` to `Esbuild`.
+
+
+### Sending letters:
+In development, mail is sent using a solution such as `letter_opener`, while in production it is `Mailjet`.
+
 
 ### Installation:
 
@@ -85,7 +87,7 @@ $ make initially
 
 4. Install and update all dependencies in "package.json" file
 ```
-$ yarn install && yarn upgrade
+$ yarn install
 ```
 
 5. Generate `master.key` and credentials file (at first remove old file `config/credentials.yml.enc`)
@@ -112,11 +114,6 @@ export RECAPTCHA_ASKANS_PRIVATE_KEY="**************************************"
 ```
 $ EDITOR=vim rails credentials:edit
 
-action_mailer:
-  mail_from: example@gmail.com
-  domain: example@gmail.com
-  password: ****************
-  user_name: example
 recaptcha:
   site_key: **************************************
   secret_key: **************************************
@@ -125,8 +122,10 @@ api_token: ******************************************
 
 5. Start sever
 ```
+Start in a separate console folder:
+$ make redis
+Then:
 $ bin/dev
-$ bundle exec sidekiq -q default
 ```
 
 ### Additional Information:
@@ -162,30 +161,34 @@ TEST_EMAIL=elizabeth-olsen@gmail.com
 TEST_PASSWORD=Elizabeth1989!
 TEST_USERNAME=Scarlet_Witch
 FAKE_TOKEN=VX1wGmO7YJWfW8XL3PY4JtUOm4VpQDc6lXywhnh%2FrYnBtq0wKPnbbYAvSIy87cknI7hv
+MAILJET_API_KEY = '**********************'
+MAILJET_SECRET_KEY = '**************************'
+MAILJET_SENDER = 'example@example.ru'
 ```
 
 ### Some used gems:
 
-- [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization
+- [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization.
 - [`pundit`](https://github.com/varvet/pundit) is a solution for creating a simple, reliable and scalable authorization system.
-- [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down into simple hashes and serializes them to JSON
-- [`bullet`](https://github.com/flyerhzm/bullet) this is a solution to improve the performance of an application by reducing the number of requests it makes
-- [`roo`](https://github.com/roo-rb/roo) for importing data from .xlsx to the database
-- [`rspec-rails`](https://github.com/rspec/rspec-rails) for tests
+- [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down into simple hashes and serializes them to JSON.
+- [`bullet`](https://github.com/flyerhzm/bullet) this is a solution to improve the performance of an application by reducing the number of requests it makes.
+- [`roo`](https://github.com/roo-rb/roo) for importing data from .xlsx to the database.
+- [`rspec-rails`](https://github.com/rspec/rspec-rails) for tests.
 - [`webmock`](https://github.com/bblimke/webmock) this is a library for stubbing and setting expectations on HTTP requests in Ruby.
 - [`vcr`](https://github.com/vcr/vcr) record your test suite's HTTP interactions and replay them during future test runs for fast, deterministic, accurate tests.
 - [`factory_bot_rails`](https://github.com/thoughtbot/factory_bot_rails)
-- [`letter_opener`](https://github.com/ryanb/letter_opener) to send emails in the development
-- [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages
-- [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password)
-- [`dry-transaction`](https://github.com/dry-rb/dry-transaction) This is a library provides an easy way to define a complex business transaction that involves multi-stage processing and many different objects, in particular to capture and return errors at any stage of the transaction.
-- [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email
-- [`where_exists`](https://github.com/EugZol/where_exists) Rails way to harness the power of SQL EXISTS condition
-- [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives
-- [`caxlsx`](https://github.com/caxlsx/caxlsx) this is a solution that allows you to create .xlsx files
-- [`caxlsx_rails`](https://github.com/caxlsx/caxlsx_rails) this is a solution that allows you to work with templates
-- [`activerecord-import`](https://github.com/zdennis/activerecord-import) this is a solution that allows you to import many records into the database in one query
-- [`rubyXL`](https://github.com/weshatheleopard/rubyXL) this is a solution that allows you to read and modify .xlsx files
+- [`letter_opener`](https://github.com/ryanb/letter_opener) to send emails in the development.
+- [`mailjet`](https://github.com/mailjet/mailjet-gem) This is a transactional and marketing email service.
+- [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages.
+- [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password).
+- [`dry-transaction`](https://github.com/dry-rb/dry-transaction) This is a library provides an easy way to define a complex business .transaction that involves multi-stage processing and many different objects, in particular to capture and return errors at any stage of the transaction.
+- [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email.
+- [`where_exists`](https://github.com/EugZol/where_exists) Rails way to harness the power of SQL EXISTS condition.
+- [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives.
+- [`caxlsx`](https://github.com/caxlsx/caxlsx) this is a solution that allows you to create .xlsx files.
+- [`caxlsx_rails`](https://github.com/caxlsx/caxlsx_rails) this is a solution that allows you to work with templates.
+- [`activerecord-import`](https://github.com/zdennis/activerecord-import) this is a solution that allows you to import many records into the database in one query.
+- [`rubyXL`](https://github.com/weshatheleopard/rubyXL) this is a solution that allows you to read and modify .xlsx files.
 - [`Sidekiq`](https://github.com/mperham/sidekiq) uses threads to handle many jobs at the same time in the same process.
 
 ### Сommands to run tests:
