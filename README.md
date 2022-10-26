@@ -121,10 +121,7 @@ api_token: ******************************************
 ```
 
 5. Start server:
-In each separate console tab, type the following commands:
 ```
-$ make redis
-Then:
 $ bin/dev
 ```
 
@@ -190,10 +187,7 @@ MAILJET_SENDER = 'example@example.ru'
 - [`Sidekiq`](https://github.com/mperham/sidekiq) uses threads to handle many jobs at the same time in the same process.
 
 ### Сommands to run tests:
-In each separate console tab, type the following commands:
 ```
-$ make redis
-$ bin/dev
 $ make rspec
 ```
 
