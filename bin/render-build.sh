@@ -4,8 +4,8 @@ set -o errexit
 
 bundle install
 yarn install
-bundle exec rails assets:precompile
-bundle exec rails assets:clean
+# bundle exec rails assets:precompile
+# bundle exec rails assets:clean
 bundle exec rails db:migrate:up VERSION=20220824170626
 bundle exec rails db:migrate:up VERSION=20220824170747
 bundle exec rails db:migrate:up VERSION=20220824171409
