@@ -3,8 +3,8 @@
 set -o errexit
 
 # yarn set version 3.2.1
-bundle install
 yarn install
+bundle install
 # bundle exec rails assets:precompile
 # bundle exec rails assets:clean
 bundle exec rails db:migrate:up VERSION=20220824170626
