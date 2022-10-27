@@ -36,6 +36,7 @@ yarn-debug.log*
 .yarn-integrity
 .byebug_history
 .env
+
 spec/specs.txt
 .vscode/*
 yarn.lock
