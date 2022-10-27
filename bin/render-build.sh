@@ -2,6 +2,7 @@
 # exit on error
 set -o errexit
 
+yarn set version 3.2.1
 bundle install
 yarn install
 bundle exec rails assets:precompile
