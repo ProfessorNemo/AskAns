@@ -21,13 +21,13 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-  username: professor
 
-  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
   database: AskAns_development
+  username: professor
+  password: <%= ENV['APPNAME_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -85,7 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: AskAns_production
-  username: AskAns
-  password: <%= ENV['ASKANS_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
