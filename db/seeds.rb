@@ -8,11 +8,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create email: Dotenv.load('.env')['TEST_EMAIL'],
+User.create email: 'elizabeth-olsen@gmail.com',
             name: 'Elizabeth',
-            username: Dotenv.load('.env')['TEST_USERNAME'],
-            password: Dotenv.load('.env')['TEST_PASSWORD'],
-            password_confirmation: Dotenv.load('.env')['TEST_PASSWORD'],
+            username: 'Scarlet_Witch',
+            password: 'Elizabeth1989!',
+            password_confirmation: 'Elizabeth1989!',
             role: 'basic',
             status: 'activated'
 
