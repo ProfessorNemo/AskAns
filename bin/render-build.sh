@@ -2,7 +2,6 @@
 # exit on error
 set -o errexit
 
-nvm use v17.1.0
 bundle install
 yarn install
 bundle exec rails assets:precompile
