@@ -4,7 +4,7 @@ set -o errexit
 
 bundle install
 yarn install
-yarn buid:css
+yarn build:css
 yarn build
 bundle exec rake assets:precompile
 bundle exec rake assets:clean
