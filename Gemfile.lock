@@ -204,8 +204,11 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (5.0.0)
-    puma (5.6.5)
+    puma (6.0.0)
       nio4r (~> 2.0)
+    puma-daemon (0.1.2)
+      puma (>= 5.0)
+      rack
     pundit (2.2.0)
       activesupport (>= 3.0.0)
     pundit-matchers (1.7.0)
@@ -394,7 +397,8 @@ DEPENDENCIES
   pagy (~> 5.10)
   pg (~> 1.1)
   pry-rails
-  puma (~> 5.0)
+  puma (~> 6.0)
+  puma-daemon
   pundit (~> 2.2)
   pundit-matchers (~> 1.7.0)
   rack-mini-profiler (~> 3.0)

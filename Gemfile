@@ -6,7 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.3'
 
 gem 'pg', '~> 1.1'
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
+gem 'puma-daemon', require: false
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
