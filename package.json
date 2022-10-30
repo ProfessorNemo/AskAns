@@ -16,7 +16,7 @@
         "tom-select": "^2.1.0",
         "turbolinks": "^5.2.0"
     },
-    "version": "0.1.0",
+    "version": "3.2.1",
     "browserslist": [
         "defaults"
     ],
