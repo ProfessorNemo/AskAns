@@ -8,7 +8,7 @@ ruby '3.0.3'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
-gem 'sass-rails', '>= 6'
+# gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

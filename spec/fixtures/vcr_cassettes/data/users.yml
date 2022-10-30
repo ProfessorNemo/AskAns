@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v2.5.2
+      - Faraday v2.6.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -39,19 +39,19 @@ http_interactions:
       Cache-Control:
       - no-store, must-revalidate, private, max-age=0
       X-Request-Id:
-      - baf0fc98-5e0d-4020-940c-f4c9c9bfee7a
+      - dd953be8-93d6-4b9c-8ff8-3ed3dc9604bc
       X-Runtime:
-      - '0.062165'
+      - '0.148493'
       X-Miniprofiler-Original-Cache-Control:
       - max-age=0, private, must-revalidate
       X-Miniprofiler-Ids:
-      - e55rwk8sz3k9k07r3wkm,2xy2estjzn5ffsd4ulbt
+      - 7v20qxqod4em737xa9ek,5fbnuig240do4k7ha8r0,dztrwlxpdbdry162c2kj,tyfrtj55tryklef7lt7f,9lw4739ds1ezb4saentc
       Set-Cookie:
       - __profilin=p%3Dt; path=/; HttpOnly; SameSite=Lax
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '904'
     body:
       encoding: UTF-8
-      string: '[{"id":2,"email":"kent@gmail.com","name":null,"username":"kent"},{"id":3,"email":"nemo@gmail.com","name":"Nemo","username":"captain_nemo"},{"id":4,"email":"nataha@gmail.com","name":"Natasha","username":"nataha"},{"id":5,"email":"galya@gmail.com","name":"Galya","username":"peach"},{"id":7,"email":"elizabeth-olsen@gmail.com","name":"Elizabeth","username":"Scarlet_Witch"},{"id":9,"email":"sherlok@gmail.com","name":"Holmes","username":"tracker"},{"id":10,"email":"chack@gmail.com","name":"Chack","username":"chaka"},{"id":11,"email":"michelle@gmail.com","name":"Michelle","username":"catwoman"},{"id":12,"email":"harrisson@gmail.com","name":"Harrisson","username":"goober"},{"id":13,"email":"jan@gmail.com","name":"Jan","username":"zhenya"},{"id":6,"email":"sofia@gmail.com","name":"Sofia","username":"darling"},{"id":8,"email":"gleboceanborn@gmail.com","name":"Glebchik","username":"professor"}]'
-  recorded_at: Wed, 19 Oct 2022 23:53:52 GMT
+      string: '[{"id":3,"email":"nemo@gmail.com","name":"Nemo","username":"captain_nemo"},{"id":4,"email":"nataha@gmail.com","name":"Natasha","username":"nataha"},{"id":5,"email":"galya@gmail.com","name":"Galya","username":"peach"},{"id":9,"email":"sherlok@gmail.com","name":"Holmes","username":"tracker"},{"id":10,"email":"chack@gmail.com","name":"Chack","username":"chaka"},{"id":11,"email":"michelle@gmail.com","name":"Michelle","username":"catwoman"},{"id":12,"email":"harrisson@gmail.com","name":"Harrisson","username":"goober"},{"id":13,"email":"jan@gmail.com","name":"Jan","username":"zhenya"},{"id":6,"email":"sofia@gmail.com","name":"Sofia","username":"darling"},{"id":7,"email":"elizabeth-olsen@gmail.com","name":"Elizabeth","username":"Scarlet_Witch"},{"id":25,"email":"mara@gmail.com","name":"Marina","username":"marinka"},{"id":8,"email":"gleboceanborn@gmail.com","name":"Glebchik","username":"professor"}]'
+  recorded_at: Sun, 30 Oct 2022 20:21:32 GMT
 recorded_with: VCR 6.1.0
