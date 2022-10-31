@@ -7,7 +7,6 @@ ruby '3.0.3'
 
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 6.0'
-gem 'puma-daemon', require: false
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
@@ -91,9 +90,6 @@ group :development do
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.14', require: false
   gem 'rubocop-rspec', require: false
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-
   # чтобы подгружать переменные в environment
   gem 'dotenv', '~> 2.7'
   gem 'dotenv-rails', '~> 2.7'
