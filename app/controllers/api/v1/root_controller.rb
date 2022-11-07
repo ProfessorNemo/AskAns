@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Api
+module API
   module V1
     class RootController < ApplicationController
       before_action :ensure_user_authorized
