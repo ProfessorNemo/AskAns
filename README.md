@@ -82,17 +82,12 @@ $ cd AskAns
 $ bundle
 ```
 
-3. Create database and run migrations (At the same time, test users are loaded into applications from the users .xlsx file located in the "db" directory)
+3. Create database and run migrations (At the same time, test users are loaded into applications from the users .xlsx file located in the "db" directory). Besides install and update all dependencies in "package.json" file
 ```
 $ make initially
 ```
 
-4. Install and update all dependencies in "package.json" file
-```
-$ yarn install
-```
-
-5. Generate `master.key` and credentials file (at first remove old file `config/credentials.yml.enc`)
+4. Generate `master.key` and credentials file (at first remove old file `config/credentials.yml.enc`)
 ```
 $ EDITOR=nano rails credentials:edit
 ```
