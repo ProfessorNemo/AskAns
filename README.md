@@ -57,7 +57,7 @@ To install Redis, follow the link:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-20-04-en
 
 Sidekiq has an interface that allows you to see what broke, how many tasks were completed, when it happened, how many connections, what version of Redis has, how much memory Redis is using, etc. To connect this interface in the address bar, write:
-http://127.0.0.1:3000/sidekiq. Only the administrator has access to it.
+http://127.0.0.1:3000/sidekiq.
 
 The application is covered with tests...
 
@@ -184,9 +184,19 @@ MAILJET_SENDER = 'example@example.ru'
 - [`Sidekiq`](https://github.com/mperham/sidekiq) uses threads to handle many jobs at the same time in the same process.
 
 ### Сommands to run tests:
+
+Before running the tests in the console, type the following commands:
+```
+$ rails db:environment:set RAILS_ENV=test
+$ rake db:schema:load RAILS_ENV=test
+```
+after
 ```
 $ make rspec
 ```
+
+For API testing, you can also use a solution such as [`Postman`](https://www.postman.com/).
+
 
 Open `localhost:3000` in browser.
 

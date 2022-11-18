@@ -29,9 +29,6 @@ initially:
 	rails db:migrate
 	rails db:seed
 	yarn install
-	yarn build:css
-	yarn build
-	rails assets:precompile
 
 
 migration:

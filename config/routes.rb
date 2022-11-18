@@ -11,7 +11,6 @@ require 'sidekiq/web'
 class AdminConstraint
   def matches?(request)
     user_id = request.session[:user_id] || request.cookie_jar.encrypted[:user_id]
-
     # является ли найденный юзер админом (если юзер найден)
     User.find_by(id: user_id)&.admin_role?
   end
@@ -19,8 +18,10 @@ end
 
 Rails.application.routes.draw do
   # Смонтировать маршрут Sidekiq::Web , по какому адресу он будет доступен ('/sidekiq'),
-  # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (http://127.0.0.1:3000/sidekiq)
-  mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
+  # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (https://127.0.0.1:3000/sidekiq)
+  # mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :hashtags, only: :show, param: :text
 
@@ -58,9 +59,6 @@ Rails.application.routes.draw do
     end
 
     # Синонимы путей — в дополнение к созданным в ресурсах выше.
-    # #
-    # Для любознательных: синонимы мы добавили, чтобы показать одну вещь и потом
-    # их удалим.
     # get 'sign_up' => 'users#new'
     # get 'log_out' => 'sessions#destroy'
     # get 'log_in' => 'sessions#new'

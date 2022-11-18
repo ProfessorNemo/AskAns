@@ -37,9 +37,10 @@ yarn-debug.log*
 .byebug_history
 .env
 
+package-lock.json*
 spec/specs.txt
 .vscode/*
 yarn.lock
-trsee
+trsee*
 /app/assets/builds/*
 !/app/assets/builds/.keep
