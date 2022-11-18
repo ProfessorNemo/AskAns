@@ -18,7 +18,7 @@ end
 
 Rails.application.routes.draw do
   # Смонтировать маршрут Sidekiq::Web , по какому адресу он будет доступен ('/sidekiq'),
-  # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (https://127.0.0.1:3000/sidekiq)
+  # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (http://127.0.0.1:3000/sidekiq)
   # mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
   mount Sidekiq::Web => '/sidekiq'
