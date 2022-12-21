@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_19_004751) do
+ActiveRecord::Schema.define(version: 2022_12_20_163604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2022_10_19_004751) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_albums_on_user_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
@@ -95,6 +104,7 @@ ActiveRecord::Schema.define(version: 2022_10_19_004751) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "albums", "users"
   add_foreign_key "question_hashtags", "hashtags"
   add_foreign_key "question_hashtags", "questions"
   add_foreign_key "questions", "users"

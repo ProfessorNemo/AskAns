@@ -84,6 +84,7 @@ end
 gem 'cssbundling-rails', '~> 1.0'
 gem 'dry-transaction', '~> 0.14.0'
 gem 'faraday', '~> 2.5'
+gem 'image_processing', '~> 1.2'
 gem 'jsbundling-rails', '~> 1.0'
 gem 'letter_opener', '~> 1.8'
 gem 'mailjet', '~> 1.7'

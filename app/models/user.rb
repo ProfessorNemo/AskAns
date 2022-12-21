@@ -28,6 +28,8 @@ class User < ApplicationRecord
 
   has_many :questions, dependent: :destroy
 
+  has_many :albums, dependent: :destroy
+
   has_many :asked_questions,
            class_name: 'Question',
            foreign_key: :author_id,

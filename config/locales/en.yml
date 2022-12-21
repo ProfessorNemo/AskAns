@@ -162,6 +162,12 @@ en:
         submit: Send reset instructions
         back: Back to sign in
 
+  albums:
+    new:
+      danger: You can't come here!
+    create:
+      danger: You can't come here!
+
   password_reset_mailer:
     reset_email:
       subject: 'Password reset | AskAns'

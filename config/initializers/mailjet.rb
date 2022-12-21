@@ -4,6 +4,7 @@
 Mailjet.configure do |config|
   config.api_key = ENV.fetch('MAILJET_API_KEY', nil)
   config.secret_key = ENV.fetch('MAILJET_SECRET_KEY', nil)
+  config.default_from = ENV.fetch('MAILJET_SENDER', nil)
   # Mailjet API v3.1 is at the moment limited to Send API.
   # We’ve not set the version to it directly since there is no other endpoint in that version.
   # We recommend you create a dedicated instance of the wrapper set with it to send your emails.
@@ -11,6 +12,3 @@ Mailjet.configure do |config|
   # Otherwise, you can remove the dedicated line into config/initializers/mailjet.rb.
   config.api_version = 'v3.1'
 end
-
-# в командной строке:
-# $ rails g mailjet:initializer

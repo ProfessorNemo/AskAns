@@ -1,0 +1,11 @@
+<h1>Editing album</h1>
+
+<%= render "form", album: @album %>
+
+<br>
+
+<div>
+  <%= link_to "Show this album", user_album_path(@album.user, @album) %> |
+  <%= link_to "Back to albums", user_albums_path %>
+</div>
+

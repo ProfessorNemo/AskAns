@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div class="album-header">
+    <h1>Your albums</h1>
+    <% if @user == current_user %>
+      <%= link_to "New album", new_user_album_path %>
+    <% end %>
+  </div>
+
+  <div id="albums">
+    <% @albums.each do |album| %>
+      <div class="album">
+        <h3><%= truncate(album.description, :length => 30)  %></h3>
+        <p><%= album.description %></p>
+        <p>
+          <%= link_to "Show this album", user_album_path(album.user, album) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

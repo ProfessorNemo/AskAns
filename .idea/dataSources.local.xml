@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal" created-in="RM-222.4459.24">
+    <data-source name="Rails AskAns: test" uuid="a5bb0ea6-a70a-48af-b4a9-9add40c45c11">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <schema-mapping />
+    </data-source>
+    <data-source name="Rails AskAns: development" uuid="c1a09974-9cc3-4929-a1fa-bf107a416a56">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" exact-version="0" />
+      <user-name>professor</user-name>
+      <schema-mapping />
+    </data-source>
+  </component>
+</project>

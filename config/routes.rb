@@ -19,9 +19,7 @@ end
 Rails.application.routes.draw do
   # Смонтировать маршрут Sidekiq::Web , по какому адресу он будет доступен ('/sidekiq'),
   # т.е. подрубаем интерфейс sidekiq по адресу '/sidekiq' (http://127.0.0.1:3000/sidekiq)
-  # mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
-
-  mount Sidekiq::Web => '/sidekiq'
+  mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
   resources :hashtags, only: :show, param: :text
 
@@ -30,6 +28,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [], param: :username do
         resources :questions, only: :index
+        resources :albums, only: :index
       end
 
       resources :hashtags, only: :index
@@ -41,7 +40,13 @@ Rails.application.routes.draw do
     # Для любого юзера будет только одна сессия регистрации (!)
     resource :session, only: %i[new create destroy]
 
-    resources :users
+    resources :users do
+      resources :albums do
+        member do
+          delete :delete_album_photos
+        end
+      end
+    end
 
     resource :password_reset, only: %i[new create edit update]
 

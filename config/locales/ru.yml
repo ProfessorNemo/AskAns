@@ -124,6 +124,7 @@ ru:
     index:
       form:
         title: Наши пользователи
+
   questions:
     create:
       success: Вопрос создан!
@@ -161,6 +162,13 @@ ru:
         email: Email
         submit: Отправить инструкции для сброса пароля
         back: Назад ко входу в систему
+
+  albums:
+    new:
+      danger: Вам сюда нельзя!
+    create:
+      danger: Вам сюда нельзя!
+
 
   password_reset_mailer:
     reset_email:

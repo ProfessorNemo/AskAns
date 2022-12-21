@@ -1,0 +1,34 @@
+
+<div class="container">
+  <div class="album-header">
+  <p><strong>Title:</strong><%= @album.title %></p>
+  <p><strong>Description:</strong><%= @album.description %></p>
+    <div class="album-header-actions">
+      <% if current_user.present? && current_user == @album.user %>
+        <%= link_to 'Edit', edit_user_album_path(@album.user, @album) %> |
+        <%= button_to "Delete this album", user_album_path(@album.user, @album), method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+      <%= link_to 'Back', user_albums_path %>
+    </div>
+  </div>
+
+  <hr>
+    <div class="album-photos">
+      <% @album.album_photos.order("created_at DESC").each do |album_photos| %>
+        <div class="album-photo">
+          <div style="margin: 5px;border: 1px solid #ccc;float: left;width: 150px;">
+
+            <%= link_to image_tag(album_photos.variant(resize_to_fill: [150, 150]), style: "width: 100%;height: auto;", alt: album_photos.filename.to_s), album_photos, target: "_blank"%>
+
+            <div class="album-photo-actions" style="padding: 8px;text-align: center;font-size: 0.7em">
+              <%= number_to_human_size(album_photos.byte_size.to_i) %>
+              <%= link_to "Download", album_photos, target: "_blank" %>
+              <% if current_user.present? && current_user == @album.user %>
+                <%= link_to 'Delete', delete_album_photos_user_album_path(@album.user, album_photos), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
