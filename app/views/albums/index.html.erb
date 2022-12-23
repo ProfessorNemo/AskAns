@@ -1,19 +1,21 @@
 
 <div class="container">
   <div class="album-header">
-    <h1>Your albums</h1>
-    <% if @user == current_user %>
-      <%= link_to "New album", new_user_album_path %>
+    <%= content_tag(:h1, t('.form.albums')) %>
+    <% if @user == current_user && policy(@albums).new? %>
+      <%= link_to t('.form.new_album'), new_user_album_path %>
     <% end %>
   </div>
 
   <div id="albums">
     <% @albums.each do |album| %>
       <div class="album">
-        <h3><%= truncate(album.description, :length => 30)  %></h3>
+        <h3><%= truncate strip_tags(album.title), length: 40 %></h3>
         <p><%= album.description %></p>
         <p>
-          <%= link_to "Show this album", user_album_path(album.user, album) %>
+          <% if policy(album).show? %>
+            <%= link_to t('.form.show_album'), user_album_path(album.user, album) %>
+          <% end %>
         </p>
       </div>
     <% end %>

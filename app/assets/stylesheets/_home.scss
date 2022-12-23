@@ -1,0 +1,19 @@
+
+.container {
+  width: 150%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.album {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 1em;
+}
+
+.album:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}

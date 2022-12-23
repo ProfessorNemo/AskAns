@@ -6,7 +6,6 @@ class AlbumBlueprint < Blueprinter::Base
 
   field :title
   field :description
-  field :created_at, datetime_format: "%m/%d/%Y"
-  field :updated_at, datetime_format: "%m/%d/%Y"
-
+  field :created_at, datetime_format: '%m/%d/%Y'
+  field :updated_at, datetime_format: '%m/%d/%Y'
 end

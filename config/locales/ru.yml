@@ -164,10 +164,47 @@ ru:
         back: Назад ко входу в систему
 
   albums:
+    delete_album_photos:
+      notice: Вам не разрешено это действие!
     new:
       danger: Вам сюда нельзя!
+      form:
+        back: Назад к альбомам
+        new_album: Новый альбом
     create:
       danger: Вам сюда нельзя!
+      notice: Альбом успешно создан.
+    update:
+      notice: Альбом успешно обновлен.
+    destroy:
+      notice: Альбом успешно удален.
+    index:
+      form:
+        albums: Ваши альбомы
+        new_album: Новый альбом
+        show_album: Посмотреть этот альбом
+        title: Название
+        description: Описание
+    show:
+      form:
+        edit: Редактировать
+        back: Назад
+        delete_album: Удалить альбом
+        delete_photo: Удалить фото
+        download: Загрузить
+    edit:
+      form:
+        show: Посмотреть этот альбом
+        back: Назад к альбомам
+        editing: Редактирование альбома
+    global_form:
+      title: "Название: "
+      description: "Описание: "
+      album_photos: "Загрузить фото:"
+    global:
+      forms:
+        save: Создать альбом
+        update: Обновить альбом
 
 
   password_reset_mailer:

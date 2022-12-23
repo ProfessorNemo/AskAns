@@ -163,10 +163,48 @@ en:
         back: Back to sign in
 
   albums:
+    delete_album_photos:
+      notice: You are not allowed to do this!
     new:
       danger: You can't come here!
+      form:
+        back: Back to albums
+        new_album: New album
     create:
       danger: You can't come here!
+      notice: Album was successfully created.
+    update:
+      notice: Album was successfully updated.
+    destroy:
+      notice: Album was successfully destroyed.
+    index:
+      form:
+        albums: Your albums
+        new_album: New album
+        show_album: Show this album
+        title: Title
+        description: Description
+    show:
+      form:
+        edit: Edit
+        back: Back
+        delete_album: Delete this album
+        delete_photo: Delete this photo
+        download: Download
+    edit:
+      form:
+        show: Show this album
+        back: Back to albums
+        editing: Editing album
+    global_form:
+      title: "Title:"
+      description: "Description:"
+      album_photos: "Add photos:"
+    global:
+      forms:
+        save: Create album
+        update: Update album
+
 
   password_reset_mailer:
     reset_email:

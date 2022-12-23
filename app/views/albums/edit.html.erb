@@ -1,11 +1,12 @@
-<h1>Editing album</h1>
+
+<%= content_tag(:h1, t('.form.editing')) %>
 
 <%= render "form", album: @album %>
 
 <br>
 
 <div>
-  <%= link_to "Show this album", user_album_path(@album.user, @album) %> |
-  <%= link_to "Back to albums", user_albums_path %>
+  <%= link_to t('.form.show'), user_album_path(@album.user, @album) %> |
+  <%= link_to t('.form.back'), user_albums_path %>
 </div>
 

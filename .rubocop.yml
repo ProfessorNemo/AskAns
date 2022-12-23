@@ -57,3 +57,6 @@ RSpec/NestedGroups:
 
 Rails/HttpPositionalArguments:
   Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
