@@ -7,6 +7,11 @@ class AlbumBlueprint < Blueprinter::Base
   field :title
   field :image_count
   field :description
+  field :image_urls
   field :created_at, datetime_format: '%m/%d/%Y'
   field :updated_at, datetime_format: '%m/%d/%Y'
+
+  view :normal do
+    association :user, blueprint: UserBlueprint
+  end
 end

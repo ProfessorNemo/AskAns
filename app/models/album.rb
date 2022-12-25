@@ -4,8 +4,6 @@ class Album < ApplicationRecord
   include Authorship
   include Rails.application.routes.url_helpers
 
-  attr_accessor :image_count
-
   LEN = (3..30)
   has_many_attached :album_photos
   belongs_to :user
@@ -23,14 +21,23 @@ class Album < ApplicationRecord
 
   def attributes
     super.merge({
-                  image_urls: image_urls
+                  'image_urls' => image_urls,
+                  'image_count' => image_count
                 })
   end
 
-  def number_of_photos
+  # массив ссылок на все фотографии в альбоме
+  def image_urls
     return unless album_photos.attached?
 
-    self.image_count = album_photos.count
+    album_photos.map(&:service_url)
+  end
+
+  # количество фотографий в каждом альбоме
+  def image_count
+    return unless album_photos.attached?
+
+    album_photos.count
   end
 
   private
@@ -41,13 +48,5 @@ class Album < ApplicationRecord
 
   def check_description
     errors.add(:description, :description_error) if description.length > LEN.last
-  end
-
-
-  # массив ссылок на все фотографии в альбоме
-  def image_urls
-    return unless album_photos.attached?
-
-    album_photos.map(&:service_url)
   end
 end

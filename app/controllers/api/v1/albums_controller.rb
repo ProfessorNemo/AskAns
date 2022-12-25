@@ -6,7 +6,7 @@ module API
       def index
         @user = User.where(username: params[:user_username]).take
         @albums = @user.albums
-        render json: AlbumBlueprint.render(@albums)
+        render json: AlbumBlueprint.render(@albums, view: :normal)
       end
     end
   end
