@@ -11,3 +11,5 @@ import 'bootstrap/js/dist/collapse'
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+

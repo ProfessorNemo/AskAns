@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       resources :albums do
         member do
           delete :delete_album_photos
+          get :download_album_photos
         end
       end
     end

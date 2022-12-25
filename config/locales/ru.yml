@@ -9,7 +9,12 @@ ru:
         correct_error: не верный
         username_message: неразрешённый!
         registration_error: не подходит для регистрации.
+        title_error: слишком длинное
+        description_error: слишком длинное
     attributes:
+      album:
+        title: Название
+        description: Описание
       question:
         text: Текст
         answer: Ответ
@@ -164,8 +169,11 @@ ru:
         back: Назад ко входу в систему
 
   albums:
+    download_album_photos:
+      notice: Фотография загружена
     delete_album_photos:
       notice: Вам не разрешено это действие!
+      success: фотография удалена
     new:
       danger: Вам сюда нельзя!
       form:
@@ -182,9 +190,12 @@ ru:
       form:
         albums: Ваши альбомы
         new_album: Новый альбом
-        show_album: Посмотреть этот альбом
+        show_album: Посмотреть альбом
         title: Название
         description: Описание
+        photo: фотография
+        of_photo: фотографии
+        photos: фотографий
     show:
       form:
         edit: Редактировать
@@ -194,7 +205,7 @@ ru:
         download: Загрузить
     edit:
       form:
-        show: Посмотреть этот альбом
+        show: Посмотреть альбом
         back: Назад к альбомам
         editing: Редактирование альбома
     global_form:

@@ -1,26 +1,38 @@
-
-<div class="container">
-  <div class="album-header">
+<div class="content">
+  <div class="container-photo">
     <%= content_tag(:h1, t('.form.albums')) %>
     <% if @user == current_user && policy(@albums).new? %>
       <%= link_to t('.form.new_album'), new_user_album_path %>
     <% end %>
   </div>
+<br>
 
-  <div id="albums">
     <% @albums.each do |album| %>
-      <div class="album">
-        <h3><%= truncate strip_tags(album.title), length: 40 %></h3>
+      <div class="users-list-item">
+        <h3><%= truncate strip_tags(album.title) %></h3>
         <p><%= album.description %></p>
+
+          <%= "(" + inclination(album.album_photos.count,
+                          t('.form.photo'), t('.form.of_photo'), t('.form.photos')) + ")" %>
+
         <p>
           <% if policy(album).show? %>
             <%= link_to t('.form.show_album'), user_album_path(album.user, album) %>
           <% end %>
         </p>
+
+        <div class="thumbnail">
+          <div class="album" style="background-image: url(<%= album_photo(album) %>)">
+          </div>
+        </div>
       </div>
+
     <% end %>
-  </div>
 </div>
+
+
+
+
 
 
 

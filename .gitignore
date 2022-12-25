@@ -36,6 +36,7 @@ yarn-debug.log*
 .yarn-integrity
 .byebug_history
 .env
+.idea
 
 package-lock.json*
 spec/specs.txt

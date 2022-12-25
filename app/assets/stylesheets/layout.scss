@@ -1,10 +1,18 @@
-body {
+body,
+html{
   background: #262732;
+  background-image: url("fon.jpg");
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-position: center center;
+  background-attachment: fixed;
   color: white;
 }
 
 a {
-  color: #005a55;
+  color: #158361;
 }
 
 .header {

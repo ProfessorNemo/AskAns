@@ -1,10 +1,11 @@
-
+<div class="container-photo">
 <%= content_tag(:h1, t('.form.new_album')) %>
-
+  <br>
 <%= render "form", album: @album %>
 
 <br>
 
 <div>
   <%= link_to t('.form.back'), user_albums_path %>
+</div>
 </div>

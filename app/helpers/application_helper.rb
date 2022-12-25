@@ -34,4 +34,19 @@ module ApplicationHelper
   def language_bar
     I18n.locale.to_s == 'en' ? 'england' : 'ru'
   end
+
+  # Возвращает адрес рандомной фотки, если есть хотя бы одна
+  # Или ссылку на дефолтную картинку по умолчанию
+  def album_photo(album)
+    if album.album_photos.any?
+      photo = album.album_photos.sample
+
+      # url = ActiveStorage::Blob.service.path_for(photo.key)
+      url = photo.url
+    else
+      url = asset_path('bg.png')
+    end
+
+    url
+  end
 end

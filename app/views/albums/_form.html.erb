@@ -11,21 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-field">
     <%= form.label :title, t('albums.global_form.title') , style: "display: block" %>
     <%= form.text_field :title %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= form.label :description, t('albums.global_form.description'), style: "display: block" %>
     <%= form.text_area :description %>
   </div>
 
-  <div class="field">
+  <div class="form-field">
     <%= form.label :album_photos, t('albums.global_form.album_photos') %>
     <%= form.file_field :album_photos, multiple: true %>
   </div>
 
+  <div class="form-actions">
   <% t_key = (album.new_record? ? "save" : "update") %>
   <%= form.submit t(t_key, scope: 'albums.global.forms') %>
+  </div>
 <% end %>

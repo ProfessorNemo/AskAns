@@ -5,7 +5,7 @@ class AlbumPolicy < ApplicationPolicy
   def create?
     return if user.guest?
 
-    record.where(user: user).take.user == user
+    user.present? || record.where(user: user).take.user == user
   end
 
   def update?

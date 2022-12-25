@@ -21,9 +21,6 @@ gem 'draper', '~> 4.0'
 # гем для разделения контента по страницам
 gem 'pagy', '~> 5.10'
 
-# Чтобы искать неоптимальные запросы и их устранять используется решение «bullet»
-gem 'bullet', '~> 7'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -57,6 +54,7 @@ group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
   gem 'faker', '~> 2'
+  gem 'pry-rails'
   gem 'pundit-matchers', '~> 1.7.0'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '>= 5.1.2'
@@ -81,6 +79,8 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 end
 
+gem 'activestorage-validator'
+gem 'aws-sdk-s3'
 gem 'cssbundling-rails', '~> 1.0'
 gem 'dry-transaction', '~> 0.14.0'
 gem 'faraday', '~> 2.5'

@@ -9,7 +9,12 @@ en:
         correct_error: is incorrect
         username_message: unresolved!
         registration_error: not eligible for registration.
+        title_error: is too long
+        description_error: is too long
     attributes:
+      album:
+        title: Title
+        description: Description
       question:
         text: Text
         answer: Answer
@@ -163,8 +168,11 @@ en:
         back: Back to sign in
 
   albums:
+    download_album_photos:
+      notice: Photo downloaded
     delete_album_photos:
       notice: You are not allowed to do this!
+      success: photo deleted
     new:
       danger: You can't come here!
       form:
@@ -184,6 +192,9 @@ en:
         show_album: Show this album
         title: Title
         description: Description
+        photo: photo
+        of_photo: of photo
+        photos: photos
     show:
       form:
         edit: Edit

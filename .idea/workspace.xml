@@ -5,24 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3cdbbe62-2439-4d8c-81ad-005216aaded5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/_custom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/_home.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/_show.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/policies/album_policy.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/scripts/lightbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AskAns.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AskAns.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.yarn/install-state.gz" beforeDir="false" afterPath="$PROJECT_DIR$/.yarn/install-state.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/_show.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_show.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.bootstrap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.bootstrap.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/layout.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/blueprints/album_blueprint.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/blueprints/album_blueprint.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/albums_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/albums_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/questions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/questions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/album.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/album.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/albums/_album.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/policies/album_policy.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/policies/album_policy.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/albums/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/albums/_form.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/albums/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/albums/edit.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/albums/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/albums/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/albums/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/albums/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/albums/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/albums/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/locales/ru.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/ru.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/storage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/Снимок экрана от 2022-10-06 21-25-53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/screenshots/Снимок экрана от 2022-10-19 20-13-14.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +65,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/professor/Документы/rubytut/gits/AskAns/app/views/albums",
+    "last_opened_file_path": "/home/professor/Документы/rubytut/gits/lucky_devil",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -173,7 +188,7 @@
       <option name="presentableId" value="Default" />
       <updated>1671474255936</updated>
       <workItem from="1671474282823" duration="1670000" />
-      <workItem from="1671552879194" duration="60171000" />
+      <workItem from="1671552879194" duration="121519000" />
     </task>
     <servers />
   </component>

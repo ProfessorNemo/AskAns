@@ -1,6 +1,6 @@
-
+<div class="container-photo">
 <%= content_tag(:h1, t('.form.editing')) %>
-
+<br>
 <%= render "form", album: @album %>
 
 <br>
@@ -9,4 +9,4 @@
   <%= link_to t('.form.show'), user_album_path(@album.user, @album) %> |
   <%= link_to t('.form.back'), user_albums_path %>
 </div>
-
+</div>

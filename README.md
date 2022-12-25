@@ -41,6 +41,7 @@ All users except guests have access to API. To access the API, which provides a 
 ```
 - users_api: http://127.0.0.1:3000/api/v1/users?api_token=************
 - questions_api (for a specific username): http://127.0.0.1:3000/api/v1/users/username/questions?api_token=************
+- albums_api (for a specific username): http://127.0.0.1:3000/api/v1/users/username/albums?api_token=************
 - hashtags_api: http://127.0.0.1:3000/api/v1/hashtags?api_token=****************
 ```
 
@@ -48,6 +49,9 @@ All users except guests have access to API. To access the API, which provides a 
 
 Authorization (separation of access rights) in the application is implemented using the Pundit solution, policies are created, and a "guest user" service object is created. Access to the hashtag controller (as an experiment) is allowed only to the administrator...
 A test archive with users for loading into the application is located in the directory "lib/zipusers.zip".
+
+### Photo albums:
+Added the functionality of uploading photos to the application via `ActiveStorage` + [`Yandex.Cloud`](https://cloud.yandex.ru/docs/storage/s3/)
 
 ### Tasks running in the background:
 
@@ -97,6 +101,9 @@ Set your `reCAPTCHA` keys if needed at `credentials.yml.enc`
 recaptcha:
   site_key: <your site key>
   secret_key: <your secret key>
+yc:
+  access_key_id: <value>
+  secret_access_key: <value>
 ```
 # Setting environment variables:
 
