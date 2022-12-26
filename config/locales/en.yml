@@ -168,8 +168,6 @@ en:
         back: Back to sign in
 
   albums:
-    download_album_photos:
-      notice: Photo downloaded
     delete_album_photos:
       notice: You are not allowed to do this!
       success: photo deleted

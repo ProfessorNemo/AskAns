@@ -6,8 +6,8 @@ class AlbumsController < ApplicationController
   before_action :set_album, only: :show
   before_action :set_current_user_album, only: %i[edit update destroy]
 
-  before_action :authorize_album!, except: %i[delete_album_photos download_album_photos]
-  after_action :verify_authorized, except: %i[delete_album_photos download_album_photos]
+  before_action :authorize_album!, except: %i[delete_album_photos]
+  after_action :verify_authorized, except: %i[delete_album_photos]
 
   def index
     @albums = @user.albums
@@ -62,14 +62,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  def download_album_photos
-    attachment = ActiveStorage::Attachment.find(params[:id])
-
-    attachment.download
-    flash[:notice] = t('.notice')
-
-    redirect_back(fallback_location: user_albums_path)
-  end
 
   private
 

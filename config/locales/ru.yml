@@ -169,8 +169,6 @@ ru:
         back: Назад ко входу в систему
 
   albums:
-    download_album_photos:
-      notice: Фотография загружена
     delete_album_photos:
       notice: Вам не разрешено это действие!
       success: фотография удалена

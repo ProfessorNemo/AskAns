@@ -28,9 +28,9 @@
             <div class="album-photo-actions" style="padding: 8px;text-align: center;font-size: 0.7em">
               <%= number_to_human_size(photo.byte_size.to_i) %>
               <%= link_to t('.form.download'),
-                          download_album_photos_user_album_path(@album.user, photo),
-                          method: :get,
-                          remote: false %>
+                          Rails.application.routes.url_helpers
+                            .rails_blob_path(photo, disposition: 'attachment', only_path: true),
+                          method: :get %>
               <br>
               <% if policy(@album).destroy? %>
                 <%= link_to t('.form.delete_photo'),
