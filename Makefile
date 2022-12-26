@@ -66,6 +66,7 @@ rspec:
 	bundle exec rspec spec/requests/api_json_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_export_service_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_import_service_spec.rb
+	bundle exec rspec spec/models/album_spec.rb
 
 redis:
 	redis-server

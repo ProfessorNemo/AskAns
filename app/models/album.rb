@@ -2,7 +2,6 @@
 
 class Album < ApplicationRecord
   include Authorship
-  include Rails.application.routes.url_helpers
 
   LEN = (3..30)
   has_many_attached :album_photos
@@ -39,6 +38,7 @@ class Album < ApplicationRecord
 
     album_photos.count
   end
+
 
   private
 
