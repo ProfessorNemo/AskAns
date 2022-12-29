@@ -40,6 +40,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.3)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (6.1.7)
       activesupport (= 6.1.7)
       globalid (>= 0.3.6)
@@ -73,7 +78,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.684.0)
+    aws-partitions (1.685.0)
     aws-sdk-core (3.168.4)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
@@ -178,8 +183,8 @@ GEM
     jsbundling-rails (1.1.1)
       railties (>= 6.0.0)
     json (2.6.3)
-    launchy (2.5.0)
-      addressable (~> 2.7)
+    launchy (2.5.2)
+      addressable (~> 2.8)
     letter_opener (1.8.1)
       launchy (>= 2.2, < 3)
     listen (3.7.1)
@@ -239,7 +244,7 @@ GEM
     pundit-matchers (1.7.0)
       rspec-rails (>= 3.0.0)
     racc (1.6.2)
-    rack (2.2.4)
+    rack (2.2.5)
     rack-test (2.0.2)
       rack (>= 1.3)
     rails (6.1.7)
@@ -326,7 +331,7 @@ GEM
       rubocop-ast (>= 1.23.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
-    rubocop-ast (1.24.0)
+    rubocop-ast (1.24.1)
       parser (>= 3.1.1.0)
     rubocop-performance (1.15.2)
       rubocop (>= 1.7.0, < 2.0)
@@ -394,6 +399,7 @@ PLATFORMS
 
 DEPENDENCIES
   action_mailer_matchers
+  active_storage_validations
   activerecord-import (~> 1.4)
   activestorage-validator
   aws-sdk-s3

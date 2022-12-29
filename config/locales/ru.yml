@@ -214,7 +214,15 @@ ru:
       forms:
         save: Создать альбом
         update: Обновить альбом
+        email_notifications: e-mail уведомления
 
+  album_mailer:
+    photo:
+      title: Название
+      author: Автор
+      album: Альбом
+      update_time: Дата обновления
+      subject: 'Добавлены новые фотографии в альбом пользователя %{user}: %{album}'
 
   password_reset_mailer:
     reset_email:

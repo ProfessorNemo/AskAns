@@ -1,0 +1,6 @@
+<%= t('.author') %>: <%= @album.user.name %>
+---
+
+--------------------------------
+<%= t('.album') %>: <%= @album.title %>
+<%= t('.update_time') %>: <%= l(@album.updated_at, format: :short) %>

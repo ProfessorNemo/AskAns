@@ -30,4 +30,13 @@
   <% t_key = (album.new_record? ? "save" : "update") %>
   <%= form.submit t(t_key, scope: 'albums.global.forms') %>
   </div>
+
+    <div class="form-check form-switch mb-2">
+      <% if album.notifications %>
+        <%= form.check_box :notifications, class: 'form-check-input', checked: true %>
+      <% else %>
+        <%= form.check_box :notifications, class: 'form-check-input' %>
+      <% end %>
+      <%= form.label t('albums.global.forms.email_notifications'), class: 'form-check-label' %>
+    </div>
 <% end %>

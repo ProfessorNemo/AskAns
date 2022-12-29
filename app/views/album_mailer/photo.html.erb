@@ -1,0 +1,21 @@
+
+<div class="users-list-item">
+	<% @photos.order("created_at DESC").each do |photo| %>
+			<%= link_to image_tag(
+										photo.variant(resize_to_fill: [100, 100]),
+										class: 'd-block w-100',
+										style: 'object-fit: cover;', height: '100px',
+										alt: photo.filename.to_s), photo.url, target: "_blank",
+									  locale: I18n.locale.to_sym %>
+	<% end %>
+</div>
+
+<p><%= t('.author') %>: <strong><%= @album.user.name %></strong></p>
+
+<hr/>
+<%= t('.album') %>
+<%= content_tag(:h3, content_tag(:a, @album.title, href: user_album_url(@album.user, @album, locale: I18n.locale.to_sym))) %>
+<%= t('.update_time') %>
+<%= content_tag(:h4, l(@album.updated_at, format: :short)) %>
+
+

@@ -24,20 +24,15 @@ class AlbumsController < ApplicationController
   def create
     @album = @user.albums.build album_params
     @album.user = current_user
+    success = @album.save
 
-    if @album.save
-      redirect_to user_albums_path, notice: t('.notice')
-    else
-      render :new, status: :unprocessable_entity
-    end
+    conditions_for_album(album_params, @album, success, t('.notice'))
   end
 
   def update
-    if @album.update album_params
-      redirect_to user_albums_path, notice: t('.notice')
-    else
-      render :edit, status: :unprocessable_entity
-    end
+    success = @album.update album_params
+
+    conditions_for_album(album_params, @album, success, t('.notice'))
   end
 
   def destroy
@@ -81,10 +76,26 @@ class AlbumsController < ApplicationController
   end
 
   def album_params
-    params.require(:album).permit(:title, :description, album_photos: [])
+    params.require(:album).permit(:title, :description, :notifications, album_photos: [])
   end
 
   def authorize_album!
     authorize(@album || Album)
+  end
+
+  def conditions_for_album(params, album, success, msg)
+    n = params[:album_photos]&.count
+
+    if params[:album_photos].present? && album.notifications != false
+      AlertUserPhotoAlbumJob.perform_later(album.user, album,
+                                           n)
+    end
+
+    if success
+      flash[:notice] = msg
+      redirect_to user_albums_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 end

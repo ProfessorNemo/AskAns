@@ -60,3 +60,6 @@ Rails/HttpPositionalArguments:
 
 Rails/InverseOf:
   Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false

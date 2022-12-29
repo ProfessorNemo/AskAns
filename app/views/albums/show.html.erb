@@ -14,35 +14,41 @@
 
   <hr>
     <div class="album-photos">
-      <% @album.album_photos.order("created_at DESC").each do |photo| %>
-        <div class="album-photo">
-          <div style="margin: 5px;border: 1px solid #ccc;float: left;width: 150px;">
+      <% if @album.album_photos.attached? %>
+          <% @album.album_photos.order("created_at DESC").each do |photo| %>
+            <div class="album-photo">
+              <div style="margin: 5px;border: 1px solid #ccc;float: left;width: 150px;">
+              <% if photo.blob.present? && photo.blob.persisted? %>
+                  <% if photo.present? %>
+                    <%= link_to image_tag(
+                                  photo.variant(resize_to_fill: [150, 150, gravity: 'south']),
+                                  saver: { quality: 10 },
+                                  style: "width: 100%;height: auto;",
+                                  alt: photo.filename.to_s), photo, target: "_blank" %>
+                  <% end %>
 
-            <% if photo.present? %>
-              <%= link_to image_tag(
-                            photo.variant(resize_to_fill: [150, 150]),
-                            style: "width: 100%;height: auto;",
-                            alt: photo.filename.to_s), photo, target: "_blank" %>
-            <% end %>
-
-            <div class="album-photo-actions" style="padding: 8px;text-align: center;font-size: 0.7em">
-              <%= number_to_human_size(photo.byte_size.to_i) %>
-              <%= link_to t('.form.download'),
-                          Rails.application.routes.url_helpers
-                            .rails_blob_path(photo, disposition: 'attachment', only_path: true),
-                          method: :get %>
-              <br>
-              <% if policy(@album).destroy? %>
-                <%= link_to t('.form.delete_photo'),
-                            delete_album_photos_user_album_path(@album.user, photo),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' },
-                            remote: true %>
+                  <div class="album-photo-actions" style="padding: 8px;text-align: center;font-size: 0.7em">
+                    <%= number_to_human_size(photo.byte_size.to_i) %>
+                    <%= link_to t('.form.download'),
+                                Rails.application.routes.url_helpers
+                                  .rails_blob_path(photo, disposition: 'attachment', only_path: true),
+                                method: :get %>
+                    <br>
+                    <% if policy(@album).destroy? %>
+                      <%= link_to t('.form.delete_photo'),
+                                  delete_album_photos_user_album_path(@album.user, photo),
+                                  method: :delete,
+                                  data: { confirm: 'Are you sure?' },
+                                  remote: true %>
+                    <% end %>
+                  </div>
               <% end %>
+              </div>
             </div>
-          </div>
-        </div>
+          <% end %>
       <% end %>
     </div>
 </div>
+
+
 

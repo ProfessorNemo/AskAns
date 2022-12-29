@@ -4,4 +4,5 @@ production:
   :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 15 %>
 :queues:
   - default
+  - upload_photo
 :max_retries: 1

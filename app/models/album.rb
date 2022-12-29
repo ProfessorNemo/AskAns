@@ -15,6 +15,10 @@ class Album < ApplicationRecord
   validates :title, presence: true, length: { in: LEN }
   validates :description, presence: true, length: { in: LEN }
   validates :album_photos, blob: { content_type: %w[image/png image/jpg image/jpeg], size_range: 0.1..(15.megabytes) }
+  validates :album_photos, attached: true
+  # юзер не может иметь в альбоме больше 100 фотографий
+  validates :album_photos, limit: { max: ->(record) { record.user.admin_role? ? 300 : 100 } }
+
   # validate :check_title
   # validate :check_description
 
@@ -38,7 +42,6 @@ class Album < ApplicationRecord
 
     album_photos.count
   end
-
 
   private
 

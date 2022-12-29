@@ -79,6 +79,7 @@ group :development do
   gem 'web-console', '>= 4.1.0'
 end
 
+gem 'active_storage_validations'
 gem 'activestorage-validator'
 gem 'aws-sdk-s3'
 gem 'cssbundling-rails', '~> 1.0'

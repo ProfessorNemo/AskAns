@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'byebug'
 require 'dotenv/load'
 require 'pundit/rspec'
+require 'active_storage_validations/matchers'
 require_relative './helpers/main'
 require 'webmock/rspec'
 require_relative './support/factory_bot'
@@ -35,6 +36,8 @@ Pundit::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include ActiveStorageValidations::Matchers
+
   config.include ActionMailerMatchers
 
   config.example_status_persistence_file_path = 'spec/specs.txt'

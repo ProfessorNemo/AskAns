@@ -2,7 +2,6 @@
 
 FactoryBot.define do
   factory :album do
-
     title { 'Maldives' }
     description { 'Diving with sharks' }
     association :user

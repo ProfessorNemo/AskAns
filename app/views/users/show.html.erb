@@ -29,13 +29,14 @@
     <% end %>
 
     <div class="user-image-div">
-       <% unless @user.email == Dotenv.load('.env')['TEST_EMAIL'] %>
+       <% if @user.email != Dotenv.load('.env')['TEST_EMAIL'] %>
           <%= @user.gravatar %>
        <% else %>
           <%= image_tag 'Elizabeth.jpg', height: '115', width: '100',
                     class: 'menu_icon', alt: '[Foto]' %>
        <% end %>
     </div>
+
 
     <div class="user-details">
 
@@ -45,6 +46,7 @@
                       id: 'ask-button', data: {'bs-toggle': 'collapse'}  %>
         </div>
       <% end %>
+
 
       <div class="user-statistics container text-center">
 

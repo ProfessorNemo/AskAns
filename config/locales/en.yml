@@ -213,7 +213,15 @@ en:
       forms:
         save: Create album
         update: Update album
+        email_notifications: e-mail notifications
 
+  album_mailer:
+    photo:
+      title: Title
+      author: Author
+      album: Album
+      update_time: Update time
+      subject: "Added new photos to the user's %{user}: %{album}"
 
   password_reset_mailer:
     reset_email:
