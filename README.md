@@ -171,7 +171,6 @@ MAILJET_SENDER = 'example@example.ru'
 - [`rails-i18n`](https://github.com/svenfuchs/rails-i18n) to internationalization.
 - [`pundit`](https://github.com/varvet/pundit) is a solution for creating a simple, reliable and scalable authorization system.
 - [`blueprinter`](https://github.com/procore/blueprinter) is a JSON Object Presenter for Ruby that takes business objects and breaks them down into simple hashes and serializes them to JSON.
-- [`bullet`](https://github.com/flyerhzm/bullet) this is a solution to improve the performance of an application by reducing the number of requests it makes.
 - [`roo`](https://github.com/roo-rb/roo) for importing data from .xlsx to the database.
 - [`rspec-rails`](https://github.com/rspec/rspec-rails) for tests.
 - [`webmock`](https://github.com/bblimke/webmock) this is a library for stubbing and setting expectations on HTTP requests in Ruby.
