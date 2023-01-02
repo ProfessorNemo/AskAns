@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
   # отправить инструкции по сбросу пароля
   def edit; end
 
-  # Найти юзера по токену и emaily
+  # Найти юзера по токену и email
   def create
     # найдем юзера по его емэйлу, взяв его из params[:email]
     # В params[:email] email будет доступен, потому что в форме "new"

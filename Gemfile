@@ -64,6 +64,7 @@ end
 group :test do
   gem 'action_mailer_matchers'
   gem 'rspec', '~> 3.11'
+  gem 'rspec-sidekiq'
   gem 'vcr', '~> 6.1'
   gem 'webmock', '~> 3.14'
 end

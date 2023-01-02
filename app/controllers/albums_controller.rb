@@ -24,6 +24,7 @@ class AlbumsController < ApplicationController
   def create
     @album = @user.albums.build album_params
     @album.user = current_user
+
     success = @album.save
 
     conditions_for_album(album_params, @album, success, t('.notice'))

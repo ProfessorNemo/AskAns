@@ -4,7 +4,8 @@ FactoryBot.define do
   factory :album do
     title { 'Maldives' }
     description { 'Diving with sharks' }
-    association :user
+    notifications { 'false' }
+    association :user, :id
 
     trait :with_image do
       after :build do |album|

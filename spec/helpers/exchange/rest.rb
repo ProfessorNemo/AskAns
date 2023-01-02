@@ -17,6 +17,10 @@ module Exchange
     def create_question(params)
       post "users/#{params[:user_id]}", self, params
     end
+
+    def create_album(user_id)
+      post "users/#{user_id}/albums", self, {}
+    end
   end
 end
 

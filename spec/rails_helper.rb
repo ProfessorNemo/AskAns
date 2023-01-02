@@ -9,13 +9,12 @@ require 'byebug'
 require 'dotenv/load'
 require 'pundit/rspec'
 require 'active_storage_validations/matchers'
-require_relative './helpers/main'
 require 'webmock/rspec'
-require_relative './support/factory_bot'
-require_relative './support/vcr'
-
 require 'rails-i18n'
 require 'action_mailer_matchers'
+require_relative './support/factory_bot'
+require_relative './support/vcr'
+require_relative './helpers/main'
 
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
@@ -36,6 +35,9 @@ Pundit::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.before do
+    ActiveStorage::Current.host = 'http://127.0.0.1:3000'
+  end
   config.include ActiveStorageValidations::Matchers
 
   config.include ActionMailerMatchers

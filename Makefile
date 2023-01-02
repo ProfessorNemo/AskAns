@@ -56,16 +56,20 @@ rspec:
 	bundle exec rspec spec/controllers/password_resets_spec.rb
 	bundle exec rspec spec/controllers/questions_spec.rb
 	bundle exec rspec spec/controllers/sessions_spec.rb
+	bundle exec rspec spec/controllers/albums_spec.rb
 	bundle exec rspec spec/mailers/password_reset_mailer_spec.rb
+	bundle exec rspec spec/mailers/album_mailer_spec.rb
 	bundle exec rspec spec/models/question_spec.rb
 	bundle exec rspec spec/models/user_spec.rb
 	bundle exec rspec spec/policies/question_policy_spec.rb
 	bundle exec rspec spec/policies/user_policy_spec.rb
+	bundle exec rspec spec/policies/album_policy_spec.rb
 	bundle exec rspec spec/policies/admin/user_policy_spec.rb
 	bundle exec rspec spec/requests/client_spec.rb
 	bundle exec rspec spec/requests/api_json_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_export_service_spec.rb
 	bundle exec rspec spec/jobs/user_bulk_import_service_spec.rb
+	bundle exec rspec spec/jobs/alert_user_photo_album_job_spec.rb
 	bundle exec rspec spec/models/album_spec.rb
 
 redis:

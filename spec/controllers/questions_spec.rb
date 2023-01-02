@@ -5,7 +5,7 @@ RSpec.configure { |c| c.before { expect(controller).not_to be_nil } }
 RSpec.describe QuestionsController do
   User.destroy_all
 
-  let(:quest) { ['What are you doind here?', 'Where are my 17 years old?'].freeze }
+  let(:quest) { ['What are you doing here?', 'Where are my 17 years old?'].freeze }
   let(:user) { create(:id) }
 
   before do
@@ -35,7 +35,7 @@ RSpec.describe QuestionsController do
       expect(get: '/ru/questions').to route_to(controller: 'questions', action: 'index', locale: 'ru')
     end
 
-    it 'sdcsdxc' do
+    it 'routes GET /ru/questions to QuestionsController#edit' do
       random_index = Question.select(:id).map(&:id).sample.to_s
       expect(get: "/ru/questions/#{random_index}/edit").to route_to(controller: 'questions', action: 'edit',
                                                                     locale: 'ru', id: random_index.to_s)

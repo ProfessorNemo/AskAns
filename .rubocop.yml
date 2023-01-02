@@ -63,3 +63,9 @@ Rails/InverseOf:
 
 Naming/VariableNumber:
   Enabled: false
+
+Security/YAMLLoad:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

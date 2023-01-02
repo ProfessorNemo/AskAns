@@ -5,6 +5,7 @@ RSpec.describe Box::ApiJson do
     {
       path_users: 'http://127.0.0.1:3000/api/v1/users?',
       path_questions: 'http://127.0.0.1:3000/api/v1/users/Scarlet_Witch/questions?',
+      path_albums: 'http://127.0.0.1:3000/api/v1/users/professor/albums?',
       path_hashtags: 'http://127.0.0.1:3000/api/v1/hashtags?'
     }
   end
@@ -14,6 +15,9 @@ RSpec.describe Box::ApiJson do
   end
   let(:questions) do
     VCR.use_cassette('data/questions') { described_class.call(path[:path_questions]) }
+  end
+  let(:albums) do
+    VCR.use_cassette('data/albums') { described_class.call(path[:path_albums]) }
   end
   let(:hashtags) do
     VCR.use_cassette('data/hashtags') { described_class.call(path[:path_hashtags]) }
@@ -69,5 +73,21 @@ RSpec.describe Box::ApiJson do
     expect(hashtags.count).not_to be_nil
 
     puts hashtags.inspect
+  end
+
+  it 'can fetch & parse album data' do
+    album = albums.blank? ? attributes_for(:album, :with_image) : albums.first
+
+    expect(album).to be_a(Hash)
+
+    expect(album).to respond_to(:keys)
+
+    if album.keys.size > 3
+      expect(album.keys).to contain_exactly(:created_at,
+                                            :description, :id, :image_count,
+                                            :image_urls, :title, :updated_at, :user)
+    else
+      expect(album.keys).to contain_exactly(:title, :description)
+    end
   end
 end

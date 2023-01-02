@@ -15,7 +15,8 @@ RSpec.describe Album do
 
     album.save!
     expect(album.album_photos).to be_attached
-
+    expect(album.album_photos.first.blob.byte_size)
+      .to be_between(0.1.megabytes, 15.megabytes)
     expect(album).to respond_to(:album_photos, :image_urls, :image_count)
   end
 
@@ -36,6 +37,11 @@ RSpec.describe Album do
   context 'validations check' do
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :description }
+
+    it {
+      expect(subject).to validate_content_type_of(:album_photos)
+        .allowing('image/png', 'image/jpg', 'image/jpeg')
+    }
   end
 
   it 'album is not empty' do
