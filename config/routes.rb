@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [], param: :username do
         resources :questions, only: :index
-        resources :albums, only: :index
+        resources :albums, except: %i[edit new]
       end
 
       resources :hashtags, only: :index

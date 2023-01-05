@@ -6,7 +6,7 @@ module API
       def index
         @user = User.where(username: params[:user_username]).take
         @questions = @user.questions
-        render json: QuestionBlueprint.render(@questions, view: :normal)
+        success!(QuestionBlueprint.render_as_hash(@questions, view: :normal))
       end
     end
   end

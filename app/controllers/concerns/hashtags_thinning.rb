@@ -8,7 +8,7 @@ module HashtagsThinning
 
     # do_id либо 0 - хэштег, либо 1 - id
     # Извлечение массива отсортированных в алфавитном порядке хэштегов
-    # class: array и actriverecird relations
+    # class: array и active record relations
     def helper_hashtag(do_id)
       hashtags = Hashtag.alphabetical_sorting
 

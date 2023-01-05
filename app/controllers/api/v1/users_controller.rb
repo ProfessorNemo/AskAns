@@ -6,7 +6,7 @@ module API
       def index
         @users = User.all
 
-        render json: UserBlueprint.render(@users)
+        success!(UserBlueprint.render_as_hash(@users))
       end
     end
   end

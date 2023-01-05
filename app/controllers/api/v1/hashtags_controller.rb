@@ -12,7 +12,7 @@ module API
         # Оставшиеся после удаления вопросов хэштеги
         @hashtags = helper_hashtag(1)
         # render(@hashtags) выполнит сериализацию и превратит коллекцию хэштегов в json
-        render json: HashtagBlueprint.render(@hashtags)
+        success!(HashtagBlueprint.render_as_hash(@hashtags))
       end
     end
   end

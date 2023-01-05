@@ -71,7 +71,7 @@ RSpec.describe Exchange::Client do
             'token' => test_client.token
           }
         )
-        .to_return(status: 302, body: body, headers: { content_type: 'application/json' })
+        .to_return(status: 200, body: body, headers: { content_type: 'application/json' })
 
       album = test_client.create_album user_id
       expect(album['album']['description']).to eq('Город теней')
