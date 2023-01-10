@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mx-auto">
+      <div class="p-4"></div>
+
+      <% if notice %>
+        <div class="alert alert-info alert-dismissible fade show mb-1" role="alert">
+          <%= notice %>
+          <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times</span>
+          </button>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade show mb-1" role="alert">
+          <%= alert %>
+          <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times</span>
+          </button>
+        </div>
+      <% end %>
+
+      <div class="p-2"></div>
+
+      <div class="card">
+        <div class="card-body">
+          <%= form_with(url: currency_path, method: :post, local: true) do %>
+            <div class="form-group">
+              <%= label_tag("force_end_datetime", "Дата и время окончания:") %>
+              <%= datetime_field(nil, :force_end_datetime, value: @force_end_datetime, class: "form-control") %>
+            </div>
+            <div class="form-group">
+              <%= label_tag("force_rate_value", "Значение курса:") %>
+              <%= text_field_tag(:force_rate, @force_rate, class: "form-control") %>
+            </div>
+            <%= submit_tag("Применить", class: "btn btn-outline-primary btn-block") %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

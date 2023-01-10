@@ -48,7 +48,7 @@ gem 'rubyzip', '~> 2.3'
 gem 'rubyXL', '~> 3.4'
 
 # адаптер для выполнения задач в фоновом режиме
-gem 'sidekiq', '~> 6.5'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug'

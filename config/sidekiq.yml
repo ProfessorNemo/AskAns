@@ -5,4 +5,5 @@ production:
 :queues:
   - default
   - upload_photo
+  - currency
 :max_retries: 1

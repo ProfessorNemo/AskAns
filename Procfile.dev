@@ -3,3 +3,4 @@ css: yarn build:css:dev --watch
 js: yarn build --watch
 worker1: bundle exec sidekiq -q default
 worker2: bundle exec sidekiq -q upload_photo
+worker3: bundle exec sidekiq -q currency

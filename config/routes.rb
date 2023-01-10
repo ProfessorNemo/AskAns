@@ -63,6 +63,10 @@ Rails.application.routes.draw do
       end
     end
 
+    get 'rates', to: 'rates#index'
+    get 'currency', to: 'rates#currency'
+    post 'currency', to: 'rates#force_rate'
+
     # Синонимы путей — в дополнение к созданным в ресурсах выше.
     # get 'sign_up' => 'users#new'
     # get 'log_out' => 'sessions#destroy'

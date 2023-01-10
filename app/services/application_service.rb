@@ -6,4 +6,6 @@ class ApplicationService
   def self.call(...)
     new(...).call
   end
+
+  def initialize(*_); end
 end
