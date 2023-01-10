@@ -5,7 +5,7 @@ import 'bootstrap/js/dist/dropdown'
 
 import './scripts/custom'
 import './scripts/select'
-import './scripts/lightbox'
+// import './scripts/lightbox'
 import './channels'
 
 // для отображения выпадающей формы

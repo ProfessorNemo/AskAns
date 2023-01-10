@@ -1,6 +1,6 @@
 web: ruby bin/rails server -p 3000
-css: yarn build:css:dev --watch
 js: yarn build --watch
+css: yarn build:css --watch
 worker1: bundle exec sidekiq -q default
 worker2: bundle exec sidekiq -q upload_photo
 worker3: bundle exec sidekiq -q currency

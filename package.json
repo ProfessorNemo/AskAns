@@ -6,12 +6,9 @@
         "@rails/actioncable": "^6.0.0",
         "@rails/activestorage": "^6.0.0",
         "@rails/ujs": "^6.0.0",
-        "autoprefixer": "^10.4.2",
         "bootstrap": "^5.2.2",
         "bootstrap-icons": "^1.9.1",
         "esbuild": "^0.15.12",
-        "postcss": "^8.4.7",
-        "postcss-cli": "^9.1.0",
         "sass": "^1.55.0",
         "tom-select": "^2.1.0",
         "turbolinks": "^5.2.0"
@@ -21,9 +18,8 @@
         "defaults"
     ],
     "scripts": {
-        "build:css:dev": "sass --style compressed ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
-        "build:css": "build:css:dev && postcss ./app/assets/builds/application.css --replace --use autoprefixer --no-map",
-        "build": "esbuild app/javascript/*.* --bundle --minify --outdir=app/assets/builds"
+        "build": "esbuild app/javascript/*.* --bundle --minify --outdir=app/assets/builds --public-path=assets",
+        "build:css": "sass --style compressed ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
     },
     "engines": {
         "node": "17.1.0"
