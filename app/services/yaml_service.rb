@@ -12,13 +12,19 @@ class YamlService < ApplicationService
     super
   end
 
-  def get(key)
+  def get
     reload
-    @data[key.to_s]
+
+    @data.invert.keys
   end
 
-  def put(key, value)
-    @data[key.to_s] = value
+  def put(rate_value)
+    dollar = rate_value[0].invert.keys[0]
+    euro = rate_value[1].invert.keys[0]
+
+    @data[@data.keys[0]] = dollar
+    @data[@data.keys[1]] = euro
+
     save
   end
 

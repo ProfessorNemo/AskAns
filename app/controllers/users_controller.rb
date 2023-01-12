@@ -7,6 +7,10 @@
 #   3. Позволять пользователю редактировать свою страницу
 #
 class UsersController < ApplicationController
+  # записывать только уникальные показы
+  impressionist actions: [:show],
+                unique: %i[controller_name action_name session_hash]
+
   # пользователь в систему не вошел
   before_action :require_no_authentication, only: %i[new create]
   # пользователь в систему уже вошел
@@ -39,10 +43,13 @@ class UsersController < ApplicationController
   def show
     @user = @user.decorate
 
+    # подсчет кол-ва переходов на страницу юзера ("датчик посещения")
+    # @user.object.increment!(:impressions_count)
+    @user.object.impressionist_count(message: 'get-request | users#show')
+
     # Достаем вопросы пользователя с помощью метода questions, который мы
     # объявили в модели User (has_many :questions), у результата возврата этого
     # метода вызываем метод order, который отсортирует вопросы по дате.
-
     @pagy, @questions = pagy @user.questions.includes(:author).sorted
 
     # Для формы нового вопроса, которая есть у нас на странице пользователя,
@@ -133,7 +140,8 @@ class UsersController < ApplicationController
   # :avatar_url. Другие ключи будут отброшены.
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,
-                                 :name, :username, :old_password, :background_color, :api_token)
+                                 :name, :username, :old_password,
+                                 :background_color, :api_token, :impressionist_count)
   end
 
   # Если загруженный из базы юзер и текущий залогиненный не совпадают — посылаем
@@ -154,7 +162,7 @@ class UsersController < ApplicationController
     if params[:pressing] && @user == current_user
       @user.generate_token
     elsif params[:pressing] && @user != current_user
-      flash.now[:warning] = t '.forbidden'
+      flash.now[:warning] = t '.show.forbidden'
     end
   end
 end

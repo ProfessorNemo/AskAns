@@ -28,6 +28,15 @@
 </header>
 
 <div class="header">
+
+	<div class="header-logo">
+		<a class="title-small">$:</a>
+		<%= content_tag(:a, number_to_currency(current_rate[0]), class: "title-small") %>
+		<br>
+		<a class="title-small">€:</a>
+		<%= content_tag(:a, number_to_currency(current_rate[1]), class: "title-small") %>
+	</div>
+
 	<div class="container">
 
 		<div class="header-logo">
@@ -59,7 +68,6 @@
 				<%= link_to t('menu.sign_in'), new_session_path,
 					class: 'button button-light button-small' %>
 			<% end %>
-
 		</div>
 	</div>
 </div>

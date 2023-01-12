@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # запись количества посещений (показов) в бд будет происходить
+  # по уникальному ip-адресу
+  is_impressionable counter_cache: true, unique: :ip_address
+
   include Username
   include Recoverable
   include Rememberable

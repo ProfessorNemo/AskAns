@@ -16,19 +16,27 @@ class ParseRateService < ApplicationService
   def update_rate
     rate_value = parse_html
 
-    @yaml_service.put(:current_rate, rate_value)
+    @yaml_service.put(rate_value)
   end
 
   private
 
   def parse_html
     doc = Nokogiri::HTML(@html)
+    new_array = []
+
     doc.css('table.data tbody tr').each do |row|
-      row.children.each do |td|
-        return row.children[-2].content if td.content == 'Доллар США'
+      result = row.children.each_with_object({}) do |td, hash|
+        next unless td.content == 'Доллар США' || td.content == 'Евро'
+
+        hash[td.content.to_s] = row.children[-2].content.to_s
       end
+
+      new_array << result unless result.empty?
     end
 
-    raise StandardError, 'Parse failed. No needed content.'
+    raise StandardError, 'Parse failed. No needed content.' if new_array.empty?
+
+    new_array
   end
 end
