@@ -7,7 +7,7 @@ module RateHelper
     ss = Sidekiq::ScheduledSet.new
     jobs = ss.scan('UpdateRateWorker').select { |retri| retri.klass == 'UpdateRateWorker' }
     jobs.each(&:delete)
-    byebug
+
     UpdateRateWorker.perform_async
 
     yaml_service.get

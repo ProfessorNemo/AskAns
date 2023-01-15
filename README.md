@@ -180,7 +180,7 @@ MAILJET_SENDER = 'example@example.ru'
 - [`mailjet`](https://github.com/mailjet/mailjet-gem) This is a transactional and marketing email service.
 - [`pagy`](https://github.com/ddnexus/pagy) gem for separating content into pages.
 - [`bcrypt`](https://github.com/bcrypt-ruby/bcrypt-ruby) easy way to keep your users' passwords secure (use Active Model has_secure_password).
-- [`dry-transaction`](https://github.com/dry-rb/dry-transaction) This is a library provides an easy way to define a complex business .transaction that involves multi-stage processing and many different objects, in particular to capture and return errors at any stage of the transaction.
+- [`dry-transaction`](https://github.com/dry-rb/dry-transaction) this is a library provides an easy way to define a complex business .transaction that involves multi-stage processing and many different objects, in particular to capture and return errors at any stage of the transaction.
 - [`valid_email2`](https://github.com/micke/valid_email2) to check the correctness of the entered email.
 - [`where_exists`](https://github.com/EugZol/where_exists) Rails way to harness the power of SQL EXISTS condition.
 - [`rubyzip`](https://github.com/rubyzip/rubyzip) this is a solution that allows you to work with .zip archives.
@@ -189,6 +189,8 @@ MAILJET_SENDER = 'example@example.ru'
 - [`activerecord-import`](https://github.com/zdennis/activerecord-import) this is a solution that allows you to import many records into the database in one query.
 - [`rubyXL`](https://github.com/weshatheleopard/rubyXL) this is a solution that allows you to read and modify .xlsx files.
 - [`Sidekiq`](https://github.com/mperham/sidekiq) uses threads to handle many jobs at the same time in the same process.
+- [`impressionist`](https://github.com/charlotte-ruby/impressionist) lightweight plugin that logs impressions per action or manually per model.
+- [`faraday`](https://github.com/lostisland/faraday) embraces the concept of Rack middleware when processing the request/response cycle.
 
 ### Сommands to run tests:
 
