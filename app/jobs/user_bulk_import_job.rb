@@ -7,8 +7,8 @@ class UserBulkImportJob < ApplicationJob
 
   # м-д выполнения задачи (то, что надо делать в бэкграунде). Принимаем ключ
   # загруженного файла (archive_key) и кто инициировал задачу (initiator)
-  def perform(archive_key, initiator)
-    UserBulkImportService.call archive_key
+  def perform(archive_key, url, initiator)
+    UserBulkImportService.call archive_key, url
   rescue StandardError => e
     Admin::UserMailer.with(user: initiator, error: e).bulk_import_fail.deliver_now
   else

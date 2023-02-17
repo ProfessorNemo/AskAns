@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
+require 'httparty'
+
 # Сервисный объект, который нам позволит заводить пользователей
 # в системе на основе Excel
 class UserBulkImportService < ApplicationService
   # ключ архива
-  attr_reader :archive_key, :service
+  attr_reader :archive_key, :url, :service
 
   # rubocop:disable Lint/MissingSuper
-  def initialize(archive_key)
+  def initialize(archive_key, url)
     @archive_key = archive_key
+    @url = url
     # сохранить ссылку на сервис
     @service = ActiveStorage::Blob.service
   end
@@ -19,6 +22,7 @@ class UserBulkImportService < ApplicationService
     read_zip_entries do |entry|
       # для каждого файла excel из архива (input_stream) читаем содержимое
       entry.get_input_stream do |f|
+
         # Нужно создать массив пользователей на основе файла, затем импортировать
         # сразу все и игнорировать дублирующиеся с уже сделанными валидациями
         # https://github.com/zdennis/activerecord-import
@@ -40,36 +44,18 @@ class UserBulkImportService < ApplicationService
     # если блока передано не было
     return unless block_given?
 
-    stream = zip_stream
-    # Бесконечный цикл, который будет брать каждый следующий файл из zip
-    loop do
-      # запись из архива
-      entry = stream.get_next_entry
+    input = HTTParty.get(url).body
+    Zip::File.open_buffer(input) do |zip_file|
+      zip_file.each do |entry|
+        # Переходим к следующей итерации если имя не корректное,
+        # оно должно заканчиваться на '.xlsx'
+        next unless entry.name.end_with? '.xlsx'
 
-      # если записей больше нет, выходим из цикла
-      break unless entry
-      # Переходим к следующей итерации если имя не корректное,
-      # оно должно заканчиваться на '.xlsx'
-      next unless entry.name.end_with? '.xlsx'
-
-      # entry будет передан в м-д "call" (read_zip_entries do |entry|) и для
-      # этого мы говорим "yield"
-      yield entry
+        # entry будет передан в м-д "call" (read_zip_entries do |entry|) и для
+        # этого мы говорим "yield"
+        yield entry
+      end
     end
-  ensure
-    # закрываем поток
-    stream.close
-  end
-
-  # М-д, выполняющий стриминг загруженного файла .zip
-  def zip_stream
-    # Получить путь к загруженному архиву из ActiveStorage по его id
-    f = File.open service.path_for(archive_key)
-    # создаем новый стрим
-    stream = Zip::InputStream.new(f)
-    # надо закрывать, иначе файл удалить не получится
-    f.close
-    stream
   end
 
   # Принимаем конкретные данные из файла
@@ -87,3 +73,7 @@ class UserBulkImportService < ApplicationService
     end
   end
 end
+
+# ActiveStorage::Blob.service.bucket.object(archive_key).key = archive_key
+# ActiveStorage.service_urls_expire_in = 5 min
+# ActiveStorage::Blob.service.bucket.object(archive_key).public_url

@@ -95,3 +95,5 @@ gem 'pundit', '~> 2.2'
 gem 'recaptcha', '~> 5.12'
 gem 'sprockets-rails', '~> 3.4'
 gem 'where_exists', '~> 2.0'
+
+gem 'httparty', '~> 0.21.0'
