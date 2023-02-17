@@ -27,8 +27,9 @@ class UserBulkImportService < ApplicationService
       end
     end
   ensure
-    # Это нужно для того, чтобы удалить архив из облака и очистить бд
-    Document.destroy_all
+    doc = Document.first
+    doc.archive.purge if doc.archive.attached?
+    doc.destroy
   end
 
   private
