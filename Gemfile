@@ -34,6 +34,8 @@ gem 'caxlsx_rails', '~> 0.6'
 
 gem 'rails-i18n', '~> 7.0.3'
 
+gem 'redis', '~> 5'
+
 # в json. Сериализатор работает быстрее, чем 'jbuilder', '~> 2.11'
 gem 'blueprinter'
 gem 'oj'

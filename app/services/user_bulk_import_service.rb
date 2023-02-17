@@ -1,19 +1,14 @@
 # frozen_string_literal: true
 
-require 'httparty'
-
 # Сервисный объект, который нам позволит заводить пользователей
 # в системе на основе Excel
 class UserBulkImportService < ApplicationService
   # ключ архива
-  attr_reader :archive_key, :url, :service
+  attr_reader :url
 
   # rubocop:disable Lint/MissingSuper
-  def initialize(archive_key, url)
-    @archive_key = archive_key
+  def initialize(url)
     @url = url
-    # сохранить ссылку на сервис
-    @service = ActiveStorage::Blob.service
   end
   # rubocop:enable Lint/MissingSuper
 
@@ -32,10 +27,8 @@ class UserBulkImportService < ApplicationService
       end
     end
   ensure
-    # Это нужно для того, чтобы удалить тот архив, с которым мы уже работали
-    # по уникальному ключу (archive_key) после того, как мы с ним завершили работу,
-    # чтоб он не висел на диске.
-    service.delete archive_key
+    # Это нужно для того, чтобы удалить архив из облака и очистить бд
+    Document.destroy_all
   end
 
   private

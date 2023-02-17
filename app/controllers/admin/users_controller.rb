@@ -42,7 +42,7 @@ module Admin
         # perform_later - поставить задачу в очередь и сделать в фоне
         # current_user - юзер, который инициировал задачу, и именно на его почту
         # будет выслана инфа о выполнении задачи
-        UserBulkImportJob.perform_later(create_blob[0], create_blob[1], current_user)
+        UserBulkImportJob.perform_later(create_blob, current_user)
         flash[:success] = t('.success')
       end
 
@@ -82,7 +82,7 @@ module Admin
 
       # Вернем "key" - уникальный идентификатор загруженного файла в ActiveStorage. Этот ключ
       # будет храниться в одной из созданных таблиц
-      [doc.archive.key, doc.archive.url]
+      doc.archive.url
     end
 
     def respond_with_zipped_users
