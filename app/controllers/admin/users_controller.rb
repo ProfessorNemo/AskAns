@@ -42,7 +42,7 @@ module Admin
         # perform_later - поставить задачу в очередь и сделать в фоне
         # current_user - юзер, который инициировал задачу, и именно на его почту
         # будет выслана инфа о выполнении задачи
-        UserBulkImportJob.perform_later create_blob, current_user
+        UserBulkImportJob.perform_later(create_blob, current_user)
         flash[:success] = t('.success')
       end
 
@@ -72,13 +72,17 @@ module Admin
     def create_blob
       # открыть присланный временный файл
       file = File.open params[:archive]
+
       # "io" - input/output - содержимое файла, а в качестве имени файла - оригинальное имя архива
-      result = ActiveStorage::Blob.create_and_upload! io: file,
-                                                      filename: params[:archive].original_filename
+      Document.create!
+      doc = Document.order('created_at desc').first
+      doc.archive.attach io: file, filename: params[:archive].original_filename
+
       file.close
+
       # Вернем "key" - уникальный идентификатор загруженного файла в ActiveStorage. Этот ключ
       # будет храниться в одной из созданных таблиц
-      result.key
+      doc.archive.url
     end
 
     def respond_with_zipped_users
