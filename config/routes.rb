@@ -59,7 +59,10 @@ Rails.application.routes.draw do
     # доступ к пространству маршрутов admin
     namespace :admin do
       constraints(AdminConstraint.new) do
-        resources :users, except: %i[new]
+        resources :users, except: %i[new] do
+          get :upvote, on: :member
+          get :downvote, on: :member
+        end
       end
     end
 

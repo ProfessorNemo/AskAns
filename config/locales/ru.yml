@@ -28,6 +28,8 @@ ru:
         updated_at: Обновлён
         username: Никнейм
         role: Роль
+        rating_real: рейтинг
+        rating_admin: искусственный рейтинг
         doing: Действие
         status: Статус
     models:

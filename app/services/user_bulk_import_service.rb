@@ -17,7 +17,6 @@ class UserBulkImportService < ApplicationService
     read_zip_entries do |entry|
       # для каждого файла excel из архива (input_stream) читаем содержимое
       entry.get_input_stream do |f|
-
         # Нужно создать массив пользователей на основе файла, затем импортировать
         # сразу все и игнорировать дублирующиеся с уже сделанными валидациями
         # https://github.com/zdennis/activerecord-import

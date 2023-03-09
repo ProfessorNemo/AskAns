@@ -28,6 +28,8 @@ en:
         updated_at: Updated at
         username: Username
         role: Role
+        rating_real: rating
+        rating_admin: artificial rating
         doing: Action
         status: Status
     models:

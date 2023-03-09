@@ -3,9 +3,19 @@
 module Admin
   class UsersController < BaseController
     before_action :require_authentication
-    before_action :set_user!, only: %i[edit update destroy]
+    before_action :set_user!, only: %i[edit update destroy upvote downvote]
     before_action :authorize_user!
     after_action :verify_authorized
+
+    def upvote
+      @user.increment!(:votes_count)
+      redirect_to admin_users_path
+    end
+
+    def downvote
+      @user.decrement!(:votes_count)
+      redirect_to admin_users_path
+    end
 
     # вытащим всех юзеров и разобъем их по страницам
     def index

@@ -5,6 +5,12 @@
   <td><%= user.email %></td>
   <td><%= user.role %></td>
   <td><%= l user.created_at, format: :short %></td>
+  <td><%= user.impressions_count %></td>
+  <td><%= user.votes_count %> &nbsp;
+       <%= link_to '+', upvote_admin_user_path(user), class: "text-info" %>
+       /
+       <%= link_to '-', downvote_admin_user_path(user), class: "text-info" %>
+  </td>
   <td>
 
     <div class="btn-group"></div>

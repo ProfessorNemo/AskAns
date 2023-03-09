@@ -7,7 +7,6 @@ module Rememberable
   included do
     attr_accessor :remember_token
 
-    # rubocop:disable Rails/SkipsModelValidations
     # сгенерировать token (абракадабра), на основе которого будем делать хэш
     def remember_me
       # self - чтобы пристыковать виртуальный аттрибут "remember_token" к текущему юзеру
