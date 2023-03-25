@@ -47,4 +47,3 @@ trsee*
 !/app/assets/builds/.keep
 
 /.yarn/cache/*
-.yarn/*
