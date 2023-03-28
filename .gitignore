@@ -45,3 +45,4 @@ yarn.lock
 trsee*
 /app/assets/builds/*
 !/app/assets/builds/.keep
+.yarn
