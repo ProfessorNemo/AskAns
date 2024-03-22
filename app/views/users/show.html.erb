@@ -21,10 +21,9 @@
 
     <% if current_user == @user  %>
       <div class="buffer-both">
-        <%= button_to "generate api_token", { action: "show", id: @user.id },
+        <%= button_to "generate api_token", { action: "show" },
                 class: 'button button-small button-dark', name: 'pressing',
-                method: :get, data: { confirm: t('global.dialog.you_sure') },
-                remote: true %>
+                method: :get, data: { confirm: t('global.dialog.you_sure') } %>
       </div>
     <% end %>
 
